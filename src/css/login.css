@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +10,7 @@ body{
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
+	
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 .main{
@@ -19,7 +21,7 @@ body{
 	box-shadow: 5px 20px 50px #000;
 }
 #chk{
-	display: none;
+    display: none;
 }
 .signup{
 	position: relative;
