@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-
 * {
     margin: 0;
     padding: 0;
@@ -14,14 +12,27 @@ body{
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
-.main{
-	width: 350px;
-	height: 500px;
-	overflow: hidden;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-	border-radius: 10px;
-	box-shadow: 5px 20px 50px #000;
+.main {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    padding-top: 20px; /* Spazio sopra il contenuto */
 }
+
+.main img {
+    position: absolute;
+    top: 10px; /* Distanza dal top */
+    left: 10px; /* Distanza dal left */
+    width: 50px; /* Dimensione dell'immagine */
+    height: 50px;
+    border-radius: 50%; /* Rendere l'immagine rotonda */
+    object-fit: cover; /* Mantiene l'aspetto dell'immagine */
+    border: 2px solid #fff; /* Bordo bianco intorno all'immagine */
+  }
 
 #chk{
     display: none;
@@ -80,6 +91,35 @@ button:hover{
 	background: #6d44b8;
 }
 
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(51, 51, 51, 0.7); /* Colore del footer con trasparenza */
+
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px; /* Spazio tra i link */
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer a:last-child {
+    margin-right: 0; /* Rimuove lo spazio dal lato dell'ultimo link */
+  }
+  
+  /* Stile per il testo del copyright */
+  footer p {
+    margin: 0;
+  }
+
 .login {
     height: 460px;
     background: #eee;
@@ -103,5 +143,5 @@ button:hover{
 }
 
 #chk:checked ~ .main .login label {
-    transform: scale(1.4); /* Modifica la scala per rendere la label "Login" più piccola */
+    transform: scale(1.2); /* Modifica la scala per rendere la label "Login" più piccola */
 }
