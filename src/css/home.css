@@ -1,5 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500;600&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     display: inline-block;
+}
+
+body{
+    background-color: #E6E6E6;
+    font-family: 'Poppins', sans-serif;
+}
+
+head title{
+    visibility: hidden;
+}
+
+/* style icon */
+
+header > ul > li > img {
+    max-height: 150px;
+    max-width: 100%;
+}
+
+ul > li > a > img {
+    max-height: 50px;
+    max-width: 100%;
+}
+
+/* style header, footer */
+
+header, footer{
+    width: 100%;
+}
+
+header > ul, footer > ul{
+    padding: 15px 15px;
+    display:grid;
+}
+
+header ul li:first-child{
+    grid-row: 1 / 4;
+    grid-column: 1 / 5;
+    margin-left: 50px;
+}
+
+header ul li:nth-child(2), header ul li:last-child{
+    grid-row: 2;
+    text-align: center;
+}
+
+footer ul {
+    grid-template-columns: auto auto auto auto auto;
+    text-align: center;
+}
+
+/* style main*/
+
+main{
+    display: grid;
+    grid-template-columns: 47% 47%;
+    grid-template-rows: auto auto;
+    gap: 5% 6%;
+    padding: 5% 5%;
+    margin-bottom: 30px;
+}
+
+article{
+    padding: 8% 8%;
+    text-align: center;
+    background-color: #CCBCCE;
+    border-radius: 30px;
+    display: grid;
+}
+
+article>header h2{
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    color: #C2397B;
+    font-family: 'Italiana', sans-serif;
+    font-size: 35px;
+}
+
+article>section{
+    margin: 20px 5%;
+}
+
+article>footer{
+    margin-bottom: 20px;
+}
+
+footer>a{
+    width: 50%;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #732181;
+    border-radius: 5px;
 }
