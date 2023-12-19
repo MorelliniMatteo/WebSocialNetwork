@@ -9,6 +9,7 @@
 body{
     background-color: #E6E6E6;
     font-family: 'Poppins', sans-serif;
+    padding-bottom: 7rem;
 }
 
 head title{
@@ -31,6 +32,12 @@ ul > li > a > img {
 
 header, footer{
     width: 100%;
+}
+
+body>footer{
+    position: fixed;
+    bottom: 0;
+    background-color: #CCBCCE;
 }
 
 header > ul, footer > ul{
