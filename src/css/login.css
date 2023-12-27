@@ -12,7 +12,7 @@ body{
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
-.main {
+main {
     position: relative;
     width: 350px;
     height: 500px;
@@ -23,7 +23,7 @@ body{
     padding-top: 20px; /* Spazio sopra il contenuto */
 }
 
-.main img {
+main img {
     position: absolute;
     top: 10px; /* Distanza dal top */
     left: 10px; /* Distanza dal left */
@@ -32,7 +32,7 @@ body{
     border-radius: 50%; /* Rendere l'immagine rotonda */
     object-fit: cover; /* Mantiene l'aspetto dell'immagine */
     border: 2px solid #fff; /* Bordo bianco intorno all'immagine */
-  }
+}
 
 #chk{
     display: none;
@@ -90,58 +90,58 @@ button{
 button:hover{
 	background: #6d44b8;
 }
-
+/* Stile del footer */
 footer {
     position: absolute;
     width: 100%;
     bottom: 0;
     background-color: rgba(51, 51, 51, 0.7); /* Colore del footer con trasparenza */
-
     color: white;
-    padding: 20px 0;
+    padding: 5px 0;
     text-align: center;
-  }
+    font-size: small;
+}
   
-  footer a {
+footer a {
     text-decoration: none;
     color: white;
     margin-right: 20px; /* Spazio tra i link */
-  }
-  footer a:hover {
+}
+footer a:hover {
     text-decoration: underline;
-  }
+}
   
-  footer a:last-child {
+footer a:last-child {
     margin-right: 0; /* Rimuove lo spazio dal lato dell'ultimo link */
-  }
+}
   
-  /* Stile per il testo del copyright */
-  footer p {
+/* Stile per il testo del copyright */
+footer p {
     margin: 0;
-  }
-
+}
+/* Stile della sezione di login */
 .login {
     height: 460px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
-    transition: transform .8s ease-in-out;
+    transition: transform .7s ease-in-out;
 }
-
+/* Stile delle etichette all'interno della sezione di login */
 .login label {
     color: #573b8a;
     transform: scale(.6);
 }
-
-#chk:checked ~ .main .login {
+/* Animazione quando il checkbox è selezionato */
+#chk:checked ~ main .login {
     transform: translateY(-500px);
 }
 
 /* Quando il checkbox è selezionato, la label "Sign up" si ingrandisce mentre la label "Login" si rimpicciolisce */
-#chk:checked ~ .main .signup label {
+#chk:checked ~ main .signup label {
     transform: scale(0.6); /* Modifica la scala per rendere la label "Sign up" più grande */
 }
 
-#chk:checked ~ .main .login label {
+#chk:checked ~ main .login label {
     transform: scale(1.2); /* Modifica la scala per rendere la label "Login" più piccola */
 }
