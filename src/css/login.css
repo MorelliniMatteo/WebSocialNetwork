@@ -9,7 +9,7 @@ body{
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;	
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
 }
 
 main {
@@ -17,7 +17,7 @@ main {
     width: 300px;
     height: 500px;
     overflow: hidden;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); /* Colore con trasparenza */
+    background: #AA9A90;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     padding-top: 20px; /* Spazio sopra il contenuto */
