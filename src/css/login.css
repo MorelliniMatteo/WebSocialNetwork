@@ -9,15 +9,15 @@ body{
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;	
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
 }
 
 main {
     position: relative;
-    width: 350px;
+    width: 300px;
     height: 500px;
     overflow: hidden;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background: #AA9A90;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     padding-top: 20px; /* Spazio sopra il contenuto */
@@ -34,7 +34,7 @@ main img {
     border: 2px solid #fff; /* Bordo bianco intorno all'immagine */
 }
 
-#chk{
+#chk-login, #chk-signup{
     display: none;
 }
 
@@ -122,7 +122,7 @@ footer p {
 /* Stile della sezione di login */
 .login {
     height: 460px;
-    background: #eee;
+    background: #f5f5f5;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
     transition: transform .7s ease-in-out;
@@ -133,15 +133,34 @@ footer p {
     transform: scale(.6);
 }
 /* Animazione quando il checkbox è selezionato */
-#chk:checked ~ main .login {
+#chk-signup:checked ~ main .login {
     transform: translateY(-500px);
 }
 
 /* Quando il checkbox è selezionato, la label "Sign up" si ingrandisce mentre la label "Login" si rimpicciolisce */
-#chk:checked ~ main .signup label {
+#chk-signup:checked ~ main .signup label {
     transform: scale(0.6); /* Modifica la scala per rendere la label "Sign up" più grande */
 }
 
-#chk:checked ~ main .login label {
+#chk-signup:checked ~ main .login label {
     transform: scale(1.2); /* Modifica la scala per rendere la label "Login" più piccola */
+}
+
+/* Stile delle etichette generiche */
+form label:not([for="chk-login"]):not([for="chk-signup"]) {
+    font-size: 0.9em; /* Riduzione della dimensione del font */
+    margin: 0px 0; /* Distanza dagli elementi sopra e sottostanti */
+    padding: 0px 0;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    
+    /* ... (altri stili per tablet) ... */
+}
+
+/* Media query per desktop */
+@media (min-width: 1024px) {
+    
+    /* ... (altri stili per desktop) ... */
 }

@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;    
+    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%),
+                linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+}
+
+main {
+    position: relative;
+    width: 305px;
+    height: 460px;
+    overflow: hidden;
+    background: #AA9A90;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    padding-top: 10px; /* Spazio sopra il contenuto */
+}
+
+article > header {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+/*____________________style img profile____________________*/
+
+article > header > img {
+    width: 40px; /* Dimensione dell'immagine */
+    height: 40px;
+    border-radius: 50%; /* Rendere l'immagine rotonda */
+    object-fit: cover; /* Mantiene l'aspetto dell'immagine */
+    border: 2px solid #fff; /* Bordo bianco intorno all'immagine */
+    margin-right: 10px;
+}
+
+/*____________________style a____________________*/
+
+article > header > a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+a[aria-label="Follow"] {
+    margin-left: auto;
+    margin-right: 10px;
+    display: block;
+    text-decoration: none !important;
+}
+
+a[aria-label="Follow"]:hover {
+    text-decoration: underline !important;
+}
+
+a[aria-label="Follow"]:active {
+    transform: scale(0.95); /* Riduci leggermente le dimensioni quando viene premuto */
+    transition: transform 0.1s ease; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+a[aria-label="View user profile"] {
+    margin-right: auto;
+    margin-right: 10px;
+    display: block;
+    text-decoration: none !important;
+}
+
+a[aria-label="View user profile"]:hover {
+    text-decoration: underline !important;
+}
+
+a[aria-label="View user profile"]:active {
+    transform: scale(0.95); /* Riduci leggermente le dimensioni quando viene premuto */
+    transition: transform 0.1s ease; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+a[aria-label="Like"] {
+    text-decoration: none !important;
+}
+
+a[aria-label="Like"]:hover {
+    text-decoration: underline !important;
+}
+
+a[aria-label="Like"]:active {
+    transform: scale(0.95); /* Riduci leggermente le dimensioni quando viene premuto */
+    transition: transform 0.1s ease; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+a[aria-label="Comment"] {
+    text-decoration: none !important;
+}
+
+a[aria-label="Comment"]:hover {
+    text-decoration: underline !important;
+}
+
+a[aria-label="Comment"]:active {
+    transform: scale(0.95); /* Riduci leggermente le dimensioni quando viene premuto */
+    transition: transform 0.1s ease; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+/*____________________style img post____________________*/
+
+main > article > img {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    object-fit: cover; /* Mantiene l'aspetto dell'immagine */
+}
+
+/*____________________style button____________________*/
+
+button[aria-label="Like"] {
+    background: url('../img/like.png') no-repeat center center;
+    background-size: contain; /* Adatta l'immagine mantenendone l'aspetto */
+    text-indent: -9999px; /* Nasconde il testo nel bottone */
+    width: 30px; /* Larghezza del bottone */
+    height: 30px; /* Altezza del bottone */
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+button[aria-label="Comment"] {
+    background: url('../img/comment.png') no-repeat center center;
+    background-size: contain; /* Adatta l'immagine mantenendone l'aspetto */
+    text-indent: -9999px; /* Nasconde il testo nel bottone */
+    width: 30px; /* Larghezza del bottone */
+    height: 30px; /* Altezza del bottone */
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/*____________________style icone____________________*/
+
+section {
+    display: flex;
+}
+.icon { 
+    display: inline-block;
+    margin: 2px 12px;
+    width: 20px; /* Larghezza desiderata per l'icona */
+    height: 20px; /* Altezza desiderata per l'icona */
+}
+
+/*____________________style descrizione____________________*/
+
+article > p {
+    text-align: center;
+    font-size: small;
+    overflow: auto; /* Abilita la barra di scorrimento quando il contenuto supera le dimensioni */
+    border: 1px solid #ccc; /* Aggiunge un bordo per migliorare la visualizzazione */
+    border-radius: 4px;
+    height: 30px;
+    margin: 0 15px 5px 15px;
+    background-color: rgba(233, 233, 233, 0.5);
+}
+
+/*____________________style commenti____________________*/
+
+article > section[aria-label="Comments"] {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    font-size: small;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 30px; /* Set a maximum height for the comments section */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 15px 5px 15px;
+    background-color: rgba(233, 233, 233, 0.5);
+}
+
+article > section > p {
+    margin: 0 5px 5px 5px;
+}
