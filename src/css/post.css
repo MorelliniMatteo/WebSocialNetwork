@@ -22,14 +22,14 @@ main {
     background: #AA9A90;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
-    padding-top: 20px; /* Spazio sopra il contenuto */
+    padding-top: 10px; /* Spazio sopra il contenuto */
 }
 
 article > header {
     display: flex;
     align-items: center;
     padding: 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 /*____________________style img profile____________________*/
@@ -165,7 +165,7 @@ article > p {
     overflow: auto; /* Abilita la barra di scorrimento quando il contenuto supera le dimensioni */
     border: 1px solid #ccc; /* Aggiunge un bordo per migliorare la visualizzazione */
     border-radius: 4px;
-    height: 20px;
+    height: 30px;
     margin: 0 15px 5px 15px;
     background-color: rgba(233, 233, 233, 0.5);
 }
@@ -186,5 +186,5 @@ article > section[aria-label="Comments"] {
 }
 
 article > section > p {
-    margin: 5px 5px 5px 5px;
+    margin: 0 5px 5px 5px;
 }
