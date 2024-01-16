@@ -1,7 +1,7 @@
 # WebSocialNetwork
 Web Project - Social Network
 
-ArtEnclave:
+Arthub:
 Descrizione: ArtEnclave è un social network pensato per artisti e appassionati d'arte.
 Gli utenti possono condividere le proprie opere d'arte, ricevere feedback dalla community, organizzare mostre virtuali e vendere le proprie creazioni.
 L'app potrebbe includere funzionalità per la creazione di portfolio digitali, workshop online e collaborazioni artistiche.
