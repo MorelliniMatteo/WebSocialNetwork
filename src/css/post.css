@@ -131,7 +131,7 @@ button[aria-label="Like"] {
     height: 30px; /* Altezza del bottone */
     border: none;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 button[aria-label="Comment"] {
@@ -142,7 +142,7 @@ button[aria-label="Comment"] {
     height: 30px; /* Altezza del bottone */
     border: none;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 /*____________________style icone____________________*/
@@ -150,6 +150,7 @@ button[aria-label="Comment"] {
 section {
     display: flex;
 }
+
 .icon { 
     display: inline-block;
     margin: 2px 12px;
@@ -178,7 +179,7 @@ article > section[aria-label="Comments"] {
     flex-direction: column;
     font-size: small;
     overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 30px; /* Set a maximum height for the comments section */
+    height: 30px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin: 0 15px 5px 15px;
