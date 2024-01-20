@@ -8,13 +8,13 @@
 
 :root{
     --backgnd: #E6E6E6;
-    --backgndAside: #3C6E71;
-    --backgndAside2: #ADB5BD;
-    --backgndAside3: #3C6E71;
-    --elem: #284B63;
-    --text: #433D3D;
-    --textContrast: #284B63;
-    --divider:#688C72;
+    --text: #3c3c3c;
+    --textContrast: #395161;
+    --divider:#7f8e83;
+    --sculpture: linear-gradient(281deg, #3C6E71 0%, rgba(60, 110, 113, 0.00) 50%), linear-gradient(98deg, #284B63 0%, #ADB5BD 72.39%);
+    --painting: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    --fashon: linear-gradient(281deg, #9D4EDD 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(103deg, #7B2CBF 0.26%, #9F52DD 35.35%, #B064EB 47.09%, #C77DFF 57.38%);
+    --photography: linear-gradient(281deg, #425C49 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(101deg, #425C49 0.23%, #7A9D64 50%);
 }
 
 body{
@@ -64,7 +64,7 @@ input{
     display: flex;
     justify-content: space-evenly;
     text-decoration: none;
-    background: var(--elem);
+    background: var(--textContrast);
     border-radius: 8px;
     color: white;
     padding: 8% 0;
@@ -74,10 +74,29 @@ input{
 }
 
 body > footer{
-    padding: 4% 4%;
+    padding: 3% 3%;
     text-align: center;
     background: var(--text);
-    color: white;
+    font-weight: 300;
+    color: rgb(240, 240, 240);
+}
+
+body>footer>h2{
+    padding-bottom: 1rem;
+    font-family: Newsreader, sans-serif;
+    letter-spacing: +0.1rem;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+body>footer p{
+    padding: 0 5% 0 5%;
+    margin-bottom: 1%;
+}
+
+body>footer a{
+    text-underline-offset: 0.25rem;
+    color: rgb(200, 200, 200);
 }
 
 /*____________________style nav____________________*/
@@ -127,8 +146,9 @@ h1{
 /*____________________style main____________________*/
 
 .active{
-    margin-bottom: 2%;
+    margin: 2rem 9rem 2rem 9rem;
     padding: 3% 0%;
+    border-radius: 40px;
     display: flex;
     justify-content: space-evenly;
     color: white;
@@ -136,35 +156,35 @@ h1{
 
 #tab1-content{ 
     margin-top: 2%; 
-    background: linear-gradient(281deg, var(--backgndAside) 0%, rgba(60, 110, 113, 0.00) 50%), linear-gradient(98deg, var(--elem) 0%, var(--backgndAside2) 72.39%);
+    background: var(--sculpture);
 }
 
 #tab2-content{ 
-    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    background: var(--painting);
 }
 
 #tab3-content{
-    background: linear-gradient(281deg, #9D4EDD 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(103deg, #7B2CBF 0.26%, #9F52DD 35.35%, #B064EB 47.09%, #C77DFF 57.38%);
+    background: var(--fashon);
 }
 
 #tab4-content{ 
-    background: linear-gradient(281deg, #425C49 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(101deg, #425C49 0.23%, #7A9D64 50%);
+    background: var(--photography);
 }
 
 #tab1-content a {
-    background: var(--elem);
+    background: #284B63; box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15) inset, 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 #tab2-content a {
-    background: #E97543; box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #E97543; box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15) inset, 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 #tab3-content a { 
-    background: #B1316E; box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.50), 0px 3px 3px 0px rgba(0, 0, 0, 0.15) inset;
+    background: #B1316E; box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15) inset, 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 #tab4-content a {
-    background: #425C49; 
+    background: #425C49; box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15) inset, 0px 3px 3px 0px rgba(0, 0, 0, 0.15); 
 }
 
 .active section{
