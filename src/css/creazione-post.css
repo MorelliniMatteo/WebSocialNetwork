@@ -88,6 +88,7 @@ textarea {
     border-radius: 5px;
     resize: vertical;
     margin: 15px;
+    box-shadow: 5px 10px 20px #3b3b3b;
 }
 
 /*____________________style bottone____________________*/
@@ -106,6 +107,7 @@ button {
     margin: 0 auto; /* Aggiunto per centrare il bottone */
     position: relative;
     overflow: hidden;
+    box-shadow: 5px 10px 20px #3b3b3b;
 }
 
 button:hover {
@@ -162,6 +164,7 @@ section > img {
     justify-content: center;
     height: 18%; /* Altezza del 100% per occupare l'intera altezza della finestra */
     width: 50%;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #confirmationMessage p {

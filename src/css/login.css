@@ -12,7 +12,7 @@ body{
 	min-height: 100vh;	
     background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
 }
-
+  
 main {
     margin-top: 15px;
     position: relative;
@@ -23,6 +23,7 @@ main {
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     padding-top: 20px; /* Spazio sopra il contenuto */
+    margin-bottom: 60px;
 }
 
 main img {
@@ -102,12 +103,15 @@ footer {
     padding: 5px 0;
     text-align: center;
     font-size: small;
+    bottom: 0;
+    position: fixed;
 }
   
 footer a {
     text-decoration: none;
     color: white;
     margin-right: 20px; /* Spazio tra i link */
+    
 }
 footer a:hover {
     text-decoration: underline;
