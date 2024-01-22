@@ -6,47 +6,103 @@
     box-sizing: border-box;
 }
 
+:root{
+    --backgnd: #E6E6E6;
+    --text: #000;
+    --backgnd_contrast: #A1A7B8;
+}
+
 body{
     background-color: var(--backgnd);
     font-family: 'Poppins', sans-serif;
-    padding-bottom: 10rem;
 }
 
-/* ____________________style header, footer____________________ */
+/* ____________________style header____________________ */
 
-header, footer, nav{
+header, nav{
     width: 100%;
 }
 
-body>footer{
-    position: fixed;
-    bottom: 0;
-    background: var(--elem_backgnd);
-    text-align: center;
-}
-
-header > ul, nav > ul{
-    padding: 15px 15px;
+header > ul{
+    padding: 2rem 2rem;
     display:grid;
+    list-style: none;
 }
 
 header ul li:first-child{
     grid-row: 1 / 4;
     grid-column: 1 / 5;
-    margin-left: 50px;
+    padding-left: 1.5rem;
 }
 
-header ul li:nth-child(2), header ul li:nth-child(3), header ul li:last-child{
+header ul li:nth-child(2), header ul li:last-child{
     grid-row: 2;
     text-align: center;
 }
 
-ul{
-    list-style: none;
+header>ul>li>img{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
 }
 
 /* ____________________style main____________________*/
 
-main{
-    padding: 5% 5%;
+main input {
+    width: 90%;
+    padding: 2rem 2rem;
+    border-radius: 2rem;
+    background: #EBEDE9;
+    color: var(--textContrast);
+    box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
+    border: solid 1px #ADB5BD;
+    font-size: 25pt;
+}
+
+main form{
+    text-align: center;
+}
+
+.post{
+    margin: 2rem 8rem;
+    text-align: center;
+    font-size: 15pt;
+    border-bottom: solid var(--text);
+}
+
+.post>img{
+    width: 100%;
+    height: auto;
+}
+
+.post>header>img{
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.post>header{
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post>header>a{
+    margin-left: 2rem;
+    font-size: 25pt;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.post>p{
+    margin: 1rem 0;
+    padding: 2rem;
+    background-color: var(--backgnd_contrast);
+    font-size: 20pt;
+}
+
+.post section{
+    list-style: none;
+    margin-bottom: 1rem;
 }
