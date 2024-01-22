@@ -1,0 +1,69 @@
+-- 创建用户表
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Bio TEXT,
+    RegistrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建类别表
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
+    CategoryName VARCHAR(50) NOT NULL
+);
+
+-- 创建帖子表
+CREATE TABLE Posts (
+    PostID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    MediaURL VARCHAR(255),
+    Caption TEXT,
+    PostDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CategoryID INT,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+-- 创建关注者表
+CREATE TABLE Followers (
+    FollowerID INT PRIMARY KEY AUTO_INCREMENT,
+    FollowerUserID INT,
+    FollowingUserID INT,
+    FollowDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (FollowerUserID) REFERENCES Users(UserID),
+    FOREIGN KEY (FollowingUserID) REFERENCES Users(UserID)
+);
+
+-- 创建评论表
+CREATE TABLE Comments (
+    CommentID INT PRIMARY KEY AUTO_INCREMENT,
+    PostID INT,
+    UserID INT,
+    CommentText TEXT,
+    CommentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PostID) REFERENCES Posts(PostID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- 创建聊天消息表
+CREATE TABLE ChatMessages (
+    MessageID INT PRIMARY KEY AUTO_INCREMENT,
+    SenderID INT,
+    ReceiverID INT,
+    MessageText TEXT,
+    SendDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (SenderID) REFERENCES Users(UserID),
+    FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
+);
+
+-- 创建通知表
+CREATE TABLE Notifications (
+    NotificationID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    NotificationText TEXT,
+    NotificationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsRead BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
