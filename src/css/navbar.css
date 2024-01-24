@@ -33,15 +33,15 @@
         top: 0;
         left: 0;
         margin: 0;
-        width: 10%;
+        width: 8%;
         height: 100%;
         flex-direction: column;
         border-radius: 0;
     }
 
     main, header{
-        width: 90%;
-        margin-left: 10%;
+        width: 92%;
+        margin-left: 8%;
     }
 
 }
@@ -54,7 +54,7 @@
 
     .navbar {
         position: fixed;
-        width: 8%;
+        width: 10%;
         height: 100%;
         flex-direction: column;
     }
@@ -64,8 +64,8 @@
     }
 
     main, header{
-        width: 92%;
-        margin-left: 8%;
+        width: 90%;
+        margin-left: 10%;
     }
     
 }
