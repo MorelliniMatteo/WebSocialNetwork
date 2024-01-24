@@ -4,18 +4,23 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color: var(--text);
+}
+
 .navbar{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
     position: fixed;
-    bottom: 2rem;
-    height: 6rem;
+    bottom: 1rem;
+    height: 4rem;
     margin-left: 5%;
     list-style: none;
     background-color: #A1A7B8;
-    border-radius: 2rem;
+    border-radius: 1.25rem;
 }
 
 .icon-name{
@@ -25,7 +30,11 @@
 @media screen and (min-width: 768px) {
 
     * {
-        font-size: 18px;
+        font-size: 18pt;
+    }
+
+    .icon{
+        scale: 1.2;
     }
 
     .navbar{
@@ -54,9 +63,16 @@
 
     .navbar {
         position: fixed;
-        width: 10%;
+        width: 11%;
         height: 100%;
         flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2rem;
+    }
+
+    .navbar-item{
+        display: flex;
+        gap: 1rem;
     }
     
     .navbar .icon-name {
@@ -64,8 +80,8 @@
     }
 
     main, header{
-        width: 90%;
-        margin-left: 10%;
+        width: 89%;
+        margin-left: 11%;
     }
     
 }
