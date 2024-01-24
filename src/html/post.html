@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/navbar.css">
         <link rel="stylesheet" href="../css/post.css">
         <title>Social Network Post</title>
     </head>
@@ -34,15 +35,28 @@
             </article>
         </main>
 
-        <nav>
-            <ul>
-                <li><a href="home.html"><img src="../icon/home.svg" alt="home"></a></li>
-                <li><a href="#"><img src="../icon/explore.svg" alt="explore"></a></li>
-                <li><a href="#"><img src="../icon/chat.svg" alt="chat"></a></li>
-                <li><a href="creazione-post.html"><img src="../icon/newPost.svg" alt="new post"></a></li>
-                <li><a href="profile.html"><img src="../icon/profile.svg" alt="personal profile"></a></li>
-            </ul>
-        </nav>
+        <nav class="navbar">
+            <a href="home.html" class="navbar-item">
+                <img class="icon" src="../icon/home.svg" alt="home">
+                <span class="icon-name">Home</span>
+            </a>
+            <a href="#" class="navbar-item">
+                <img class="icon" src="../icon/explore.svg" alt="explore">
+                <span class="icon-name">Explore</span>
+            </a>
+            <a href="chat.html" class="navbar-item">
+                <img class="icon" src="../icon/chat.svg" alt="chat">
+                <span class="icon-name">Chat</span>
+            </a>
+            <a href="creazione-post.html" class="navbar-item">
+                <img class="icon" src="../icon/newPost.svg" alt="new post">
+                <span class="icon-name">New Post</span>
+            </a>
+            <a href="profile.html" class="navbar-item">
+                <img class="icon" src="../icon/profile.svg" alt="personal profile">
+                <span class="icon-name">Profile</span>
+            </a>
+    </nav>
 
         <script src="../js/post.js"></script>
 

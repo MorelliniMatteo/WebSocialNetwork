@@ -175,34 +175,3 @@ section > img {
     font-size: 14px;
     color: #fff;
 }
-
-img{
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-body>nav {
-    width: 305px;
-    position: fixed;
-    bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px; /* Aggiunto un margine superiore per creare distanza dal main */
-
-    /* Aggiunta di una media query per schermi più piccoli */
-    @media (max-width: 350px) {
-        position: static; /* Cambia la posizione a statica per schermi più piccoli */
-        margin-top: 0; /* Rimuovi il margine superiore */
-    }
-}
-
-body>nav>ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 3rem; /* Altezza desiderata per la barra di navigazione */
-    list-style: none;
-    background-color: #A1A7B8;
-    border-radius: 1.5rem; /* Rendi la barra di navigazione più sottile */
-}
