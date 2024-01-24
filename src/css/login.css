@@ -169,7 +169,8 @@ body > div > img {
     body > div > img {
         display: inline-block;
         width: 20rem;
-        margin-left: 35px;
+        margin-right: 20px;
+        margin-left: 50px;
     }
 
     .container {
@@ -181,7 +182,8 @@ body > div > img {
 
     main {
         width: 20rem;
-        margin-left: 25px;
+        margin-left: 20px;
+        margin-right: 50px;
     }
 }
 

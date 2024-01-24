@@ -8,10 +8,12 @@
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;    
+    min-height: 100vh;
     background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%),
-                linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+        linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    overflow-y: auto;
 }
 
 main {
@@ -22,7 +24,8 @@ main {
     background: #AA9A90;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
-    padding-top: 10px; /* Spazio sopra il contenuto */
+    padding-top: 10px;
+    margin-bottom: 30px; /* Incrementato il margine inferiore per creare spazio */
 }
 
 article > header {
@@ -188,4 +191,35 @@ article > section[aria-label="Comments"] {
 
 article > section > p {
     margin: 0 5px 5px 5px;
+}
+
+img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+body>nav {
+    width: 305px;
+    position: fixed;
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Aggiunto un margine superiore per creare distanza dal main */
+
+    /* Aggiunta di una media query per schermi più piccoli */
+    @media (max-width: 350px) {
+        position: static; /* Cambia la posizione a statica per schermi più piccoli */
+        margin-top: 0; /* Rimuovi il margine superiore */
+    }
+}
+
+body>nav>ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3rem; /* Altezza desiderata per la barra di navigazione */
+    list-style: none;
+    background-color: #A1A7B8;
+    border-radius: 1.5rem; /* Rendi la barra di navigazione più sottile */
 }
