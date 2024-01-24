@@ -30,7 +30,7 @@ a{
 @media screen and (min-width: 768px) {
 
     * {
-        font-size: 18pt;
+        font-size: 16px;
     }
 
     .icon{
@@ -48,22 +48,22 @@ a{
         border-radius: 0;
     }
 
-    main, header{
+    body>main, body>header, body>footer{
         width: 92%;
         margin-left: 8%;
     }
 
 }
 
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 1162px) {
 
     * {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .navbar {
         position: fixed;
-        width: 11%;
+        width: 15%;
         height: 100%;
         flex-direction: column;
         align-items: flex-start;
@@ -79,9 +79,9 @@ a{
         display: block;
     }
 
-    main, header{
-        width: 89%;
-        margin-left: 11%;
+    body>main, body>header, body>footer{
+        width: 85%;
+        margin-left: 15%;
     }
     
 }

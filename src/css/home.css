@@ -65,6 +65,9 @@ header ul li:nth-child(2), header ul li:last-child{
 
 main{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 main input {
@@ -79,6 +82,7 @@ main input {
 }
 
 main form{
+    width: 90%;
     text-align: center;
 }
 
@@ -86,6 +90,7 @@ main form{
     margin: 1rem 3rem;
     text-align: center;
     border-bottom: solid var(--text);
+    max-width: 400px;
 }
 
 .post>img{
@@ -110,6 +115,7 @@ main form{
     margin-left: 5%;
     text-decoration: none;
     color: var(--text);
+    font-size: 16px;
 }
 
 .post>p{
@@ -122,4 +128,34 @@ main form{
 .post section{
     list-style: none;
     margin-bottom: 1rem;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    * {
+        font-size: 18px;
+    }
+
+    .icon{
+        scale: 1.2;
+    }
+    
+    main input{
+        padding: 0.8rem;
+    }
+
+    .post header a{
+        font-size: 18px;
+    }
+
+}
+
+@media screen and (min-width: 1162px) {
+
+    * {
+        font-size: 18px;
+    }
+    
+    
 }
