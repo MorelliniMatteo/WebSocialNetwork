@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 :root{
@@ -46,7 +47,25 @@ header>ul>li>img{
     border-radius: 50%;
 }
 
+/*____________________style icon____________________*/
+
+.icon {
+    transition: 0.8s ease;
+}
+
+.icon:hover {
+    transform: scale(1.4);
+}
+
+.icon:hover ~ .line {
+    display: block;
+}
+
 /* ____________________style main____________________*/
+
+main{
+    width: 100%;
+}
 
 main input {
     width: 90%;
