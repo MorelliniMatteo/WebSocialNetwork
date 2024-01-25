@@ -21,6 +21,7 @@ body{
     width: 100%;
     background: var(--backgnd);
     font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 16px;
 }
 
 /*____________________style header footer____________________*/
@@ -28,6 +29,7 @@ body{
 header{
     width: 100%;
     background-color: var(--backgnd);
+    padding: 0 2%;
 }
 
 header ul {
@@ -36,7 +38,7 @@ header ul {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 64px;
+    gap: 5%;
 }
 
 header > ul > li > img {
@@ -45,83 +47,99 @@ header > ul > li > img {
 }
 
 header li:nth-child(2){
-    width: 40%;
+    /*width: 40%;*/
 }
 
 input{
     width: 100%;
-    padding: 2% 40% 2% 5%;
+    padding: 5%;
+    /*padding: 2% 40% 2% 5%;*/
     border-radius: 8px;
     background: #EBEDE9;
     color: var(--textContrast);
     box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
     border: solid 1px #ADB5BD;
-    font-size: large;
+    font-size: medium;
 }
 
 #Sign_up{
-    width: 100px;
+    max-width: 110px;
+    min-width: 80px;
     display: flex;
     justify-content: space-evenly;
     text-decoration: none;
     background: var(--textContrast);
     border-radius: 8px;
     color: white;
-    padding: 8% 0;
+    padding: 5% 6%;
+    /*padding: 8% 0;*/
     font-size: medium;
     font-weight: 300;
     line-height: 160%; /* 28.8px */
 }
 
 body > footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     padding: 3% 3%;
     text-align: center;
     background: var(--text);
-    font-weight: 300;
+    /*font-weight: 300;*/
     color: rgb(240, 240, 240);
 }
 
 body>footer>h2{
-    padding-bottom: 1rem;
+    padding-bottom: 1%;
     font-family: Newsreader, sans-serif;
-    letter-spacing: +0.1rem;
+    font-size: large;
+    letter-spacing: +0.05rem;
     font-weight: 600;
-    font-size: 1.7rem;
+    /*font-size: 1.7rem;*/
 }
 
 body>footer p{
-    padding: 0 5% 0 5%;
-    margin-bottom: 1%;
+    display: none;
+    /*padding: 0 5% 0 5%;
+    margin-bottom: 1%;*/
 }
 
 body>footer a{
     text-underline-offset: 0.25rem;
     color: rgb(200, 200, 200);
+    font-size: small;
 }
 
 /*____________________style nav____________________*/
 
 nav{
     width: 100%;
-    margin-bottom: 2.5rem;
+    margin-bottom: 5%;
 }
 
 nav ul{
-    display: flex;
+    /*display: flex;*/
     list-style: none;
-    justify-content: center;
-    gap: 5rem;
+    text-align: center;
+    /*justify-content: center;*/
+}
+
+nav ul li{
+    width: 45%;
+    display: inline-block;
+    margin-bottom: 3%;
 }
 
 nav ul li a{
     text-decoration: none;
-    font-size: 1.5rem;
+    /*font-size: 1.5rem;*/
     color: var(--text);
 }
 
 nav ul li a:hover{
     text-decoration: underline;
-    text-underline-offset: 1rem;
+    text-underline-offset: 0.3rem;
+    /*text-underline-offset: 1rem;*/
     color: var(--textContrast);
 }
 
@@ -131,7 +149,8 @@ h1{
     text-align: center;
     color: var(--text);
     font-weight: 600;
-    font-size: 350%;
+    font-size: xx-large;
+    /*font-size: 350%;*/
 }
 
 .divider{
@@ -146,12 +165,13 @@ h1{
 /*____________________style main____________________*/
 
 .active{
-    margin: 2rem 9rem 2rem 9rem;
-    padding: 3% 0%;
-    border-radius: 40px;
+    margin: 2% 5% 4%;
+    border-radius: 1rem;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
     color: white;
+
 }
 
 #tab1-content{ 
@@ -192,13 +212,16 @@ h1{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 514px;
+    max-width: 514px;
+    padding-bottom: 4%;
 }
 
 .active section h2{
     text-align: center;
     font-feature-settings: 'case' on, 'clig' off, 'liga' off;
-    font-size: 1.8rem;
+    padding: 4% 2% 0;
+    font-size: 1.2rem;
+    /*font-size: 1.8rem;*/
     font-weight: 700;
     line-height: 160%; /* 41.6px */
     letter-spacing: -0.26px;
@@ -206,10 +229,10 @@ h1{
 }
 
 .active section p{
-    padding: 4% 10%;
+    padding: 2% 6% 4%;
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 1.1rem;
+    /*font-size: 1.1rem;*/
     font-weight: 400;
     line-height: 160%; /* 28.8px */
     letter-spacing: -0.18px;
@@ -225,15 +248,16 @@ h1{
     padding: 2% 4%;
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 1.1rem;
+    /*font-size: 1.1rem;*/
     font-weight: 400;
     line-height: 160%; /* 28.8px */
 }
 
 .active aside{
-    position: relative;
+    display: none;
+    /*position: relative;
     height: 458px;
-    width: 514px;
+    max-width: 514px;*/
 }
 
 .disable{
@@ -293,3 +317,73 @@ h1{
 }
 
 /*____________________medya query____________________*/
+
+
+@media screen and (min-width: 768px) {/*
+
+    * {
+        font-size: 16px;
+    }
+
+    .icon{
+        scale: 1.2;
+    }
+
+    .navbar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 8%;
+        height: 100%;
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    body>main, body>header, body>footer{
+        width: 92%;
+        margin-left: 8%;
+    }*/
+
+}
+
+@media screen and (min-width: 1162px) {/*
+
+    * {
+        font-size: 18px;
+    }
+
+    .navbar {
+        position: fixed;
+        width: 15%;
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2rem;
+    }
+
+    .navbar-item{
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .navbar .icon-name {
+        display: block;
+    }
+
+    body>main, body>header, body>footer{
+        width: 85%;
+        margin-left: 15%;
+    }*/
+
+    .active{
+        margin: 2rem 9rem 2rem 9rem;
+        padding: 3% 0%;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: white;
+    }
+    
+}
