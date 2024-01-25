@@ -1,48 +1,54 @@
--- 插入用户数据
+
 INSERT INTO Users (Username, Password, Email, Bio) VALUES
     ('user1', 'password1', 'user1@example.com', 'Hello, I am user 1.'),
     ('user2', 'password2', 'user2@example.com', 'Nice to meet you! I am user 2.'),
     ('user3', 'password3', 'user3@example.com', 'Hello from user 3.'),
     ('user4', 'password4', 'user4@example.com', 'Greetings! User 4 here.');
 
--- 插入类别数据
+
 INSERT INTO Categories (CategoryName) VALUES
     ('Travel'),
     ('Nature'),
     ('Lifestyle'),
     ('Art');
 
--- 插入帖子数据
+
 INSERT INTO Posts (UserID, MediaURL, Caption, CategoryID) VALUES
     (1, 'post1.jpg', 'This is my first post!', 1),
     (2, 'post2.png', 'Check out this amazing view.', 2),
     (3, 'post3.jpg', 'Feeling happy today!', 3),
     (4, 'post4.png', 'Just posted something cool.', 4);
 
--- 插入关注者数据
+
 INSERT INTO Followers (FollowerUserID, FollowingUserID) VALUES
     (1, 2),
     (2, 3),
     (3, 1),
     (4, 1);
 
--- 插入评论数据
+
 INSERT INTO Comments (PostID, UserID, CommentText) VALUES
     (1, 2, 'Great first post!'),
     (2, 3, 'Amazing view!'),
     (3, 1, 'Happy vibes!'),
     (4, 2, 'Cool stuff!');
 
--- 插入聊天消息数据
+
 INSERT INTO ChatMessages (SenderID, ReceiverID, MessageText) VALUES
     (1, 2, 'Hey, how are you?'),
     (2, 3, 'I saw your latest post, it\'s awesome!'),
     (3, 1, 'Thanks! Glad you liked it.'),
     (4, 1, 'Hello there!');
 
--- 插入通知数据
+
 INSERT INTO Notifications (UserID, NotificationText, IsRead) VALUES
     (1, 'You have a new follower.', FALSE),
     (2, 'Your post got a new comment.', FALSE),
     (3, 'You have a new message.', FALSE),
     (4, 'Someone liked your post.', FALSE);
+
+
+INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (1, 'post.jpg', 'User1');
+INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (2, 'post.jpg', 'User2');
+INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (3, 'post.jpg', 'User3');
+INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (4, 'post.jpg', 'User4');

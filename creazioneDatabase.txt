@@ -1,4 +1,4 @@
--- 创建用户表
+
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
     Username VARCHAR(50) NOT NULL,
@@ -8,13 +8,13 @@ CREATE TABLE Users (
     RegistrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 创建类别表
+
 CREATE TABLE Categories (
     CategoryID INT PRIMARY KEY AUTO_INCREMENT,
     CategoryName VARCHAR(50) NOT NULL
 );
 
--- 创建帖子表
+
 CREATE TABLE Posts (
     PostID INT PRIMARY KEY AUTO_INCREMENT,
     UserID INT,
@@ -26,7 +26,7 @@ CREATE TABLE Posts (
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
--- 创建关注者表
+
 CREATE TABLE Followers (
     FollowerID INT PRIMARY KEY AUTO_INCREMENT,
     FollowerUserID INT,
@@ -36,7 +36,7 @@ CREATE TABLE Followers (
     FOREIGN KEY (FollowingUserID) REFERENCES Users(UserID)
 );
 
--- 创建评论表
+
 CREATE TABLE Comments (
     CommentID INT PRIMARY KEY AUTO_INCREMENT,
     PostID INT,
@@ -47,7 +47,7 @@ CREATE TABLE Comments (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
--- 创建聊天消息表
+
 CREATE TABLE ChatMessages (
     MessageID INT PRIMARY KEY AUTO_INCREMENT,
     SenderID INT,
@@ -58,7 +58,7 @@ CREATE TABLE ChatMessages (
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
 );
 
--- 创建通知表
+
 CREATE TABLE Notifications (
     NotificationID INT PRIMARY KEY AUTO_INCREMENT,
     UserID INT,
