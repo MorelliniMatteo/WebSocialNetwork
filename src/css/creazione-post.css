@@ -15,16 +15,28 @@ body {
 }
 
 main {
+    width: 305px;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between; /* Spazio tra i figli */
+    align-items: center;
+}
+
+main > section {
     position: relative;
     width: 305px;
     height: 460px;
     overflow: hidden;
     background: #AA9A90;
     border-radius: 10px;
-    box-shadow: 5px 20px 50px #000;
     padding-top: 10px; /* Spazio sopra il contenuto */
+    padding-bottom: 10px; /* Spazio sopra il contenuto */
     margin-bottom: 30px; /* Incrementato il margine inferiore per creare spazio */
+}
 
+main > img {
+    display: none;
 }
 
 article > header {
@@ -174,4 +186,27 @@ section > img {
     margin: 10px;
     font-size: 14px;
     color: #fff;
+}
+
+.navbar {
+    margin-left: 0;
+}
+
+@media screen and (min-width: 768px) {
+
+    main {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 1162px) {
+
+    main {
+        width: 20%;
+    }
+
+    main > img {
+        height: 75%;
+        display: block; /* Larghezza delle immagini */
+    }
 }

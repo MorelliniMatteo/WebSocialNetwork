@@ -11,31 +11,35 @@
 
 <body>
     <main>
-        <article>
-            <header>
-                <img src="../img/Profile.png" alt="User Avatar">
-                <h1>Creazione post</h1>
-            </header>
-
-            <section>
-                <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
-                <label for="photoInput">
-                    <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
-                </label>
-            </section>
-
-            <!-- Elemento con ID 'postDescription' -->
-            <label for="descriptionInput">Descrizione del Post:</label>
-            <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
-
-            <button id="confirmButton">Confirm</button>
-
-            <!-- Messaggio di conferma -->
-            <section id="confirmationMessage" style="display: none;">
-                <p>Il post è stato inviato con successo!</p>
-            </section>
-
-        </article>
+        <img src="../img/CreateYourPost.png" alt="">
+        <section>
+            <article>
+                <header>
+                    <img src="../img/Profile.png" alt="User Avatar">
+                    <h1>Creazione post</h1>
+                </header>
+    
+                <section>
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                    <label for="photoInput">
+                        <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
+                    </label>
+                </section>
+    
+                <!-- Elemento con ID 'postDescription' -->
+                <label for="descriptionInput">Descrizione del Post:</label>
+                <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
+    
+                <button id="confirmButton">Confirm</button>
+    
+                <!-- Messaggio di conferma -->
+                <section id="confirmationMessage" style="display: none;">
+                    <p>Il post è stato inviato con successo!</p>
+                </section>
+    
+            </article>
+        </section>
+        <img src="../img/CreateYourPost.png" alt="">
     </main>
 
     <nav class="navbar">
