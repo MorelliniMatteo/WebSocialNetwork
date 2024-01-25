@@ -239,7 +239,6 @@ a {
 .user-posts .post {
     flex: 0 0 calc(33.33% - 10px);
     width: 30%;
-    /* margin-left: 10px; */
     margin-bottom: 10px;
     position: relative;
 }
@@ -252,28 +251,21 @@ a {
 }
 
 .user-posts .post-box {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-}
-
-.user-posts .post-box {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 30px;
     flex-direction: column;
-
-
     transition: 0.3s ease-out;
-
     opacity: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
 }
 
 .user-posts .post-box h3 {
@@ -297,6 +289,7 @@ a {
     display: flex;
     flex-direction: column;
 }
+
 
 
 .navbar-container {
