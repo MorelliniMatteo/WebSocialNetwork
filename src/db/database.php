@@ -58,6 +58,16 @@ class Database {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Get user data by ID
+    public function getUserByID($userID) {
+        $query = "SELECT * FROM Users WHERE UserID = :userID";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Get user by username
     public function getUserByUsername($username) {
         $query = "SELECT * FROM Users WHERE Username = :username";
@@ -135,6 +145,151 @@ class Database {
         $stmt->bindParam(':receiverID', $receiverID, PDO::PARAM_INT);
         $stmt->bindParam(':messageText', $messageText, PDO::PARAM_STR);
         return $stmt->execute();
+    }
+
+    // Update user data
+    public function updateUser($userID, $newUsername, $newEmail, $newBio) {
+        $query = "UPDATE Users SET Username = :newUsername, Email = :newEmail, Bio = :newBio WHERE UserID = :userID";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':newUsername', $newUsername, PDO::PARAM_STR);
+        $stmt->bindParam(':newEmail', $newEmail, PDO::PARAM_STR);
+        $stmt->bindParam(':newBio', $newBio, PDO::PARAM_STR);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function getUserPosts($userID) {
+        $query = "
+            SELECT 
+                p.*, 
+                COUNT(l.LikeID) AS LikesCount 
+            FROM 
+                posts p
+                LEFT JOIN likes l ON p.PostID = l.PostID
+            WHERE 
+                p.UserID = :userID
+            GROUP BY 
+                p.PostID
+        ";
+
+        $params = array(':userID' => $userID);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            // Fetch all posts for the user with the count of likes
+            $userPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $userPosts;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+
+    public function getPostCount($userID) {
+        $query = "SELECT COUNT(PostID) AS PostCount FROM posts WHERE UserID = :userID";
+        $params = array(':userID' => $userID);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return ($result) ? $result['PostCount'] : 0;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return 0;
+        }
+    }
+
+    public function getFollowersCount($userID) {
+        $query = "SELECT COUNT(FollowerID) AS FollowersCount FROM followers WHERE UserID = :userID";
+        $params = array(':userID' => $userID);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return ($result) ? $result['FollowersCount'] : 0;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return 0;
+        }
+    }
+
+    public function getFollowingCount($userID) {
+        $query = "SELECT COUNT(FollowerID) AS FollowingCount FROM followers WHERE FollowerUserID = :userID";
+        $params = array(':userID' => $userID);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return ($result) ? $result['FollowingCount'] : 0;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return 0;
+        }
+    }
+
+    public function getLikesCount($postID) {
+        $query = "SELECT COUNT(LikeID) AS LikesCount FROM Likes WHERE PostID = :postID";
+        $params = array(':postID' => $postID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            return ($result) ? $result['LikesCount'] : 0;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return 0;
+        }
+    }
+    
+    public function getCommentsCount($postID) {
+        $query = "SELECT COUNT(CommentID) AS CommentsCount FROM Comments WHERE PostID = :postID";
+        $params = array(':postID' => $postID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            return ($result) ? $result['CommentsCount'] : 0;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return 0;
+        }
+    }
+
+    public function getUserProfileInfo($userID) {
+        $query = "SELECT LogoURL FROM UserInfos WHERE UserID = :userID";
+        $params = array(':userID' => $userID);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return ($result) ? $result : array('LogoURL' => 'default_logo.jpg');
+            // Assuming 'default_logo.jpg' is a placeholder for users without a custom logo
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return array('LogoURL' => 'default_logo.jpg');
+            // Assuming 'default_logo.jpg' is a placeholder for users without a custom logo
+        }
     }
 }
 
