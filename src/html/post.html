@@ -10,28 +10,29 @@
     </head>
     <body>
         <main>
-            <article class="post-container">
-                <article class="post">
+            <div class="post-container" id="Audemars_Piguet">
+                <div class="post">
                     <header>
                         <img src="../img/ProfileImg.png" alt="User Avatar">
                         <a href="#" aria-label="View user profile">Audemars Piguet</a>
                     </header>
-                    <img src="../img/audemars piguet.jpg" alt="Post Image">
+                    <img src="../img/audemars_piguet.jpg" alt="Post Image">
                     <p>The temporary exhibition, "Simply Complicated," highlights the skill and watchmaking expertise of the Code 11.59 by Audemars Piguet Universelle.</p>
                     <section>
+                        <h1>interaction</h1>
                         <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="changeLike()">
                         <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="changeComment(/*passare l'id del post*/)">
                         <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share()">                
                     </section>
-                </article>
+                </div>
                 <aside class="comments">
-                    <h1>Commenti</h1>
+                    <h2>Commenti</h2>
                     <p class="description">The temporary exhibition, "Simply Complicated," highlights the skill and watchmaking expertise of the Code 11.59 by Audemars Piguet Universelle.</p>
                     <p>primo commento</p>
                     <p>secondo commento</p>
-                    <input type="text" placeholder="aggiungi un commento">
+                    <input type="text" placeholder="aggiungi un commento" title="add comment">
                 </aside>
-            </article>
+            </div>
         </main>
 
         <nav class="navbar">
