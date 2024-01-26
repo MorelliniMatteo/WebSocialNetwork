@@ -1,6 +1,5 @@
 function changeLike() {
-    let likeButton = document.getElementById("likeButton");
-    let icon = likeButton.querySelector(".icon");
+    let icon = document.getElementById("likeButton");
 
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
