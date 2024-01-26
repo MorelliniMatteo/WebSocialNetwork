@@ -11,7 +11,7 @@ function changeLike() {
 }
 
 function changeComment() {
-    let post = document.querySelector(".post");
+    let post = document.querySelector(".post-container");
 
     if (!post.classList.contains("open")){
         post.classList.add("open");

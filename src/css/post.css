@@ -9,7 +9,7 @@ main{
     margin: 1rem 3rem;
     text-align: center;
     border-bottom: solid var(--text);
-    max-width: 450px;
+    max-width: 400px;
 }
 
 .post>img{
@@ -37,7 +37,7 @@ main{
     font-size: 16px;
 }
 
-.post>p{
+.post>p, .comments>p{
     margin: 2% 0;
     padding: 1.25rem;
     border-radius: 1rem;
@@ -60,23 +60,76 @@ main{
 }
 
 .open{
+
     .comments{
+        position: relative;
         display: block;
+        margin: 1rem 3rem;
+        padding: 1rem;
+        max-width: 400px;
+        height: 50vh;
+    }
+
+    .comments>p{
+        margin: 5%;
+        padding: 0.5rem 1rem;
+    }
+
+    .comments h1{
+        text-align: center;
+        padding-bottom: 5%;
+    }
+
+    .comments input{
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 90%;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        background: #EBEDE9;
+        color: var(--textContrast);
+        box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
+        border: solid 1px #ADB5BD;
+        font-size: 16px;
     }
 }
 
 @media screen and (min-width: 768px) {
 
     * {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .icon{
         scale: 1.2;
     }
 
+    .post{
+        margin: 1rem 1.5rem;
+    }
+
     .post header a{
         font-size: 18px;
+    }
+
+    .open{
+        display: flex;
+    
+        .post{
+            border: none;
+        }
+
+        .post>p{
+            display: none;
+        }
+
+        .comments{
+            margin: 1rem 0;
+            width: 350px;
+            height: 90vh;
+            border-left: solid black;
+        }
     }
 
 }
@@ -85,6 +138,10 @@ main{
 
     * {
         font-size: 20px;
+    }
+
+    .post{
+        max-width: 450px;
     }
 
 }
