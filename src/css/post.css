@@ -70,6 +70,10 @@ main{
         height: 50vh;
     }
 
+    .description{
+        display: none;
+    }
+
     .comments>p{
         margin: 5%;
         padding: 0.5rem 1rem;
