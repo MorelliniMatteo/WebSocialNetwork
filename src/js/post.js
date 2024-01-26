@@ -1,6 +1,6 @@
 function changeLike() {
-    var likeButton = document.getElementById("likeButton");
-    var icon = likeButton.querySelector(".icon");
+    let likeButton = document.getElementById("likeButton");
+    let icon = likeButton.querySelector(".icon");
 
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
@@ -11,20 +11,18 @@ function changeLike() {
 }
 
 function changeComment() {
-    var commentButton = document.getElementById("commentButton");
-    var icon = commentButton.querySelector(".icon");
+    let post = document.querySelector(".post");
 
-    // Cambia l'icona al click
-    if (icon.src.endsWith("comment-empty.svg")) {
-        icon.src = "../icon/comment.svg"; // Cambia con il percorso dell'icona "like-filled"
+    if (!post.classList.contains("open")){
+        post.classList.add("open");
     } else {
-        icon.src = "../icon/comment-empty.svg"; // Ripristina con il percorso dell'icona "like-empty"
+        post.classList.remove("open");
     }
 }
 
-function changeFollow() {
-    var followButton = document.getElementById("followButton");
-    var icon = followButton.querySelector(".icon");
+/*function changeFollow() {
+    let followButton = document.getElementById("followButton");
+    let icon = followButton.querySelector(".icon");
 
     // Cambia l'icona al click
     if (icon.src.endsWith("unfollow.svg")) {
@@ -32,4 +30,4 @@ function changeFollow() {
     } else {
         icon.src = "../icon/unfollow.svg"; // Ripristina con il percorso dell'icona "like-empty"
     }
-}
+}*/

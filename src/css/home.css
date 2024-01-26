@@ -1,24 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Poppins:wght@300;400;500;600&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat Alternates', sans-serif;
-}
-
-:root{
-    --backgnd: #E6E6E6;
-    --text: #000;
-    --backgnd_contrast: #A1A7B8;
-}
-
-body{
-    background-color: var(--backgnd);
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-}
-
 /* ____________________style header____________________ */
 
 header, nav{
@@ -86,51 +65,6 @@ main form{
     text-align: center;
 }
 
-.post{
-    margin: 1rem 3rem;
-    text-align: center;
-    border-bottom: solid var(--text);
-    max-width: 400px;
-}
-
-.post>img{
-    width: 100%;
-    height: auto;
-}
-
-.post>header>img{
-    width: 50px;
-    height: auto;
-    border-radius: 50%;
-}
-
-.post>header{
-    margin-bottom: 2%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.post>header>a{
-    margin-left: 5%;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 16px;
-}
-
-.post>p{
-    margin: 2% 0;
-    padding: 4%;
-    border-radius: 1rem;
-    background-color: var(--backgnd_contrast);
-}
-
-.post section{
-    list-style: none;
-    margin-bottom: 1rem;
-}
-
-
 @media screen and (min-width: 768px) {
 
     * {
@@ -151,11 +85,10 @@ main form{
 
 }
 
-@media screen and (min-width: 1162px) {
+@media screen and (min-width: 1280px) {
 
     * {
         font-size: 18px;
     }
-    
-    
+
 }
