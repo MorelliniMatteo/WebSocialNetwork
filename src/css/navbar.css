@@ -19,7 +19,7 @@ a{
     height: 4rem;
     margin-left: 5%;
     list-style: none;
-    background-color: #A1A7B8;
+    background-color: var(--contrast);
     border-radius: 1.25rem;
 }
 

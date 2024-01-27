@@ -9,20 +9,37 @@
 
 :root{
     --backgnd: #E6E6E6;
-    --text: #000;
-    --backgnd_contrast: #A1A7B8;
+    --text: #282c30; /* dark-grey */
+    --contrast: #A1A7B8;
+    --elem1: #9a85FC; /* purple */
+    --elem2: #86B7B8; /* green */
+}
+
+.dark{
+    --backgnd: #282c30;
+    --text:  #c0c0c0;
+    --contrast: #606060;
 }
 
 body{
     background-color: var(--backgnd);
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    color: var(--text);
 }
 
 /*____________________style icon____________________*/
 
 .icon {
     transition: 0.8s ease;
+    /* filter: invert(18%) sepia(31%) saturate(347%) hue-rotate(175deg) brightness(100%) contrast(87%);  dark grey */
+    /* filter: invert(75%) sepia(26%) saturate(335%) hue-rotate(132deg) brightness(89%) contrast(88%);   green */
+    /* filter: invert(70%) sepia(56%) saturate(5844%) hue-rotate(217deg) brightness(105%) contrast(98%); purple */
+    /* filter: invert(82%) sepia(96%) saturate(6%) hue-rotate(131deg) brightness(111%) contrast(80%);    white */
+}
+
+.dark .icon{
+    filter: invert(82%) sepia(96%) saturate(6%) hue-rotate(131deg) brightness(111%) contrast(80%);
 }
 
 .icon:hover {

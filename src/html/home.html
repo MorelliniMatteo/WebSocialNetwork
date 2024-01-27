@@ -14,8 +14,18 @@
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
              <li><a href="#"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
-             <li><a href="#"><img class="icon" src="../icon/menu.svg" alt="menu"></a></li>
+             <li><a href="#" onclick="changeTheme"><img class="icon menu" src="../icon/menu.svg" alt="menu"></a></li>
          </ul>
+         <aside class="menu-content">
+            <img src="../icon/sun.svg" alt="sun" class="icon theme">
+            <div>
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="label">
+                    <span class="ball"></span>
+                </label>
+            </div>
+            <img src="../icon/moon.svg" alt="moon" class="icon theme">
+         </aside>
     </header>
     <main>
          <form>
@@ -92,5 +102,6 @@
     </nav>
     
     <script src="../js/post.js"></script>
+    <script src="../js/home.js"></script>
  </body>
 </html>

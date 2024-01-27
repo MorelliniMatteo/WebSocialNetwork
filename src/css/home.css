@@ -39,7 +39,7 @@ main input {
     width: 90%;
     padding: 0.5rem 0.8rem;
     border-radius: 1rem;
-    background: #EBEDE9;
+    background: var(--backgnd);
     color: var(--textContrast);
     box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
     border: solid 1px #ADB5BD;
@@ -49,6 +49,57 @@ main input {
 main form{
     width: 90%;
     text-align: center;
+}
+
+aside{
+    display: none;
+}
+
+.show{
+    display: flex;
+    position: fixed;
+    right: 20%;
+    top: 3.5%;
+    width: 12rem;
+    padding: 0.5rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1.875rem;
+    background: var(--contrast);
+    margin-bottom: 2%;
+}
+
+.label{
+    background: var(--contrast);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 25px;
+    height: 32px;
+    width: 80px;
+    border: solid var(--text);
+}
+
+.ball{
+    background-color: var(--text);
+    position: absolute;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    top: 4%;
+    left: 4px;
+    transition: 1s;
+}
+
+.checkbox{
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .label .ball{
+    transform: translateX(44px);
 }
 
 @media screen and (min-width: 768px) {
