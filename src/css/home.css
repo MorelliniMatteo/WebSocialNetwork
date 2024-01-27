@@ -26,20 +26,6 @@ header ul li:nth-child(2), header ul li:last-child{
     border-radius: 50%;
 }
 
-/*____________________style icon____________________*/
-
-.icon {
-    transition: 0.8s ease;
-}
-
-.icon:hover {
-    transform: scale(1.4);
-}
-
-.icon:hover ~ .line {
-    display: block;
-}
-
 /* ____________________style main____________________*/
 
 main{
