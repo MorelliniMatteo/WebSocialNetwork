@@ -5,13 +5,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+:root{
+    --backgnd: #E6E6E6;
+    --text: #000;
+    --backgnd_contrast: #A1A7B8;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%),
-                linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    background: var(--backgnd)
 }
 
 main {
@@ -26,13 +31,15 @@ main {
 main > section {
     position: relative;
     width: 305px;
+    min-width: 305px;
     height: 460px;
     overflow: hidden;
-    background: #AA9A90;
+    background: var(--backgnd_contrast);
     border-radius: 10px;
     padding-top: 10px; /* Spazio sopra il contenuto */
     padding-bottom: 10px; /* Spazio sopra il contenuto */
     margin-bottom: 30px; /* Incrementato il margine inferiore per creare spazio */
+    border: solid 2px var(--text);
 }
 
 main > img {
@@ -53,7 +60,7 @@ article > header > img {
     height: 40px;
     border-radius: 50%; /* Rendere l'immagine rotonda */
     object-fit: cover; /* Mantiene l'aspetto dell'immagine */
-    border: 2px solid #fff; /* Bordo bianco intorno all'immagine */
+    border: 2px solid var(--backgnd); /* Bordo bianco intorno all'immagine */
     margin-right: 10px;
 }
 
@@ -66,7 +73,7 @@ article > label {
 /*____________________style label Creazione Post____________________*/
 
 header > h1 {
-    border: 1px solid #fff;
+    border: 1px solid var(--backgnd);
     border-radius: 5px;
     padding: 3px;
 }
@@ -80,7 +87,7 @@ section {
     padding-bottom: 90%; /* Rapporto 1:1 per mantenere la sezione quadrata */
     position: relative;
     overflow: hidden;
-    border: 1px solid #fff;
+    border: 1px solid var(--backgnd);
     border-radius: 5px;
 }
 
@@ -98,7 +105,7 @@ section > label > img {
 
 textarea {
     width: 91%;
-    border: 1px solid #ccc;
+    border: 1px solid var(--backgnd);
     border-radius: 5px;
     resize: vertical;
     margin: 15px;
@@ -161,7 +168,7 @@ section > img {
 #confirmationMessage {
     display: none;
     background-color: #6aca6f;
-    color: rgb(27, 27, 27);
+    color: var(--text);
     text-align: center;
     padding: 15px;
     position: fixed;
@@ -192,21 +199,26 @@ section > img {
     margin-left: 0;
 }
 
-@media screen and (min-width: 768px) {
-
-    main {
-        width: 20%;
+@media screen and (min-width: 768px) and (max-width: 1161px) {
+    #pic2 {
+        display: none;
+    }
+    main > img {
+        height: 75%;
+        display: block;
     }
 }
 
 @media screen and (min-width: 1162px) {
-
-    main {
-        width: 20%;
-    }
-
     main > img {
         height: 75%;
-        display: block; /* Larghezza delle immagini */
+        display: block
+    }
+    main > section {
+        height: 470px;
+    }
+    main > section > article > textarea {
+        font-size: small;
+        padding-bottom: 15px;
     }
 }

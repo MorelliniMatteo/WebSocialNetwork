@@ -11,13 +11,22 @@ function changeLike() {
 
 function changeComment() {
     let post = document.querySelector(".post-container");
+    let icon = post.querySelector(".commentButton"); // Seleziona l'elemento dell'icona commento
 
     if (!post.classList.contains("open")){
         post.classList.add("open");
     } else {
         post.classList.remove("open");
     }
+
+    // Cambia l'icona al click
+    if (icon.src.endsWith("comment-empty.svg")) {
+        icon.src = "../icon/comment.svg"; // Cambia con il percorso dell'icona "comment-filled"
+    } else {
+        icon.src = "../icon/comment-empty.svg"; // Ripristina con il percorso dell'icona "comment-empty"
+    }
 }
+
 
 /*function changeFollow() {
     let followButton = document.getElementById("followButton");
