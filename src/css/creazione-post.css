@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;500&family=Newsreader:opsz,wght@6..72,200&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 :root{
     --backgnd: #E6E6E6;
     --text: #000;
-    --backgnd_contrast: #A1A7B8;
+    --contrast: #A1A7B8;
 }
 
 body {
@@ -34,7 +36,7 @@ main > section {
     min-width: 305px;
     height: 460px;
     overflow: hidden;
-    background: var(--backgnd_contrast);
+    background: var(--contrast);
     border-radius: 10px;
     padding-top: 10px; /* Spazio sopra il contenuto */
     padding-bottom: 10px; /* Spazio sopra il contenuto */
