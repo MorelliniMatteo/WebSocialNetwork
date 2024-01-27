@@ -16,5 +16,39 @@
 body{
     background-color: var(--backgnd);
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+/*____________________style icon____________________*/
+
+.icon {
+    transition: 0.8s ease;
+}
+
+.icon:hover {
+    transform: scale(1.4);
+}
+
+.icon:hover ~ .line {
+    display: block;
+}
+
+@media screen and (min-width: 768px) {
+
+    * {
+        font-size: 16px;
+    }
+
+    .icon{
+        scale: 1.2;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+
+    * {
+        font-size: 18px;
+    }
+
 }
