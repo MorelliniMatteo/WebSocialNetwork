@@ -59,7 +59,7 @@ aside{
     display: flex;
     position: fixed;
     right: 20%;
-    top: 3.5%;
+    top: 5%;
     width: 12rem;
     padding: 0.5rem 1.25rem;
     justify-content: center;
@@ -78,7 +78,7 @@ aside{
     position: relative;
     border-radius: 25px;
     height: 32px;
-    width: 80px;
+    width: 60px;
     border: solid var(--text);
 }
 
@@ -88,7 +88,7 @@ aside{
     border-radius: 50%;
     height: 24px;
     width: 24px;
-    top: 4%;
+    top: 6%;
     left: 4px;
     transition: 1s;
 }
@@ -99,7 +99,7 @@ aside{
 }
 
 .checkbox:checked + .label .ball{
-    transform: translateX(44px);
+    transform: translateX(23px);
 }
 
 @media screen and (min-width: 768px) {
@@ -117,7 +117,7 @@ aside{
     }
 
     .post header a{
-        font-size: 18px;
+        font-size: 16px;
     }
 
 }
@@ -126,6 +126,10 @@ aside{
 
     * {
         font-size: 18px;
+    }
+
+    .show{
+        margin-top: 0%;
     }
 
 }
