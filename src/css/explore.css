@@ -1,4 +1,6 @@
-/* ____________________style header____________________ */
+*{
+    font-size: 14px;
+}
 
 header, nav{
     width: 100%;
@@ -26,20 +28,6 @@ header ul li:nth-child(2), header ul li:last-child{
     border-radius: 50%;
 }
 
-/*____________________style icon____________________*/
-
-.icon {
-    transition: 0.8s ease;
-}
-
-.icon:hover {
-    transform: scale(1.4);
-}
-
-.icon:hover ~ .line {
-    display: block;
-}
-
 /* ____________________style main____________________*/
 
 main{
@@ -51,13 +39,12 @@ main{
 
 main input {
     width: 90%;
-    padding: 1rem 1rem;
+    padding: 0.75rem;
     border-radius: 1rem;
     background: #EBEDE9;
     color: var(--textContrast);
     box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
     border: solid 1px #ADB5BD;
-    font-size: 16px;
 }
 
 main form{
@@ -65,30 +52,33 @@ main form{
     text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+.posts-container{
+    margin: 5% 6%;
+    column-gap: 0.75rem;
+    columns: 3;
+}
 
-    * {
-        font-size: 16px;
-    }
+.post-img{
+    margin-bottom: 0.75rem;
+}
 
-    .icon{
-        scale: 1.2;
-    }
+.post-img img{
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width: 768px){
     
-    main input{
-        padding: 0.8rem;
-    }
-
-    .post header a{
-        font-size: 18px;
+    .posts-container{
+        columns: 4;
     }
 
 }
 
 @media screen and (min-width: 1280px) {
 
-    * {
-        font-size: 18px;
+    .posts-container{
+        columns: 5;
     }
 
 }
