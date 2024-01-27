@@ -5,12 +5,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat Alternates', sans-serif;
-    color: #fff;
-}
-
-body {
-    background: #000;
-    position: relative;
 }
 
 ul {
@@ -26,24 +20,13 @@ a {
 }
 
 .line {
-    width: 88%;
+    max-width: 80%;
     height: 2px;
-    background: white;
+    background: var(--text);
     transition: 1s ease;
     margin-top: 20px;
+    margin-left: 10%;
     /* display: none; */
-}
-
-.icon {
-    transition: 0.8s ease;
-}
-
-.icon:hover {
-    transform: scale(1.4);
-}
-
-.icon:hover ~ .line {
-    display: block;
 }
 
 .main {
@@ -143,9 +126,7 @@ a {
 }
 
 .info-container .user-description {
-    opacity: 0.8;
     font-weight: 300;
-    font-size: 13px;
 }
 
 .profile-edit{
@@ -155,20 +136,15 @@ a {
 }
 
 .profile-edit .profile-edit-box {
-    
-    border-radius: 8px;
+    width: 90%;
+    border-radius: 0.8rem;
     padding: 0 20px;
     height: 30px;
     /* margin: 0 10px; */
     margin-top: 20px;
     transition: 0.5s ease;
-    background-color: gray;
-}
-
-
-
-.profile-edit .profile-edit-box:hover {
-    background-color: white;
+    background-color: var(--backgnd_contrast);
+    text-align: center;
 }
 
 .profile-edit span {
@@ -290,56 +266,10 @@ a {
     flex-direction: column;
 }
 
-
-
-.navbar-container {
-    display: flex;
-    height: 55px;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    background: #000;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.navbar-container .navbar-img-box {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-}
-
-.navbar-img-box img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    padding-bottom: 5px;
-    object-fit: cover;
-}
-
-.navbar-container .icon-name {
-    display: none;
-}
-
 @media screen and (min-width: 768px) {
 
     * {
         font-size: 18px;
-    }
-
-    .navbar-container {
-        position: fixed;
-        width: 70px;
-        height: 100vh;
-        flex-direction: column;
-        top: 0;
-        left: 0;
-        border-right: 1px solid rgba(255, 255, 255, 0.5);
-        border-top: none;
-    }
-
-    .main {
-        margin-left: 70px;
     }
 
     .info-container{
@@ -364,37 +294,10 @@ a {
     
 }
 
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 1280px) {
 
     * {
         font-size: 20px;
-    }
-
-    .navbar-container {
-        position: fixed;
-        width: 200px;
-        height: 100vh;
-        flex-direction: column;
-    }
-
-    .navbar-container img {
-        display: block;
-    }
-
-    .navbar-container .navbar-item {
-        display: flex;
-        gap: 2em;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    
-    .navbar-container .icon-name {
-        display: block;
-    }
-
-
-    .main {
-        margin-left: 200px;
     }
 
     .profile .profile-posts {

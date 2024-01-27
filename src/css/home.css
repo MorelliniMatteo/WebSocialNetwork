@@ -37,7 +37,7 @@ main{
 
 main input {
     width: 90%;
-    padding: 1rem 1rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 1rem;
     background: #EBEDE9;
     color: var(--textContrast);
