@@ -51,8 +51,13 @@ main form{
     text-align: center;
 }
 
-aside{
+header>aside{
     display: none;
+}
+
+.space{
+    padding: 2rem 0;
+    color: var(--backgnd);
 }
 
 .show{
@@ -120,6 +125,10 @@ aside{
         font-size: 16px;
     }
 
+    .space{
+        display: none;
+    }
+    
 }
 
 @media screen and (min-width: 1280px) {
