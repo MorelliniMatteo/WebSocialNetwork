@@ -37,11 +37,9 @@ main > section {
     height: 460px;
     overflow: hidden;
     background: var(--contrast);
-    border-radius: 10px;
     padding-top: 10px; /* Spazio sopra il contenuto */
     padding-bottom: 10px; /* Spazio sopra il contenuto */
     margin-bottom: 30px; /* Incrementato il margine inferiore per creare spazio */
-    border: solid 2px var(--text);
 }
 
 main > img {
@@ -75,8 +73,6 @@ article > label {
 /*____________________style label Creazione Post____________________*/
 
 header > h1 {
-    border: 1px solid var(--backgnd);
-    border-radius: 5px;
     padding: 3px;
 }
 
@@ -89,13 +85,12 @@ section {
     padding-bottom: 90%; /* Rapporto 1:1 per mantenere la sezione quadrata */
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--backgnd);
-    border-radius: 5px;
+    border: 2px solid var(--backgnd);
 }
 
 section > label > img {
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     position: absolute;
     top: 50%;
@@ -107,11 +102,14 @@ section > label > img {
 
 textarea {
     width: 91%;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
     border: 1px solid var(--backgnd);
     border-radius: 5px;
     resize: vertical;
     margin: 15px;
-    box-shadow: 5px 10px 20px #3b3b3b;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /*____________________style bottone____________________*/
@@ -130,7 +128,7 @@ button {
     margin: 0 auto; /* Aggiunto per centrare il bottone */
     position: relative;
     overflow: hidden;
-    box-shadow: 5px 10px 20px #3b3b3b;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 button:hover {
@@ -151,16 +149,6 @@ button:active::before {
     left: 0;
     width: 100%;
     height: 100%;
-    animation: pressAnimation 0.3s linear;
-}
-
-@keyframes pressAnimation {
-    from {
-        transform: scale(0.9);
-    }
-    to {
-        transform: scale(1);
-    }
 }
 
 section > img {
@@ -180,7 +168,7 @@ section > img {
     border-radius: 10px;
     font-size: 16px;
     z-index: 999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;

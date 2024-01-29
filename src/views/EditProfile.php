@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/EditProfile.css">
 </head>
 <body>
-
+<!-- Controllato con Achecker, tutto ok -->
 <main class="main">
 
     <header class="header">
@@ -69,14 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
     <section class="settings-form public-container">
         <form class="form">
-            <section class="back">
-                <h2 class="title">Describe You</h2>
+            <section class="back photo-section">
+                <section class="photo-container">
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                    <label for="photoInput">
+                        <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
+                    </label>
+                </section>
                 <a href="javascript:history.back()" class="back-button">Back</a>
                 <!-- Oppure, se preferisci un pulsante -->
                 <!-- <button class="back-button" onclick="javascript:history.back()">Back</button> -->
             </section>
             
-            <h3 class="subtitle">Let's modify your account!</h3>
             <section class="input-container ic1">
                 <input id="new_username" name="new_username" class="input" type="text" placeholder=" " />
                 <div class="cut"></div>
@@ -99,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <script src="../js/backbutton.js"></script>
+<script src="../js/editProfile.js"></script>
 
 <?php include_once('Nav.php'); ?>
 

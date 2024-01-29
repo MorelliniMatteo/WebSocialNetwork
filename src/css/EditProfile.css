@@ -1,8 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
 body {
     align-items: center;
     background-color: var(--backgnd);
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100vh;
 }
 
@@ -21,22 +27,6 @@ body {
     height: 530px;
     padding: 20px;
     width: 320px;
-}
-  
-.title {
-    color: var(--text);
-    font-family: sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    margin-top: 30px;
-}
-  
-.subtitle {
-    color: var(--text);
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 10px;
 }
   
 .input-container {
@@ -65,9 +55,13 @@ body {
     color: var(--text);
     font-size: 18px;
     height: 100%;
+    max-height: 100%;
+    min-height: 100%;
     outline: 0;
     padding: 4px 20px 0;
     width: 100%;
+    max-width: 100%;
+    min-width: 100%;
 }
   
 .cut {
@@ -76,44 +70,22 @@ body {
     height: 20px;
     left: 20px;
     position: absolute;
-    top: -20px;
-    transform: translateY(0);
-    transition: transform 200ms;
+    top: -10px;
     width: 76px;
 }
   
 .cut-short {
-    width: 50px;
-}
-  
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
-    transform: translateY(8px);
+    width: 35px;
 }
   
 .placeholder {
-    color: var(--text);
-    font-family: sans-serif;
-    left: 20px;
+    color: var(--label);
+    left: 27px;
     line-height: 14px;
     pointer-events: none;
     position: absolute;
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
-    top: 20px;
-}
-  
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-}
-  
-.input:not(:placeholder-shown) ~ .placeholder {
-    color: var(--text);
-}
-  
-.input:focus ~ .placeholder {
-    color: var(--label);
+    top: -7px;
+    font-size: small;
 }
   
 .submit {
@@ -137,11 +109,41 @@ body {
     color: var(--text);
 }
   
-
 .back {
+    height: 45px;
+}
+
+.photo-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 15px 0;
+}
+
+.photo-container {
+    width: 23%;
+    height: 100%;
+    overflow: hidden;
+    border: 2px solid var(--backgnd);
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.photo-container label {
+    text-align: center;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .title {
