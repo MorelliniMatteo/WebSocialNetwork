@@ -27,8 +27,8 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><a href="#"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
-             <li><a href="#"><img class="icon menu" src="../icon/menu.svg" alt="menu"></a></li>
+             <li><a href="notifications.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
+             <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
             <img src="../icon/sun.svg" alt="sun" class="icon theme">
@@ -51,15 +51,15 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                     <div class="post">
                         <header>
                             <img src="../img/ProfileImg.png" alt="User Avatar">
-                            <a href="#" label="View user profile"><?php echo $post['UserID']; ?></a>
+                            <a href="#" label="View user profile"><?php echo ($database->getUserByID($post['UserID'])['Username']); ?></a>
                         </header>
                         <img src="<?php echo $post['MediaURL']; ?>" alt="Post Image">
                         <p><?php echo $post['Caption']; ?></p>
                         <section>
                             <h1>interaction</h1>
-                            <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="changeLike()">
-                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="changeComment(/*passare l'id del post*/)">
-                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share()">               
+                            <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="changeLike($post['PostID'])">
+                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="changeComment(($post['PostID'])">
+                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share(($post['PostID'])">            
                         </section>
                     </div>
                     <aside class="comments">
