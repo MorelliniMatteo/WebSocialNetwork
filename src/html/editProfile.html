@@ -21,7 +21,11 @@
                 <section class="photo-container">
                     <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
                     <label for="photoInput">
-                        <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
+                        <div class="image-wrapper">
+                            <img src="../img/defaultUser.png" alt="postImage" id="postImage" class="default-image">
+
+                            <img src="../icon/aggiungi-foto.svg" alt="secondImage" class="hover-image">
+                        </div>
                     </label>
                 </section>
                 <a href="javascript:history.back()" class="back-button">Back</a>
