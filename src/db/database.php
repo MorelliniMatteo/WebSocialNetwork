@@ -291,6 +291,35 @@ class Database {
             // Assuming 'default_logo.jpg' is a placeholder for users without a custom logo
         }
     }
+
+    public function getPostFromFollowing($userID) {
+        $query = "SELECT Posts.* FROM Posts
+                  JOIN Followers ON Posts.UserID = Followers.FollowingUserID
+                  WHERE Followers.FollowerUserID = :userID
+                  ORDER BY Posts.PostDate DESC ";
+        $params = array(':userID' => $userID);
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result;
+        } else {
+            die("Errore nella query: ");
+        }
+    }
+
+    public function getCommentsFromPostID($postID) {
+        $query = "SELECT UserID, CommentText FROM Comments WHERE PostID = :postID";
+        $params = array(':postID' => $postID);
+    
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } 
 }
 
 

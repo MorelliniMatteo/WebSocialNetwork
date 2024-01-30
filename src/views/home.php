@@ -65,8 +65,10 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                     <aside class="comments">
                         <h2>Commenti</h2>
                         <p class="description">The temporary exhibition.</p>
-                        <p>first comment</p>
-                        <p>second comment</p>
+                        <?php $comments = $database->getCommentsFromPostID($post['PostID']); ?>
+                        <?php $i=1; foreach($comments as $comment) : ?>
+                            <p><?php print_r($database->getUserByID($comment['UserID'])['Username']); echo ': '; print_r($comment['CommentText']); ?></p>
+                        <?php endforeach; ?>
                         <input type="text" placeholder="aggiungi un commento" title="add comment">
                     </aside>
                 </div>
