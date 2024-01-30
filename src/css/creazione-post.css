@@ -34,7 +34,7 @@ main > section {
     position: relative;
     width: 305px;
     min-width: 305px;
-    height: 460px;
+    height: 465px;
     overflow: hidden;
     background: var(--contrast);
     padding-top: 10px; /* Spazio sopra il contenuto */
@@ -120,7 +120,6 @@ button {
     color: #fff;
     padding: 5px 10px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;

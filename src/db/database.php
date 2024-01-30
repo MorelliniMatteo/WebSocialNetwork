@@ -320,6 +320,20 @@ class Database {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     } 
+
+    public function verifyUserPassword($email, $password) {
+        // Ottieni le informazioni sull'utente basandoti sull'email
+        $existingUser = $this->getUserByEmail($email);
+    
+        // Controlla se l'utente esiste e se la password fornita è corretta
+        if ($existingUser && password_verify($password, $existingUser['Password'])) {
+            // La password è corretta
+            return 1;
+        } else {
+            // Password errata o utente non trovato
+            return 0;
+        }
+    }
 }
 
 
