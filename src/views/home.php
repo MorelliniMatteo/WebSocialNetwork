@@ -59,22 +59,24 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                             <h1>interaction</h1>
                             <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="changeLike($post['PostID'])">
                             <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="changeComment()">
-                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share(($post['PostID'])">            
+                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share(($post['PostID'])">               
                         </section>
                     </div>
                     <aside class="comments">
                         <h2>Commenti</h2>
-                        <p class="description">The temporary exhibition.</p>
-                        <?php $comments = $database->getCommentsFromPostID($post['PostID']); ?>
-                        <?php foreach($comments as $comment) : ?>
-                            <p><?php print_r($database->getUserByID($comment['UserID'])['Username']); echo ': '; print_r($comment['CommentText']); ?></p>
-                        <?php endforeach; ?>
+                        <div class="comments-container">
+                            <p class="description">The temporary exhibition.</p>
+                            <?php $comments = $database->getCommentsFromPostID($post['PostID']); ?>
+                            <?php foreach($comments as $comment) : ?>
+                                <p><?php print_r($database->getUserByID($comment['UserID'])['Username']); echo ': '; print_r($comment['CommentText']); ?></p>
+                            <?php endforeach; ?>
+                        </div>
                         <form id="commentForm">
                             <input type="hidden" name="PostID" value="<?php echo $post['PostID']; ?>">
                             <input type="hidden" name="UserID" value="<?php echo $userData['UserID']; ?>">
 
                             <label for="CommentText"></label>
-                            <input type="text" name="CommentText" placeholder="aggiungi un commento" required>
+                            <input type="text" name="CommentText" id="CommentText" placeholder="aggiungi un commento" required>
 
                             <input type="button" value="send comment" onclick="submitComment()">
                         </form>

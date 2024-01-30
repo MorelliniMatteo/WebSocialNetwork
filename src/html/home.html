@@ -48,10 +48,25 @@
              </div>
              <aside class="comments">
                  <h2>Commenti</h2>
-                 <p class="description">The temporary exhibition.</p>
-                 <p>first comment</p>
-                 <p>second comment</p>
-                 <input type="text" placeholder="aggiungi un commento" title="add comment">
+                 <div class="comments-container">
+                    <p class="description">The temporary exhibition.</p>
+                    <p>first comment</p>
+                    <p>second comment</p>
+                    <p>second comment</p>
+                    <p>second comment</p>
+                    <p>second comment</p>
+                    <p>second comment</p>
+                    <p>second comment</p>
+                </div>
+                 <form id="commentForm">
+                    <input type="hidden" name="PostID" value="">
+                    <input type="hidden" name="UserID" value="">
+
+                    <label for="CommentText"></label>
+                    <input type="text" name="CommentText" id="CommentText" placeholder="aggiungi un commento" required>
+
+                    <input type="button" value="send comment" onclick="submitComment()">
+                </form>
              </aside>
          </div>
          <div class="post-container" id="Audemars_Piguet">

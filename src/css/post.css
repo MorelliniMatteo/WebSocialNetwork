@@ -36,7 +36,7 @@ main{
     font-size: 16px;
 }
 
-.post>p, .comments>p{
+.post>p, .comments p{
     margin: 2% 0;
     padding: 1.25rem;
     border-radius: 1rem;
@@ -67,7 +67,7 @@ main{
     .comments{
         position: relative;
         display: block;
-        margin: 1rem 3rem 6rem;
+        margin: 1rem 3rem;
         padding: 1rem;
         max-width: 400px;
     }
@@ -76,18 +76,18 @@ main{
         display: none;
     }
 
-    .comments>p{
+    .comments p{
         margin: 5%;
         padding: 0.5rem 1rem;
     }
 
     .comments h2{
         text-align: center;
-        padding-bottom: 5%;
+        padding-bottom: 7%;
     }
 
     .comments input{
-        margin-left: 5%;
+        margin-bottom: 0.8rem;
         text-align: center;
         width: 90%;
         padding: 0.5rem;
@@ -96,6 +96,13 @@ main{
         color: var(--textContrast);
         box-shadow: 3px 3px 0px 0.5px rgba(0, 0, 0, 0.25);
         border: solid 1px #ADB5BD;
+    }
+
+    .comments form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -134,10 +141,19 @@ main{
             border-left: solid black;
         }
 
-        .comments input{
+        .comments form{
+            width: 92%;
             position: absolute;
             bottom: 0;
             margin: 0;
+        }
+
+        .comments-container{
+            height: 60%;
+            overflow: hidden;
+            overflow-y: auto;
+            border: solid lightgray;
+            border-radius: 1rem;
         }
 
         .description{
