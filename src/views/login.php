@@ -34,9 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['login'])) {
         // Login form submitted
-        $Email = $_POST['login-email'];
-        $Password = $_POST['login-pswd'];
-
+        $Email = $_POST['email'];
+        $Password = $_POST['pswd'];
         // Validate input (you should perform more comprehensive validation)
         if (empty($Email) || empty($Password)) {
             $errorMessage = "Please fill in all required fields.";
@@ -46,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($user && password_verify($Password, $user['Password'])) {
                 // Password corretta
-                header('Location: profile.php');
+                header('Location: Profile.php');
                 exit();
             } else {
                 // Email o password errate
@@ -78,8 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             	
                 <img src="../img/logo.PNG" alt="">
                 
-                <form class="signup">
+                <form class="signup" method="POST">
                     <label for="chk-signup" aria-hidden="true">Sign up</label>
+
+                    <?php if (isset($errorMessage) && !empty($errorMessage)): ?>
+                        <label for="error-message" class="error-message"><?php echo $errorMessage; ?></label>
+                    <?php endif; ?>
+
                     <label for="txt">User name</label>
                     <input type="text" id="txt" name="txt" placeholder="User name" required="">
                     <label for="email">Email</label>
@@ -89,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit" name="signup">Sign up</button>
                 </form>
                 
-                <form class="login">
+                <form class="login" method="POST">
                     <label for="chk-login" aria-hidden="true" id="loginLabel">Login</label>
                     <label for="login-email">Email</label>
                     <input type="email" id="login-email" name="email" placeholder="Email" required="">

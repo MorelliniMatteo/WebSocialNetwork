@@ -20,7 +20,12 @@
                 <img src="../img/logo.PNG" alt="">
                 
                 <form class="signup">
-                    <label for="chk-signup" aria-hidden="true">Sign up</label>
+                    <label for="chk-signup" aria-hidden="true" class="sign-up">Sign up</label>
+
+                    <?php if (isset($errorMessage) && !empty($errorMessage)): ?>
+                        <label for="error-message" class="error-message"><?php echo $errorMessage; ?></label>
+                    <?php endif; ?>
+
                     <label for="txt">User name</label>
                     <input type="text" id="txt" name="txt" placeholder="User name" required="">
                     <label for="email">Email</label>

@@ -7,9 +7,9 @@
 body{
     display: flex;
     flex-direction: column;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
-	min-height: 100vh;	
+	min-height: 100vh;
     background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
 }
   
@@ -58,6 +58,10 @@ label {
     transition: .5s ease-in-out;
 }
 
+.sign-up {
+    margin: 60px 0 35px;
+}
+
 /* Stile degli input ripristinato */
 input {
     width: 60%;
@@ -95,6 +99,7 @@ button:hover{
 }
 /* Stile del footer */
 footer {
+    position: fixed;
     margin-top: 15px;
     width: 100%;
     bottom: 0;
@@ -152,11 +157,15 @@ footer p {
 }
 
 /* Stile delle etichette generiche */
-form label:not([for="chk-login"]):not([for="chk-signup"]) {
-    font-size: 0.9em; /* Riduzione della dimensione del font */
-    margin: 0px 0; /* Distanza dagli elementi sopra e sottostanti */
-    padding: 0px 0;
+form label:not([for="chk-login"]):not([for="chk-signup"]):not([for="error-message"]) {
     display: none;
+}
+
+.error-message {
+    font-size: small;
+    margin: 0;
+    color: darkred;
+    text-align: center;
 }
 
 /* Stile della foto del telefono */
