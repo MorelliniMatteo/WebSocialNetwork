@@ -1,10 +1,12 @@
 <?php
-include_once('../models/database.php');
+include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 2; // Replace with the actual logged-in user ID
 
 $database = new Database();
+
+$iconImagePath = "../icon/";
 
 // Fetch user data
 $userData = $database->getUserByID($loggedInUserID);
@@ -27,8 +29,9 @@ $userPosts = $database->getUserPosts($loggedInUserID);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="../css/Profile.css">
-    <link rel="stylesheet" href="../css/Nav.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 <body>
 
@@ -80,9 +83,9 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         <div class="public-container line"></div>
 
         <section class="public-container tab-container">
-            <a href="#" class="post-logo"><img class="icon" src="../assets/post.svg" alt="post"></a>
-            <a href="#" class="post-logo"><img class="icon" src="../assets/story.svg" alt="story"></a>
-            <a href="#" class="post-logo"><img class="icon" src="../assets/saved.svg" alt="saved"></a>
+            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></a>
+            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="story"></a>
+            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></a>
         </section>
 
         <section class="public-container user-posts">
