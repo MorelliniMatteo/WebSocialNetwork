@@ -47,25 +47,25 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
          </form>
          <?php if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
-                <div class="post-container" id="<?php $post['PostID']; ?>">
+                <div class="post-container" id="<?php echo $post['PostID']; ?>">
                     <div class="post">
                         <header>
-                            <img src="../img/ProfileImg.png" alt="User Avatar">
+                            <img src="<?php echo ($database->getUserProfileInfo($post['UserID']))['LogoURL']; ?>" alt="User Avatar">
                             <a href="#" label="View user profile"><?php echo ($database->getUserByID($post['UserID'])['Username']); ?></a>
                         </header>
                         <img src="<?php echo $post['MediaURL']; ?>" alt="Post Image">
                         <p><?php echo $post['Caption']; ?></p>
                         <section>
                             <h1>interaction</h1>
-                            <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="Like($post['PostID'])">
-                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="openComments($post['PostID'])">
-                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="sharePost(($post['PostID'])">               
+                            <img class="icon likeButton" <?php if ($database->getLikesFromPost($post['PostID'],$userData['UserID'])) : ?> src="../icon/like.svg" <?php else : ?> src="../icon/like-empty.svg" <?php endif; ?> alt="like button" onclick="Like(<?php echo $post['PostID']; echo $userData['UserID']; ?>)">
+                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="openComments(<?php echo $post['PostID']; ?>)">
+                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="sharePost(<?php echo $post['PostID']; ?>)">            
                         </section>
                     </div>
                     <aside class="comments">
                         <h2>Commenti</h2>
                         <div class="comments-container">
-                            <p class="description">The temporary exhibition.</p>
+                            <p class="description"><?php echo $post['Caption'] ?></p>
                             <?php $comments = $database->getCommentsFromPostID($post['PostID']); ?>
                             <?php foreach($comments as $comment) : ?>
                                 <p><?php print_r($database->getUserByID($comment['UserID'])['Username']); echo ': '; print_r($comment['CommentText']); ?></p>
@@ -76,28 +76,10 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                             <input type="hidden" name="UserID" value="<?php echo $userData['UserID']; ?>">
 
                             <label for="CommentText"></label>
-                            <input type="text" name="CommentText" id="CommentText" placeholder="aggiungi un commento" required>
+                            <input type="text" name="CommentText" id="CommentText" placeholder="add a comment" required>
 
                             <input type="button" value="send comment" onclick="submitComment()">
                         </form>
-                        <script>
-                            function submitComment() {
-                                let formData = new FormData(document.getElementById('commentForm'));
-
-                                let xhr = new XMLHttpRequest();
-                                xhr.open('POST', 'pushComment.php', true);
-                                xhr.onload = function () {
-                                    if (xhr.status === 200) {
-                                        // Puoi gestire la risposta qui, se necessario
-                                        console.log(xhr.responseText);
-                                    } else {
-                                        console.error('Errore nella richiesta AJAX');
-                                    }
-                                };
-
-                                xhr.send(formData);
-                            }
-                        </script>
                     </aside>
                 </div>
             <?php endforeach; ?>
@@ -111,5 +93,6 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
     
     <script src="../js/post.js"></script>
     <script src="../js/home.js"></script>
+    <script src="../js/infinityScroll.js"></script>
  </body>
 </html>

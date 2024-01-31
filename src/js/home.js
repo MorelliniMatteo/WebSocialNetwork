@@ -13,3 +13,19 @@ menu.addEventListener('click', () => {
 checkbox.addEventListener('change', () => {
     document.body.classList.toggle("dark");
 });
+
+function submitComment() {
+    let formData = new FormData(document.getElementById('commentForm'));
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'pushComment.php', true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.error('Errore nella richiesta AJAX');
+        }
+    };
+
+    xhr.send(formData);
+}

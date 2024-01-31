@@ -147,6 +147,23 @@ class Database {
         return $stmt->execute();
     }
 
+    // Insert like
+    public function insertLike($postID, $userID){
+        $query = "INSERT INTO Likes (PostID, UserID) VALUES (:postID, :userID);";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function removeLike($postID, $userID){
+        $query = "DELETE FROM likes WHERE PostID =:postID AND UserID = :userID ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        return $stmt->execute()
+    }
+
     // Update user data
     public function updateUser($userID, $newUsername, $newEmail, $newBio) {
         $query = "UPDATE Users SET Username = :newUsername, Email = :newEmail, Bio = :newBio WHERE UserID = :userID";
@@ -319,7 +336,18 @@ class Database {
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
-    } 
+    }
+
+    public function getLikesFromPost($postID, $userID){
+        $query = "SELECT LikeID FROM likes WHERE PostID = :postID AND UserID = :userID";
+        $params = array(':postID' => $postID, ':userID' => $userID);
+    
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
     public function verifyUserPassword($email, $password) {
         // Ottieni le informazioni sull'utente basandoti sull'email
