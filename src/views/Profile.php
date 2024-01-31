@@ -67,9 +67,11 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         </section>
 
         <section class="public-container info-container">
-            <span class="username"><?php echo $userData['Username']; ?></span>
-            <br>
-            <p class="user-description"><?php echo $userData['Bio']; ?></p>
+            <div class="info">
+                <span class="username"><?php echo $userData['Username']; ?></span>
+                <br>
+                <p class="user-description"><?php echo $userData['Bio']; ?></p>
+            </div>
         </section>
 
         <div class="public-container profile-edit">
