@@ -57,9 +57,9 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                         <p><?php echo $post['Caption']; ?></p>
                         <section>
                             <h1>interaction</h1>
-                            <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="changeLike($post['PostID'])">
-                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="changeComment()">
-                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="share(($post['PostID'])">               
+                            <img class="icon likeButton" src="../icon/like-empty.svg" alt="like button" onclick="Like($post['PostID'])">
+                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="openComments($post['PostID'])">
+                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="sharePost(($post['PostID'])">               
                         </section>
                     </div>
                     <aside class="comments">

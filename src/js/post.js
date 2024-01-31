@@ -10,7 +10,7 @@ function Like(postID) {
     }
 }
 
-function changeComment(postID) {
+function openComments(postID) {
     let post = document.getElementById(postID);
     let icon = post.querySelector(".commentButton"); // Seleziona l'elemento dell'icona commento
 
