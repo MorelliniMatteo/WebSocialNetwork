@@ -1,5 +1,6 @@
-function changeLike() {
-    let icon = document.querySelector(".likeButton");
+function Like(postID) {
+    let post = document.getElementById(postID);
+    let icon = post.querySelector(".likeButton");
 
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
@@ -9,20 +10,15 @@ function changeLike() {
     }
 }
 
-function changeComment() {
-    let post = document.querySelector(".post-container");
+function changeComment(postID) {
+    let post = document.getElementById(postID);
     let icon = post.querySelector(".commentButton"); // Seleziona l'elemento dell'icona commento
 
     if (!post.classList.contains("open")){
         post.classList.add("open");
-    } else {
-        post.classList.remove("open");
-    }
-
-    // Cambia l'icona al click
-    if (icon.src.endsWith("comment-empty.svg")) {
         icon.src = "../icon/comment.svg"; // Cambia con il percorso dell'icona "comment-filled"
     } else {
+        post.classList.remove("open");
         icon.src = "../icon/comment-empty.svg"; // Ripristina con il percorso dell'icona "comment-empty"
     }
 }
