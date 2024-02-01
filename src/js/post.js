@@ -6,10 +6,10 @@ function Like(postID, userID) {
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
         icon.src = "../icon/like.svg"; // Cambia con il percorso dell'icona "like-filled"
-        var dati = "postID=" + encodeURIComponent(postID) + "userID=" + encodeURIComponent(userID) + "&add=" + encodeURIComponent(1);
+        var dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
     } else {
         icon.src = "../icon/like-empty.svg"; // Ripristina con il percorso dell'icona "like-empty"
-        var dati = "postID=" + encodeURIComponent(postID) + "userID=" + encodeURIComponent(userID) + "&add=" + encodeURIComponent(0);
+        var dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=0";
     }
 
     xhr.open("POST", 'pushLike.php', true);
@@ -17,8 +17,7 @@ function Like(postID, userID) {
     xhr.onload = function() {
         if (xhr.status === 200) {
             // La richiesta è andata a buon fine
-            var response = JSON.parse(xhr.responseText);
-            console.log(response);
+            console.log(xhr.responseText);
         } else {
             console.error("Errore nella chiamata AJAX. Status:", xhr.status);
         }

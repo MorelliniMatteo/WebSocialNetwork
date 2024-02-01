@@ -57,7 +57,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
                         <p><?php echo $post['Caption']; ?></p>
                         <section>
                             <h1>interaction</h1>
-                            <img class="icon likeButton" <?php if ($database->getLikesFromPost($post['PostID'],$userData['UserID'])) : ?> src="../icon/like.svg" <?php else : ?> src="../icon/like-empty.svg" <?php endif; ?> alt="like button" onclick="Like(<?php echo $post['PostID']; echo $userData['UserID']; ?>)">
+                            <img class="icon likeButton" <?php if ($database->getLikesFromPost($post['PostID'],$userData['UserID'])) : ?> src="../icon/like.svg" <?php else : ?> src="../icon/like-empty.svg" <?php endif; ?> alt="like button" onclick="Like(<?php echo $post['PostID']; echo ','; echo $userData['UserID']; ?>)">
                             <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="openComments(<?php echo $post['PostID']; ?>)">
                             <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="sharePost(<?php echo $post['PostID']; ?>)">            
                         </section>

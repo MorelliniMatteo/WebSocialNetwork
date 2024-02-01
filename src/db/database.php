@@ -156,6 +156,7 @@ class Database {
         return $stmt->execute();
     }
 
+    // Remove like
     public function removeLike($postID, $userID){
         $query = "DELETE FROM likes WHERE PostID =:postID AND UserID = :userID ";
         $stmt = $this->conn->prepare($query);
