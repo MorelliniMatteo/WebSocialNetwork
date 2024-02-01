@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <main>
-        <img src="../img/CreateYourPost1.png" alt="" id="pic1">
+        <img src="../img/CreateYourPost.png" alt="" id="pic1">
         <section>
             <article>
                 <header>
@@ -121,10 +121,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </article>
         </section>
-        <img src="../img/CreateYourPost2.png" alt="" id="pic2">
+        <img src="../img/CreateYourPost.png" alt="" id="pic2">
     </main>
 
-    <?php include_once("Nav.php"); ?>
+    <?php include_once('Nav.php'); ?>
 
     <script src="../js/creazione-post.js"></script>
 
