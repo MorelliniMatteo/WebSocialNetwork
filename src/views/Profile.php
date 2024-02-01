@@ -86,7 +86,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
 
         <section class="public-container tab-container">
             <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></a>
-            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="story"></a>
+            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'tagged.svg' ?>" alt="tagged"></a>
             <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></a>
         </section>
 
