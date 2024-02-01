@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 2; // Replace with the actual logged-in user ID
+$loggedInUserID = 1; // Replace with the actual logged-in user ID
 
 $database = new Database();
 
@@ -91,25 +91,25 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         </section>
 
         <section class="public-container user-posts">
-        <?php foreach ($userPosts as $post) : ?>
-            <a href="#" class="post">
-                <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
-                <div class="post-box">
-                    <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
-                    <div class="post-content">
-                        <div class="post-content-box">
-                            <span class="post-content-likes-number"><?php echo $database->getLikesCount($post['PostID']); ?></span>
-                            <span class="post-content-likes-label">LIKES</span>
-                        </div>
-                        <div class="post-content-box">
-                            <span class="post-content-comments-number"><?php echo $database->getCommentsCount($post['PostID']); ?></span>
-                            <span class="post-content-comments-label">COMMENTS</span>
+                <?php foreach ($userPosts as $post) : ?>
+                <a href="#" class="post">
+                    <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
+                    <div class="post-box">
+                        <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
+                        <div class="post-content">
+                            <div class="post-content-box">
+                                <span class="post-content-likes-number"><?php echo $database->getLikesCount($post['PostID']); ?></span>
+                                <span class="post-content-likes-label">LIKES</span>
+                            </div>
+                            <div class="post-content-box">
+                                <span class="post-content-comments-number"><?php echo $database->getCommentsCount($post['PostID']); ?></span>
+                                <span class="post-content-comments-label">COMMENTS</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        <?php endforeach; ?>
-    </section>
+                </a>
+            <?php endforeach; ?>
+        </section>
 
     
 </main>
