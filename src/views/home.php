@@ -92,7 +92,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
     <?php include_once("Nav.php"); ?>
     
     <script src="../js/post.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../js/menuTheme.js"></script>
     <script src="../js/infinityScroll.js"></script>
  </body>
 </html>

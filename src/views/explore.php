@@ -95,6 +95,6 @@ $userData = $database->getUserByID($loggedInUserID);
 
    <?php include_once("Nav.php"); ?>
 
-   <script src="../js/home.js"></script>
+   <script src="../js/menuTheme.js"></script>
 </body>
 </html>
