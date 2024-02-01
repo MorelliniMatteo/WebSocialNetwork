@@ -180,9 +180,10 @@ a {
 
 .user-posts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 10px), 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-    border: 12px solid red;
+    box-sizing: border-box;
+    border: 12px solid transparent;
 }
 
 
@@ -253,9 +254,13 @@ a {
     }
 
     .info {
-        margin-left: 0;
+        margin: 0 50px;
         justify-content: center;
         align-items: center;
+    }
+
+    .user-posts {
+        border: 20px solid transparent;
     }
 
     .user-posts .post-box:hover {
@@ -272,6 +277,10 @@ a {
 
     .profile .profile-posts {
         gap: 5rem;
+    }
+
+    .user-posts {
+        border: 30px solid transparent;
     }
     
 }
