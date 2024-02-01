@@ -3,6 +3,7 @@ include_once('../db/database.php');
 
 $database = new Database();
 
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check which button was pressed

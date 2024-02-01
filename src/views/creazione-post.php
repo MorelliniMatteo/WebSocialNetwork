@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 $database = new Database();
-$errorMessage;
+$errorMessage = "";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <main>
-        <img src="../img/CreateYourPost.png" alt="" id="pic1">
+        <img src="../img/CreateYourPost1.png" alt="" id="pic1">
         <section>
             <article>
                 <header>
@@ -121,31 +121,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </article>
         </section>
-        <img src="../img/CreateYourPost.png" alt="" id="pic2">
+        <img src="../img/CreateYourPost2.png" alt="" id="pic2">
     </main>
 
-    <nav class="navbar">
-        <a href="home.html" class="navbar-item">
-            <img class="icon" src="../icon/home.svg" alt="home">
-            <span class="icon-name">Home</span>
-        </a>
-        <a href="explore.html" class="navbar-item">
-            <img class="icon" src="../icon/explore.svg" alt="explore">
-            <span class="icon-name">Explore</span>
-        </a>
-        <a href="chat.html" class="navbar-item">
-            <img class="icon" src="../icon/chat.svg" alt="chat">
-            <span class="icon-name">Chat</span>
-        </a>
-        <a href="creazione-post.html" class="navbar-item">
-            <img class="icon" src="../icon/newPost.svg" alt="new post">
-            <span class="icon-name">New Post</span>
-        </a>
-        <a href="profile.html" class="navbar-item">
-            <img class="icon" src="../icon/profile.svg" alt="personal profile">
-            <span class="icon-name">Profile</span>
-        </a>
-    </nav>
+    <?php include_once("Nav.php"); ?>
 
     <script src="../js/creazione-post.js"></script>
 
