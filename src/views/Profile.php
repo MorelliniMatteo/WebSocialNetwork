@@ -116,5 +116,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
 
 <?php include_once('Nav.php'); ?>
 
+<script src="../js/importTheme.js"></script>
+
 </body>
 </html>
