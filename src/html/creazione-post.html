@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="../css/creazione-post.css">
     <title>Social Network Post</title>
 </head>
-<!-- Controllato con Achecker, tutto ok -->
+
 <body>
     <main>
         <img src="../img/CreateYourPost.png" alt="" id="pic1">
@@ -18,25 +19,31 @@
                     <img src="../img/Profile.png" alt="User Avatar">
                     <h1>Create Post</h1>
                 </header>
-    
-                <section>
-                    <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
-                    <label for="photoInput">
-                        <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
-                    </label>
-                </section>
-    
-                <!-- Elemento con ID 'postDescription' -->
-                <label for="descriptionInput">Descrizione del Post:</label>
-                <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
-    
-                <button id="confirmButton">Confirm</button>
-    
-                <!-- Messaggio di conferma -->
-                <section id="confirmationMessage" style="display: none;">
-                    <p>Il post è stato inviato con successo!</p>
-                </section>
-    
+
+                <form method="post" enctype="multipart/form-data">
+                    <section>
+                        <input type="file" id="photoInput" name="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                        <label for="photoInput">
+                            <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
+                        </label>
+                    </section>
+
+                    <!-- Elemento con ID 'postDescription' -->
+                    <label for="descriptionInput">Descrizione del Post:</label>
+                    <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
+                   
+                    
+                    <label for="error-message" class="error-message"><?php echo "$errorMessage" ?></label>
+
+
+                    <button type="submit" name="confirmButton" id="confirmButton">Confirm</button>
+
+                    <!-- Messaggio di conferma -->
+                    <section id="confirmationMessage" style="display: none;">
+                        <p>Il post è stato inviato con successo!</p>
+                    </section>
+                </form>
+
             </article>
         </section>
         <img src="../img/CreateYourPost.png" alt="" id="pic2">
@@ -63,7 +70,7 @@
             <img class="icon" src="../icon/profile.svg" alt="personal profile">
             <span class="icon-name">Profile</span>
         </a>
-</nav>
+    </nav>
 
     <script src="../js/creazione-post.js"></script>
 
