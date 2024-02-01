@@ -5,7 +5,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat Alternates', sans-serif;
+    
 }
+
+
 
 ul {
     list-style: none;
@@ -146,7 +149,7 @@ a {
 }
 
 .profile-edit .profile-edit-box:hover {
-    background: white;
+    background-color: white;
 }
 
 .profile-edit span {
@@ -173,18 +176,19 @@ a {
     margin-top: 20px;
 }
 
+
+
 .user-posts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    box-sizing: border-box;
+    border: 12px solid transparent;
 }
 
 
 
 .user-posts .post {
-    flex: 0 0 calc(33.33% - 10px);
-    width: 30%;
-    margin-bottom: 10px;
     position: relative;
 }
 
@@ -232,6 +236,7 @@ a {
     flex-direction: column;
 }
 
+
 @media screen and (min-width: 768px) {
 
     * {
@@ -249,9 +254,13 @@ a {
     }
 
     .info {
-        margin-left: 0;
+        margin: 0 50px;
         justify-content: center;
         align-items: center;
+    }
+
+    .user-posts {
+        border: 20px solid transparent;
     }
 
     .user-posts .post-box:hover {
@@ -270,9 +279,8 @@ a {
         gap: 5rem;
     }
 
-
-    .info-container {
-        margin-left: 0;
+    .user-posts {
+        border: 30px solid transparent;
     }
     
 }

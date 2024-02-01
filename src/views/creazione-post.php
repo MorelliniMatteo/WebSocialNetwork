@@ -124,7 +124,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="../img/CreateYourPost2.png" alt="" id="pic2">
     </main>
 
-    <?php include_once("Nav.php"); ?>
+    <nav class="navbar">
+        <a href="home.html" class="navbar-item">
+            <img class="icon" src="../icon/home.svg" alt="home">
+            <span class="icon-name">Home</span>
+        </a>
+        <a href="explore.html" class="navbar-item">
+            <img class="icon" src="../icon/explore.svg" alt="explore">
+            <span class="icon-name">Explore</span>
+        </a>
+        <a href="chat.html" class="navbar-item">
+            <img class="icon" src="../icon/chat.svg" alt="chat">
+            <span class="icon-name">Chat</span>
+        </a>
+        <a href="creazione-post.html" class="navbar-item">
+            <img class="icon" src="../icon/newPost.svg" alt="new post">
+            <span class="icon-name">New Post</span>
+        </a>
+        <a href="profile.html" class="navbar-item">
+            <img class="icon" src="../icon/profile.svg" alt="personal profile">
+            <span class="icon-name">Profile</span>
+        </a>
+    </nav>
 
     <script src="../js/creazione-post.js"></script>
 
