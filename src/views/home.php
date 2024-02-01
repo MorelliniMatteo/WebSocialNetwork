@@ -1,5 +1,6 @@
 <?php
 include_once('../db/database.php');
+include_once('viewFullPost.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 1; //Replace with the actual logged-in user ID
@@ -47,41 +48,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
          </form>
          <?php if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
-                <div class="post-container" id="<?php echo $post['PostID']; ?>">
-                    <div class="post">
-                        <header>
-                            <img src="<?php echo ($database->getUserProfileInfo($post['UserID']))['LogoURL']; ?>" alt="User Avatar">
-                            <a href="#" label="View user profile"><?php echo ($database->getUserByID($post['UserID'])['Username']); ?></a>
-                        </header>
-                        <img src="<?php echo $post['MediaURL']; ?>" alt="Post Image">
-                        <p><?php echo $post['Caption']; ?></p>
-                        <section>
-                            <h1>interaction</h1>
-                            <img class="icon likeButton" <?php if ($database->getLikesFromPost($post['PostID'],$userData['UserID'])) : ?> src="../icon/like.svg" <?php else : ?> src="../icon/like-empty.svg" <?php endif; ?> alt="like button" onclick="Like(<?php echo $post['PostID']; echo ','; echo $userData['UserID']; ?>)">
-                            <img class="icon commentButton" src="../icon/comment-empty.svg" alt="comment button" onclick="openComments(<?php echo $post['PostID']; ?>)">
-                            <img class="icon shareButton" src="../icon/share.svg" alt="comment button" onclick="sharePost(<?php echo $post['PostID']; ?>)">            
-                        </section>
-                    </div>
-                    <aside class="comments">
-                        <h2>Commenti</h2>
-                        <div class="comments-container">
-                            <p class="description"><?php echo $post['Caption'] ?></p>
-                            <?php $comments = $database->getCommentsFromPostID($post['PostID']); ?>
-                            <?php foreach($comments as $comment) : ?>
-                                <p><?php print_r($database->getUserByID($comment['UserID'])['Username']); echo ': '; print_r($comment['CommentText']); ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                        <form id="commentForm">
-                            <input type="hidden" name="PostID" value="<?php echo $post['PostID']; ?>">
-                            <input type="hidden" name="UserID" value="<?php echo $userData['UserID']; ?>">
-
-                            <label for="CommentText"></label>
-                            <input type="text" name="CommentText" id="CommentText" placeholder="add a comment" required>
-
-                            <input type="button" value="send comment" onclick="submitComment()">
-                        </form>
-                    </aside>
-                </div>
+                <?php viewPostHTML($post, $userData, $database); ?>
             <?php endforeach; ?>
         <?php else : echo "Nessun post disponibile dai seguiti."; endif; ?>
         <div class="space">
