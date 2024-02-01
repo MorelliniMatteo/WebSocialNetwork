@@ -162,7 +162,7 @@ class Database {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
         $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
-        return $stmt->execute()
+        return $stmt->execute();
     }
 
     // Update user data
