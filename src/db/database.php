@@ -547,6 +547,41 @@ class Database {
             return null;
         }
     }
+
+    public function getUserChatMessages($userID) {
+        $query = "
+            SELECT 
+                cm.MessageID,
+                cm.SenderID,
+                cm.ReceiverID,
+                cm.MessageText,
+                cm.SendDate,
+                u.Username AS SenderUsername
+            FROM 
+                ChatMessages cm
+                INNER JOIN Users u ON cm.SenderID = u.UserID
+            WHERE 
+                cm.ReceiverID = :userID
+            ORDER BY 
+                cm.SendDate DESC
+        ";
+    
+        $params = array(':userID' => $userID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Fetch all chat messages for the user
+            $userChatMessages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $userChatMessages;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+    
 }
 
 ?>
