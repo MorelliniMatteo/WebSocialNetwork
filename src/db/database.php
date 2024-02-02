@@ -388,11 +388,12 @@ class Database {
         }
     }
 
-    public function getPostFromFollowing($userID) {
+    public function getPostFromFollowing($userID, $offset) {
         $query = "SELECT Posts.* FROM Posts
                   JOIN Followers ON Posts.UserID = Followers.FollowingUserID
                   WHERE Followers.FollowerUserID = :userID
-                  ORDER BY Posts.PostDate DESC ";
+                  ORDER BY Posts.PostDate DESC 
+                  LIMIT " . $offset . ", 5";
         $params = array(':userID' => $userID);
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);

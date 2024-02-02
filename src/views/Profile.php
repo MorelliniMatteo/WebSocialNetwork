@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 2; // Replace with the actual logged-in user ID
+$loggedInUserID = 1; // Replace with the actual logged-in user ID
 
 $database = new Database();
 

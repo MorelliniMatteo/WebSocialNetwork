@@ -3,13 +3,13 @@ include_once('../db/database.php');
 include_once('viewFullPost.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 1; //Replace with the actual logged-in user ID
+$loggedInUserID = 4; //Replace with the actual logged-in user ID
 
 $database = new Database();
 
 $userData = $database->getUserByID($loggedInUserID);
 
-$posts = $database->getPostFromFollowing($loggedInUserID);
+$posts = $database->getPostFromFollowing($loggedInUserID, 0);
 
 ?>
 
@@ -46,11 +46,13 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
          <form>
              <input type="text" id="Search" placeholder="Search for your artists" title="search bar">
          </form>
-         <?php if (!empty($posts)) : ?>
-            <?php foreach ($posts as $post) : ?>
-                <?php viewPostHTML($post, $userData, $database); ?>
-            <?php endforeach; ?>
-        <?php else : echo "Nessun post disponibile dai seguiti."; endif; ?>
+         <div class="posts-container">
+            <?php if (!empty($posts)) : ?>
+                <?php foreach ($posts as $post) : ?>
+                    <?php viewPostHTML($post, $userData, $database); ?>
+                <?php endforeach; ?>
+            <?php else : echo "No more posts available from following."; endif; ?>
+        </div>
         <div class="space">
             <p>space</p>
         </div>
@@ -60,5 +62,6 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
     
     <script src="../js/post.js"></script>
     <script src="../js/menuTheme.js"></script>
+    <script src="../js/infinityScroll.js"></script>
  </body>
 </html>

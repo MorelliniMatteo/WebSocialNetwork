@@ -6,10 +6,10 @@ function Like(postID, userID) {
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
         icon.src = "../icon/like.svg"; // Cambia con il percorso dell'icona "like-filled"
-        var dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
+        let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
     } else {
         icon.src = "../icon/like-empty.svg"; // Ripristina con il percorso dell'icona "like-empty"
-        var dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=0";
+        let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=0";
     }
 
     xhr.open("POST", 'pushLike.php', true);
