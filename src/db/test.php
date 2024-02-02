@@ -97,13 +97,14 @@ $postID = 2;  // Replace with the actual post ID if applicable
 
 $database = new Database();
 
-$insertedNotificationID = $database->insertNotification($fromUserID, $toUserID, $actionType, $postID);
+// $insertedNotificationID = $database->insertNotification($fromUserID, $toUserID, $actionType, $postID);
 
-if ($insertedNotificationID) {
-    echo 'Notification inserted successfully with ID: ' . $insertedNotificationID;
-} else {
-    echo 'Failed to insert notification.';
-}
+// if ($insertedNotificationID) {
+//     echo 'Notification inserted successfully with ID: ' . $insertedNotificationID;
+// } else {
+//     echo 'Failed to insert notification.';
+// }
 
+// echo $database->removeNotification(14);
 
 ?>

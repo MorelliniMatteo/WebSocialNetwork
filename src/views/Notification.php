@@ -118,6 +118,14 @@ function updateNotificationDropdown(notifications) {
             // Add notification text
             notificationItem.append(notification.NotificationText);
 
+            // Add remove button
+            let removeButton = $('<button class="remove-notification">X</button>');
+            removeButton.on('click', function() {
+                // Handle the remove button click
+                removeNotification(notification.NotificationID);
+            });
+            notificationItem.append(removeButton);
+
             dropdownContent.append(notificationItem);
         });
     } else {
@@ -128,6 +136,27 @@ function updateNotificationDropdown(notifications) {
     // Show the dropdown after updating content
     $('#notificationDropdown').show();
 }
+
+// Function to handle the remove button click
+function removeNotification(notificationID) {
+    // Implement the logic to remove the notification from the database
+    // You may use AJAX to send a request to the server to delete the notification
+    // Adjust this function based on your server-side implementation
+    $.ajax({
+        type: 'POST',
+        url: '../models/remove_notification.php', // Add timestamp to prevent caching
+        data: { notificationID: notificationID },
+        success: function(response) {
+            // Handle the success response
+            console.log(notificationID + 'Notification removed successfully' + response);
+        },
+        error: function(error) {
+            // Handle the error
+            console.error('Error removing notification', error);
+        }
+    });
+}
+
 
 });
 </script>

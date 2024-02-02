@@ -441,6 +441,33 @@ class Database {
             return 0;
         }
     }
+
+    public function removeNotification($notificationID) {
+        $query = "DELETE FROM Notifications WHERE NotificationID = :notificationID";
+    
+        $params = array(':notificationID' => $notificationID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Check the number of affected rows to verify if the deletion was successful
+            if ($stmt->rowCount() > 0) {
+                // Return true on success
+                return true;
+            } else {
+                // Return false if no rows were affected (notification not found)
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Log or display the error message
+            error_log('Error removing notification: ' . $e->getMessage());
+            // Return false on failure
+            return false;
+        }
+    }
+    
+    
 }
 
 
