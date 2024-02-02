@@ -10,8 +10,8 @@ INSERT INTO Categories (CategoryName) VALUES
     ('Travel'),
     ('Nature'),
     ('Lifestyle'),
-    ('Art')
-    ('Sculpture')
+    ('Art'),
+    ('Sculpture'),
     ('DigitalArt');
 
 
@@ -43,11 +43,24 @@ INSERT INTO ChatMessages (SenderID, ReceiverID, MessageText) VALUES
     (4, 1, 'Hello there!');
 
 
-INSERT INTO Notifications (UserID, NotificationText, IsRead) VALUES
-    (1, 'You have a new follower.', FALSE),
-    (2, 'Your post got a new comment.', FALSE),
-    (3, 'You have a new message.', FALSE),
-    (4, 'Someone liked your post.', FALSE);
+INSERT INTO Notifications (fromUserID, toUserID, NotificationText, PostID) VALUES
+    (2, 1, 'You have a new follower.', NULL),
+    (3, 1, 'Your post got a new comment.', 1),
+    (4, 1, 'You have a new message.', NULL),
+    (5, 1, 'Someone liked your post.', 2),
+    (2, 1, 'Your post got a new comment.', 1),
+    (2, 1, 'Someone liked your post.', 1),
+    (3, 1, 'You have a new follower.', NULL),
+    (4, 1, 'Someone liked your post.', 1),
+    (4, 1, 'You have a new message.', NULL),
+    (5, 1, 'Someone liked your post.', 1),
+    
+    (1, 2, 'Your post got a new comment.', 2),
+    (3, 2, 'Someone liked your post.', 2),
+    (5, 2, 'Your post got a new comment.', 2),
+    (3, 2, 'Someone liked your post.', 2),
+    (3, 2, 'Your post got a new comment.', 2);
+
 
 
 INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (1, 'post.jpg', 'User1');
