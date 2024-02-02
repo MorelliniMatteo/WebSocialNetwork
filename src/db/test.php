@@ -90,10 +90,10 @@ include_once('database.php');
 
 
 // Example usage:
-$fromUserID = 2; // Replace with the actual user ID of the actor
-$toUserID = 1;   // Replace with the actual user ID of the recipient
-$actionType = 'save';
-$postID = 2;  // Replace with the actual post ID if applicable
+// $fromUserID = 2; // Replace with the actual user ID of the actor
+// $toUserID = 1;   // Replace with the actual user ID of the recipient
+// $actionType = 'save';
+// $postID = 2;  // Replace with the actual post ID if applicable
 
 $database = new Database();
 
@@ -106,5 +106,11 @@ $database = new Database();
 // }
 
 // echo $database->removeNotification(14);
+
+
+// $userTaggedPosts = $database->getUserTaggedPosts(1);
+// foreach ($userTaggedPosts as $key => $post) {
+//     echo $post['PostID'];
+// }
 
 ?>
