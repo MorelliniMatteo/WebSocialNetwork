@@ -497,9 +497,22 @@ class Database {
         }
     }
     
-    
-    
-}
+    public function getCategoryID($categoryName) {
+        $query = "SELECT CategoryID FROM Categories WHERE CategoryName = :categoryName";
+        $params = array(':categoryName' => $categoryName);
 
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            // Restituisci l'ID della categoria se trovato
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return ($result) ? $result['CategoryID'] : null;
+        } catch (PDOException $e) {
+            // Gestisci l'eccezione (registra, visualizza un messaggio di errore, ecc.)
+            return null;
+        }
+    }
+}
 
 ?>

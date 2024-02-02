@@ -4,13 +4,25 @@
     box-sizing: border-box;
 }
 
+:root{
+    --backgnd: #E6E6E6;
+    --contrast: #A1A7B8;
+    --text: #3c3c3c;
+    --textContrast: #395161;
+    --divider:#7f8e83;
+    --sculpture: linear-gradient(281deg, #3C6E71 0%, rgba(60, 110, 113, 0.00) 50%), linear-gradient(98deg, #284B63 0%, #ADB5BD 72.39%);
+    --painting: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    --fashon: linear-gradient(281deg, #9D4EDD 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(103deg, #7B2CBF 0.26%, #9F52DD 35.35%, #B064EB 47.09%, #C77DFF 57.38%);
+    --photography: linear-gradient(281deg, #425C49 0%, rgba(104, 140, 114, 0.00) 50%), linear-gradient(101deg, #425C49 0.23%, #7A9D64 50%);
+}
+
 body{
     display: flex;
     flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-    background: linear-gradient(277deg, #996A3B 0%, rgba(255, 255, 255, 0.00) 35.56%), linear-gradient(104deg, #986D43 0.5%, #AA9A90 63.51%);
+    background: var(--backgnd);
 }
   
 main {
@@ -19,7 +31,7 @@ main {
     width: 300px;
     height: 500px;
     overflow: hidden;
-    background: #AA9A90;
+    background: var(--contrast);
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     padding-top: 20px; /* Spazio sopra il contenuto */
@@ -48,7 +60,7 @@ main > img {
 }
 
 label {
-    color: #fff;
+    color: var(--text);
     font-size: 2.3em;
     justify-content: center;
     display: flex;
@@ -66,7 +78,7 @@ label {
 input {
     width: 60%;
     height: 30px; /* Altezza modificata per una migliore visualizzazione */
-    background: #e0dede;
+    background: var(--backgnd);
     justify-content: center;
     display: flex;
     margin: 20px auto;

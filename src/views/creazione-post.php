@@ -8,7 +8,7 @@ $errorMessage = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['confirmButton'])) {
         // Verifica che entrambi i campi siano compilati
-        if (!empty($_FILES['photoInput']['name']) && !empty($_POST['descriptionInput'])) {
+        if (!empty($_FILES['photoInput']['name']) && !empty($_POST['descriptionInput']) && !empty($_POST['category'])) {
             // Esegue l'upload della foto e ottiene l'URL
             $targetDirectory = "../img/";  // Assicurati di creare questa cartella
             $targetFile = $targetDirectory . basename($_FILES["photoInput"]["name"]);
@@ -16,19 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
             // Controlla se il file immagine è un'immagine reale o un'immagine falsa o un file corrotto
-            if (isset($_POST["submit"])) {
-                // getimagesize è un metodo che ottiene informazioni sull'immagine in questione se restituisce info
-                // valide allora $uploadOk viene messo a true altrimenti a false
-                $check = getimagesize($_FILES["photoInput"]["tmp_name"]);
-                if ($check !== false) {
-                    $uploadOk = 1;
-                } else {
-                    $uploadOk = 0;
-                }
+            $check = getimagesize($_FILES["photoInput"]["tmp_name"]);
+            if ($check === false) {
+                $uploadOk = 0;
             }
 
-            // Verifica se il file esiste già, se è già presente non ha senso creare un post con la stessa foto
-            // e altri utenti non possono rubare l'arte di una persona perciò il file diventa univoco e assume valore
+            // Verifica se il file esiste già
             if (file_exists($targetFile)) {
                 $uploadOk = 0;
             }
@@ -39,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Consenti solo alcuni formati di file, limitando file che non sono immagini
-            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif") {
+            $allowedFormats = ["jpg", "jpeg", "png", "gif"];
+            if (!in_array($imageFileType, $allowedFormats)) {
                 $uploadOk = 0;
             }
 
@@ -53,25 +46,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $userID = 1;  // Sostituisci con l'ID utente reale
                     $mediaURL = $targetFile;
                     $caption = $_POST['descriptionInput'];
-                    $categoryID = 1;  // Sostituisci con l'ID della categoria reale
+                    
+                    // Chiamare il metodo getCategoryID della tua istanza di Database
+                    $categoryID = $database->getCategoryID($_POST['category']);
 
-                    // Inserisci il post nel database
-                    if ($database->insertPost($userID, $mediaURL, $caption, $categoryID)) {
-                        // Reindirizza all'URL del profilo
-                        header("Location: Profile.php");
-                        exit();
+                    // Verifica se la categoria è stata selezionata
+                    if ($categoryID !== null) {
+                        // Inserisci il post nel database
+                        if ($database->insertPost($userID, $mediaURL, $caption, $categoryID)) {
+                            // Reindirizza all'URL del profilo
+                            header("Location: Profile.php");
+                            exit();
+                        } else {
+                            $errorMessage = "Errore durante l'inserimento del post nel database.";
+                        }
                     } else {
-                        $errorMessage = "Errore durante l'inserimento del post nel database.";
+                        $errorMessage = "Seleziona una categoria valida.";
                     }
                 } else {
                     $errorMessage = "Errore nell'upload del file.";
                 }
             }
         } else {
-            $errorMessage = "Entrambi i campi devono essere compilati.";
+            $errorMessage = "Tutti i campi devono essere compilati.";
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <main>
-        <img src="../img/CreateYourPost.png" alt="" id="pic1">
+        <img src="../img/CreateYourPost1.png" alt="" id="pic1">
         <section>
             <article>
                 <header>
@@ -104,9 +105,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </section>
 
                     <!-- Elemento con ID 'postDescription' -->
-                    <label for="descriptionInput">Descrizione del Post:</label>
-                    <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
-                   
+
+                    <div class="container">
+                        <label for="descriptionInput">Descrizione del Post:</label>
+                        <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
+                        <select name="category" id="category">
+                            <option value="" disabled selected>Category</option>
+                            <option value="opzione1">Travel</option>
+                            <option value="opzione2">Nature</option>
+                            <option value="opzione3">Lifestyle</option>
+                            <option value="opzione3">Art</option>
+                            <option value="opzione3">Sculpture</option>
+                            <option value="opzione3">DigitalArt</option>
+                        </select>
+                    </div>
                     
                     <label for="error-message" class="error-message"><?php echo "$errorMessage" ?></label>
 
@@ -121,12 +133,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </article>
         </section>
-        <img src="../img/CreateYourPost.png" alt="" id="pic2">
+        <img src="../img/CreateYourPost2.png" alt="" id="pic2">
     </main>
 
     <?php include_once('Nav.php'); ?>
 
     <script src="../js/creazione-post.js"></script>
+    <script src="../js/importTheme.js"></script>
 
 </body>
 
