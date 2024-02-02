@@ -466,6 +466,37 @@ class Database {
             return false;
         }
     }
+
+    public function getUserLikedPosts($userID) {
+        $query = "
+            SELECT 
+                p.*, 
+                COUNT(l.LikeID) AS LikesCount 
+            FROM 
+                posts p
+                INNER JOIN likes l ON p.PostID = l.PostID
+            WHERE 
+                l.UserID = :userID
+            GROUP BY 
+                p.PostID
+        ";
+    
+        $params = array(':userID' => $userID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Fetch all posts liked by the user with the count of likes
+            $userLikedPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $userLikedPosts;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+    
     
     
 }

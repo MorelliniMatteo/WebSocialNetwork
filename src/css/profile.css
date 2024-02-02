@@ -8,7 +8,13 @@
     
 }
 
+#taggedSection {
+    display: none;
+}
 
+#savedSection {
+    display: none;
+}
 
 ul {
     list-style: none;
@@ -18,8 +24,11 @@ a {
     text-decoration: none;
 }
 
+
 .btn {
     text-decoration: none;
+    border: none;
+    background: var(--backgnd);
 }
 
 .line {
@@ -170,7 +179,6 @@ a {
 .tab-container {
     display: flex;
     height: 50px;
-    /* padding: 0 20px; */
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
