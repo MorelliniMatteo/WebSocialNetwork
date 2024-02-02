@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 2; // Replace with the actual logged-in user ID
+$loggedInUserID = 1; // Replace with the actual logged-in user ID
 
 $database = new Database();
 
@@ -22,6 +22,7 @@ $profileInfo = $database->getUserProfileInfo($loggedInUserID);
 // Fetch user posts
 $userPosts = $database->getUserPosts($loggedInUserID);
 $userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
+$userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 ?>
 
 <!DOCTYPE html>
@@ -114,7 +115,7 @@ $userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
         </section>
 
         <section id="taggedSection" class="public-container user-posts">
-            <?php foreach ($userLikedPosts as $post) : ?>
+            <?php foreach ($userTaggedPosts as $post) : ?>
                 <a href="#" class="post">
                     <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
                     <div class="post-box">
@@ -160,8 +161,8 @@ $userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
 
 <?php include_once('Nav.php'); ?>
 
-<script src="../js/importTheme.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/importTheme.js"></script>
 <script src="../js/profileSwitchPost.js"></script>
 
 </body>
