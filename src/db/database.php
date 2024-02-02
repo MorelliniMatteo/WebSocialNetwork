@@ -52,11 +52,43 @@ class Database {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getNotifications() {
-        $query = "SELECT * FROM Notifications";
-        $stmt = $this->conn->query($query);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function getNotifications($userID) {
+        $query = "
+            SELECT 
+                n.NotificationID,
+                n.fromUserID,
+                fromUser.Username AS FromUserName,
+                n.toUserID,
+                toUser.Username AS ToUserName,
+                n.NotificationText,
+                n.PostID
+            FROM 
+                Notifications n
+                INNER JOIN Users fromUser ON n.fromUserID = fromUser.UserID
+                INNER JOIN Users toUser ON n.toUserID = toUser.UserID
+            WHERE 
+                n.toUserID = :userID
+            ORDER BY 
+                n.NotificationDate DESC
+        ";
+    
+        $params = array(':userID' => $userID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Fetch all notifications for the user
+            $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $notifications;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
     }
+    
+    
 
     // Get user data by ID
     public function getUserByID($userID) {
@@ -119,14 +151,60 @@ class Database {
         return $stmt->execute();
     }
 
-    // Insert notification
-    public function insertNotification($userID, $notificationText) {
-        $query = "INSERT INTO Notifications (UserID, NotificationText) VALUES (:userID, :notificationText)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
-        $stmt->bindParam(':notificationText', $notificationText, PDO::PARAM_STR);
-        return $stmt->execute();
+    function generateNotificationMessage($actionType, $actorUserID) {
+        
+        $actor = $this->getUserByID($actorUserID);
+    
+        switch ($actionType) {
+            case 'follow':
+                return $actor['Username'] . ' started following you.';
+            case 'save':
+                return $actor['Username'] . ' saved one of your posts.';
+            case 'like':
+                return $actor['Username'] . ' liked one of your posts.';
+            case 'tag':
+                return $actor['Username'] . ' tagged you in a post.';
+            default:
+                return 'Unknown action type.';
+        }
     }
+
+    // Insert notification
+    // Assume you have a method to insert data into the Notifications table
+    public function insertNotification($fromUserID, $toUserID, $actionType, $postID = null) {
+        // Implement this method to insert data into the Notifications table
+        // You can use your existing method like $this->conn->prepare() and $stmt->execute() here
+
+        // Example query, adjust based on your actual table structure
+        $query = "
+            INSERT INTO Notifications (fromUserID, toUserID, NotificationText, PostID)
+            VALUES (:fromUserID, :toUserID, :notificationText, :postID)
+        ";
+
+        // Example messages based on action types
+        $notificationText = $this->generateNotificationMessage($actionType, $fromUserID);
+
+        // Bind parameters and execute the query
+        $params = array(
+            ':fromUserID' => $fromUserID,
+            ':toUserID' => $toUserID,
+            ':notificationText' => $notificationText,
+            ':postID' => $postID
+        );
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            // Return the last inserted ID if needed
+            return $this->conn->lastInsertId();
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+
+
 
     // Insert follower
     public function insertFollower($followerUserID, $followingUserID) {
@@ -363,6 +441,33 @@ class Database {
             return 0;
         }
     }
+
+    public function removeNotification($notificationID) {
+        $query = "DELETE FROM Notifications WHERE NotificationID = :notificationID";
+    
+        $params = array(':notificationID' => $notificationID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Check the number of affected rows to verify if the deletion was successful
+            if ($stmt->rowCount() > 0) {
+                // Return true on success
+                return true;
+            } else {
+                // Return false if no rows were affected (notification not found)
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Log or display the error message
+            error_log('Error removing notification: ' . $e->getMessage());
+            // Return false on failure
+            return false;
+        }
+    }
+    
+    
 }
 
 
