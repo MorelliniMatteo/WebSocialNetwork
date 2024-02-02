@@ -1,5 +1,5 @@
 <?php
-include_once('../models/database.php');
+include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 2; // Replace with the actual logged-in user ID
@@ -56,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/EditProfile.css">
 </head>
 <body>
