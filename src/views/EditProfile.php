@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
     <section class="settings-form public-container">
-        <form class="form">
+        <form class="form" method="POST">
             <section class="back photo-section">
                 <section class="photo-container">
                     <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">

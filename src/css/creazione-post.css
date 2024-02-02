@@ -197,6 +197,27 @@ section > img {
     margin-left: 0;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container label {
+    display: none;
+}
+
+.container select {
+    width: 7rem;
+    margin-right: 15px;
+    font-size: small;
+}
+
+.container select option {
+    font-size: small;
+    margin-bottom: 2px;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1161px) {
     #pic2 {
         display: none;

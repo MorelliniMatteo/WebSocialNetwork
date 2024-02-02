@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.notification-container {
+    position: relative;
+    display: inline-block;
+}
+
+#notificationBtn {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#notificationDropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow-y: auto; 
+    max-height: 300px;
+}
+
+
+.notification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.notification-item {
+    transition: background-color 0.3s;
+}
+
+.notification-item:hover {
+    background-color: #f5f5f5;
+}
+
+.notification-sender {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.remove-notification {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+#toastBox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.toast {
+    width: 200px;
+    height: 40px;
+    background: #fff;
+    font-weight: 500;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    transform: translateX(100%);
+    animation: moveLeft 0.5s linear forwards;
+}
+
+@keyframes moveLeft {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#toastBox img {
+    width: 20px;
+    height: 20px;
+    margin: 0 20px;
+}
+
+.toast::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: green;
+    animation: anim 5s linear forwards;
+}
+
+@keyframes anim {
+    100% {
+        width: 0;
+    }
+}
+
+.toast.error::after {
+    background: red;
+}
+
+.toast.invalid::after {
+    background: orange;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .toast {
+        font-size: 15px;
+        width: 300px;
+        height: 60px;
+        margin: 15px 0;
+    }
+}
+
+
+@media screen and (min-width: 1280px) {
+
+    .toast {
+        font-size: 20px;
+        width: 400px;
+        height: 80px;
+        margin: 20px 0;
+    }
+}

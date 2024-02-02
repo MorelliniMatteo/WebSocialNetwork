@@ -497,10 +497,57 @@ class Database {
             return false;
         }
     }
-    
-    
-    
-}
 
+    public function getUserTaggedPosts($userID) {
+        $query = "
+            SELECT 
+                p.*, 
+                COUNT(t.TaggedID) AS TagCount 
+            FROM 
+                posts p
+                INNER JOIN tagged t ON p.PostID = t.PostID
+            WHERE 
+                t.UserID = :userID
+            GROUP BY 
+                p.PostID
+        ";
+    
+        $params = array(':userID' => $userID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Fetch all posts tagged by the user with the count of tags
+            $userTaggedPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $userTaggedPosts;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+    
+    
+    
+    
+    
+    public function getCategoryID($categoryName) {
+        $query = "SELECT CategoryID FROM Categories WHERE CategoryName = :categoryName";
+        $params = array(':categoryName' => $categoryName);
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+
+            // Restituisci l'ID della categoria se trovato
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return ($result) ? $result['CategoryID'] : null;
+        } catch (PDOException $e) {
+            // Gestisci l'eccezione (registra, visualizza un messaggio di errore, ecc.)
+            return null;
+        }
+    }
+}
 
 ?>
