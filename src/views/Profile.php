@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 1; // Replace with the actual logged-in user ID
+$loggedInUserID = 2; // Replace with the actual logged-in user ID
 
 $database = new Database();
 
@@ -21,6 +21,7 @@ $profileInfo = $database->getUserProfileInfo($loggedInUserID);
 
 // Fetch user posts
 $userPosts = $database->getUserPosts($loggedInUserID);
+$userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
 ?>
 
 <!DOCTYPE html>
@@ -85,10 +86,11 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         <div class="public-container line"></div>
 
         <section class="public-container tab-container">
-            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></button>
-            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="tagged"></button>
-            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></button>
+            <button id="postSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></button>
+            <button id="taggedSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="tagged"></button>
+            <button id="savedSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></button>
         </section>
+
 
         <section id="postSection" class="public-container user-posts">
             <?php foreach ($userPosts as $post) : ?>
@@ -112,7 +114,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         </section>
 
         <section id="taggedSection" class="public-container user-posts">
-            <?php foreach ($userPosts as $post) : ?>
+            <?php foreach ($userLikedPosts as $post) : ?>
                 <a href="#" class="post">
                     <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
                     <div class="post-box">
@@ -133,7 +135,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         </section>
 
         <section id="savedSection" class="public-container user-posts">
-            <?php foreach ($userPosts as $post) : ?>
+            <?php foreach ($userLikedPosts as $post) : ?>
                 <a href="#" class="post">
                     <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
                     <div class="post-box">
@@ -159,6 +161,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
 <?php include_once('Nav.php'); ?>
 
 <script src="../js/importTheme.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../js/profileSwitchPost.js"></script>
 
 </body>
