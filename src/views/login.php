@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
             </main>
                 
-            <img src="../img/LoginFinalPic.png" alt="">
+            <img src="../img/LoginFinalPic1.png" alt="">
             
         </div>
 
