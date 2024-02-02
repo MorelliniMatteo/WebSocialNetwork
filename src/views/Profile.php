@@ -85,13 +85,55 @@ $userPosts = $database->getUserPosts($loggedInUserID);
         <div class="public-container line"></div>
 
         <section class="public-container tab-container">
-            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></a>
-            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="tagged"></a>
-            <a href="#" class="post-logo"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></a>
+            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></button>
+            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="tagged"></button>
+            <button href="#" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></button>
         </section>
 
-        <section class="public-container user-posts">
-                <?php foreach ($userPosts as $post) : ?>
+        <section id="postSection" class="public-container user-posts">
+            <?php foreach ($userPosts as $post) : ?>
+                    <a href="#" class="post">
+                        <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
+                        <div class="post-box">
+                            <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
+                            <div class="post-content">
+                                <div class="post-content-box">
+                                    <span class="post-content-likes-number"><?php echo $database->getLikesCount($post['PostID']); ?></span>
+                                    <span class="post-content-likes-label">LIKES</span>
+                                </div>
+                                <div class="post-content-box">
+                                    <span class="post-content-comments-number"><?php echo $database->getCommentsCount($post['PostID']); ?></span>
+                                    <span class="post-content-comments-label">COMMENTS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+        </section>
+
+        <section id="taggedSection" class="public-container user-posts">
+            <?php foreach ($userPosts as $post) : ?>
+                <a href="#" class="post">
+                    <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
+                    <div class="post-box">
+                        <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
+                        <div class="post-content">
+                            <div class="post-content-box">
+                                <span class="post-content-likes-number"><?php echo $database->getLikesCount($post['PostID']); ?></span>
+                                <span class="post-content-likes-label">LIKES</span>
+                            </div>
+                            <div class="post-content-box">
+                                <span class="post-content-comments-number"><?php echo $database->getCommentsCount($post['PostID']); ?></span>
+                                <span class="post-content-comments-label">COMMENTS</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </section>
+
+        <section id="savedSection" class="public-container user-posts">
+            <?php foreach ($userPosts as $post) : ?>
                 <a href="#" class="post">
                     <img src="<?php echo $post['MediaURL']; ?>" alt="post-image">
                     <div class="post-box">
@@ -117,6 +159,7 @@ $userPosts = $database->getUserPosts($loggedInUserID);
 <?php include_once('Nav.php'); ?>
 
 <script src="../js/importTheme.js"></script>
+<script src="../js/profileSwitchPost.js"></script>
 
 </body>
 </html>
