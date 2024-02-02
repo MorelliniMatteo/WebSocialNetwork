@@ -30,12 +30,12 @@ function viewPostHTML($post, $userData, $database) {
     }
 
     echo '</div>';
-    echo '<form id="commentForm">';
+    echo '<form id="commentForm_' . $postID . '">';
     echo '<input type="hidden" name="PostID" value="' . $postID . '">';
     echo '<input type="hidden" name="UserID" value="' . $userID . '">';
-    echo '<label for="CommentText"></label>';
-    echo '<input type="text" name="CommentText" id="CommentText" placeholder="add a comment" required>';
-    echo '<input type="button" value="send comment" onclick="submitComment()">';
+    echo '<label for="CommentText' . $postID . '"></label>';
+    echo '<input type="text" name="CommentText" id="CommentText' . $postID . '" placeholder="add a comment" required>';
+    echo '<input type="button" value="send comment" onclick="submitComment(' . $postID . ')">';
     echo '</form>';
     echo '</aside>';
     echo '</div>';

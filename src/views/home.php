@@ -60,6 +60,5 @@ $posts = $database->getPostFromFollowing($loggedInUserID);
     
     <script src="../js/post.js"></script>
     <script src="../js/menuTheme.js"></script>
-    <script src="../js/infinityScroll.js"></script>
  </body>
 </html>

@@ -39,20 +39,27 @@ function openComments(postID) {
     }
 }
 
-function submitComment() {
-    let formData = new FormData(document.getElementById('commentForm'));
+function submitComment(postID) {
+    let form = document.getElementById("commentForm_" + postID);
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'pushComment.php', true);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log(xhr.responseText);
-        } else {
-            console.error('Errore nella richiesta AJAX');
-        }
-    };
+    if(form){
+        let formData = new FormData(form);
 
-    xhr.send(formData);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'pushComment.php', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.error('Errore nella richiesta AJAX');
+            }
+        };
+    
+        xhr.send(formData);
+    } else {
+        console.error('Errore: form non trovato');
+    }
+    
 }
 
 
