@@ -1,23 +1,24 @@
 <?php
+session_start(); // Avvia la sessione
+
 include_once('../db/database.php');
 
 $database = new Database();
 
-
-// Check if the form is submitted
+// Verifica se il modulo è stato inviato
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check which button was pressed
+    // Verifica quale pulsante è stato premuto
     if (isset($_POST['signup'])) {
-        // Registration form submitted
+        // Form di registrazione inviato
         $Username = $_POST['txt'];
         $Email = $_POST['email'];
         $Password = $_POST['pswd'];
 
-        // Perform validation and registration
+        // Effettua la convalida e la registrazione
         if (empty($Username) || empty($Email) || empty($Password)) {
             $errorMessage = "Please fill in all required fields.";
         } else {
-            // Check if the email or username already exists
+            // Verifica se l'email o il nome utente esistono già
             $existingEmail = $database->getUserByEmail($Email);
             $existingUsername = $database->getUserByUsername($Username);
 
@@ -26,27 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } elseif ($existingUsername) {
                 $errorMessage = "Username already exists. Please put a different one or Login.";
             } else {
-                // Hash the password and insert the new user
+                // Hash della password e inserimento del nuovo utente
                 $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
                 $database->insertUser($Username, $hashedPassword, $Email, '');
+                $_SESSION['user_id'] = $database->getUserByEmail($Email)['UserID']; // Setta l'ID utente nella sessione
                 header('Location: profile.php');
                 exit();
             }
         }
     } elseif (isset($_POST['login'])) {
-        // Login form submitted
+        // Form di login inviato
         $Email = $_POST['email'];
         $Password = $_POST['pswd'];
-        // Validate input (you should perform more comprehensive validation)
+
+        // Valida l'input (è consigliabile effettuare una convalida più approfondita)
         if (empty($Email) || empty($Password)) {
             $errorMessage = "Please fill in all required fields.";
         } else {
-            // Check if the email exists
+            // Verifica se l'email esiste
             $user = $database->getUserByEmail($Email);
 
             if ($user && password_verify($Password, $user['Password'])) {
                 // Password corretta
-                header('Location: Profile.php');
+                $_SESSION['user_id'] = $user['UserID']; // Setta l'ID utente nella sessione
+                header('Location: profile.php');
                 exit();
             } else {
                 // Email o password errate
@@ -55,7 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="it">
