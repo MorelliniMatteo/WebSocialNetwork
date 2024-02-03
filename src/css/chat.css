@@ -168,3 +168,7 @@ textarea {
 .sendText-button:hover {
   background: #efefef;
 }
+
+.invisible {
+    display: none;
+}

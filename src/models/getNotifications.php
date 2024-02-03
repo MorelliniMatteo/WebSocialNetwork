@@ -1,5 +1,6 @@
 <?php
-// Include your database connection or configuration file
+
+
 include_once('../db/database.php');
 
 
