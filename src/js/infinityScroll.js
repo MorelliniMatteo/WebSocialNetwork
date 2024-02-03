@@ -39,8 +39,9 @@ function loadMorePosts() {
                     url: '../models/api.php',
                     data: { dati: datiJSON },
                     success: function (risposta) {
-                        console.log(risposta);
-                        postsContainer.append(risposta);
+                        let div = document.createElement('div');
+                        div.innerHTML = risposta;
+                        postsContainer.append(div);
                     },
                     error: function (errore) {
                         console.error('Errore nella richiesta AJAX:', errore);
