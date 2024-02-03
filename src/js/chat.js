@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const messageButtons = $('.message');
+    const navbar = $('.navbar');
     const messageContainer = $('.message-container');
     const dialogPage = $('.dialog-page');
     const dialogContainer = $('#dialogContainer');
@@ -35,13 +36,17 @@ $(document).ready(function () {
         // Fetch and display messages between two users
         fetchAndDisplayMessages(senderID, currentUserID);
         messageContainer.css('display', 'none');
+        navbar.css('display', 'none');
         dialogPage.css('display', 'flex');
+        $('main.main').addClass('active');
     });
 
     $('#backButton').on('click', function () {
         // Hide the dialog page and show the message container when the back button is clicked
         dialogPage.css('display', 'none');
         messageContainer.css('display', 'flex');
+        navbar.css('display', 'flex');
+        $('main.main').removeClass('active');
     });
 
     function fetchAndDisplayMessages(senderID, currentUserID) {

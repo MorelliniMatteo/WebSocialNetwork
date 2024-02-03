@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // Attach click event to the notification button
+    
     $('#notificationBtn').on('click', function() {
         // Toggle visibility of the notification dropdown
         $('#notificationDropdown').toggle();
@@ -14,7 +14,7 @@ $(document).ready(function() {
     function loadNotifications() {
         // Make an AJAX request to fetch notifications from the server
         $.ajax({
-            url: '../models/getNotifications.php', // Replace with your PHP file to fetch notifications
+            url: '../models/getNotifications.php',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -69,19 +69,15 @@ function updateNotificationDropdown(notifications) {
 // Function to handle the remove button click
 function removeNotification(notificationID) {
     // Implement the logic to remove the notification from the database
-    // You may use AJAX to send a request to the server to delete the notification
-    // Adjust this function based on your server-side implementation
     $.ajax({
         type: 'POST',
-        url: '../models/remove_notification.php', // Add timestamp to prevent caching
+        url: '../models/remove_notification.php',
         data: { notificationID: notificationID },
         success: function(response) {
-            // Handle the success response
             displayToast('Notification removed successfully')
             console.log(notificationID + 'Notification removed successfully' + response)
         },
         error: function(error) {
-            // Handle the error
             console.error('Error removing notification', error)
         }
     });
