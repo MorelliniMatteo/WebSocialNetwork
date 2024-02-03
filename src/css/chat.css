@@ -6,7 +6,7 @@
 
 button {
   border: none;
-  background: #fff;
+  /* background: #fff; */
   transition: .4s ease-in-out;
 }
 textarea {
@@ -110,7 +110,6 @@ textarea {
 }
 
 .dialog-text {
-  background: #eceaea;
   border-radius: 1rem 1rem 1rem 0.25rem;
   padding: 1rem 1.5rem;
   display: flex;
@@ -136,11 +135,11 @@ textarea {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f0f0f0;
   padding: 10px;
   display: flex;
   justify-content: space-around; 
   align-items: center; 
+  background: var(--backgnd);
 }
 
 .input-wrapper {
@@ -171,4 +170,9 @@ textarea {
 
 .invisible {
     display: none;
+}
+
+.main.active {
+  width: 100%;
+  margin: 0;
 }
