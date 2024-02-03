@@ -620,9 +620,9 @@ class Database {
             
             $stmt->execute();
 
-            echo "Image uploaded successfully!";
+            return true;
         } catch (PDOException $e) {
-            echo "Error uploading image: " . $e->getMessage();
+            return false;
         }
     }
 

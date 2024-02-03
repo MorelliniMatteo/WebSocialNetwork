@@ -124,9 +124,9 @@ $database = new Database();
 // echo json_encode($messages);
 
 
-$path = '../img/chat/';
-$imageName = "profile.jpg";
-$imageData = file_get_contents($path . $imageName);
+// $path = '../img/chat/';
+// $imageName = "profile.jpg";
+// $imageData = file_get_contents($path . $imageName);
 // $database->uploadImage($imageName, $imageData);
 
 // Example of retrieving image
