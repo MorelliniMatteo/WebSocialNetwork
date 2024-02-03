@@ -12,10 +12,14 @@ if (isset($_POST['postID']) && isset($_POST['userID']) && isset($_POST['add'])) 
     if($add){
         if(!$database->insertLike($postID, $userID)){
             echo "Si è verificato un errore durante l'inserimetno nel database.";
-        } 
+        } else {
+            echo "success";
+        }
     } else {
         if(!$database->removeLike($postID, $userID)){
             echo "Si è verificato un errore durante la rimozione del like dal database.";
+        } else {
+            echo "success";
         }
     }
 } else {

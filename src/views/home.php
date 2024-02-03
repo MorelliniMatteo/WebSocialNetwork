@@ -28,7 +28,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID, 0);
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><a href="notifications.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
+             <li><a href="Notification.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">

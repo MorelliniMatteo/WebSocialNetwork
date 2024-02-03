@@ -1,7 +1,16 @@
+let like = document.querySelectorAll(".likeButton");
+
+like.forEach( (element) => {
+    element.addEventListener( 'click', function() {
+        
+    })
+});
+
 function Like(postID, userID) {
     let post = document.getElementById(postID);
     let icon = post.querySelector(".likeButton");
-    let xhr = new XMLHttpRequest();
+    
+    let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
 
     // Cambia l'icona al click
     if (icon.src.endsWith("like-empty.svg")) {
@@ -12,18 +21,17 @@ function Like(postID, userID) {
         let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=0";
     }
 
-    xhr.open("POST", 'pushLike.php', true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // La richiesta è andata a buon fine
-            console.log(xhr.responseText);
-        } else {
-            console.error("Errore nella chiamata AJAX. Status:", xhr.status);
-        }
-    };
-    
-    xhr.send(dati);
+    $.ajax({
+        type: 'POST',
+        url: '../views/pushLike.php',
+        data: { dati: dati },
+        success: function (resposne) {
+                console.log(response);
+            },
+            error: function (errore) {
+                console.error('Errore nella richiesta AJAX:', errore);
+            }
+        })
 }
 
 function openComments(postID) {
