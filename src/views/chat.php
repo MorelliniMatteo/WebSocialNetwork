@@ -1,6 +1,7 @@
 <?php
 
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 $currentUserID = 2; // Change this to the actual ID of the current user
 
@@ -39,7 +40,7 @@ $path = "../img/chat/";
         <button class="message">
             <div class="sender-info">
                 <div class="sender-profile-image">
-                    <img class="sender-image" src="<?= $path . $user['LogoURL'] ?>" />
+                    <img class="sender-image" src="<?php echo getImageSourceLink($database, $user['LogoURL']) ?>" />
                 </div>
                 <span class="sender-name"><?= $user['Username'] ?></span>
                 <span class="sender-id invisible"><?= $user['UserID'] ?></span>
