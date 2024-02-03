@@ -31,7 +31,7 @@ function loadMorePosts() {
     getPostsFromServer(index)
         .then(posts => {
             console.log(posts);
-            if(posts.length > 0){
+            if(posts){
                 posts.forEach(element => {
                     let datiJSON = JSON.stringify(element);
                     $.ajax({
@@ -42,10 +42,10 @@ function loadMorePosts() {
                         let div = document.createElement('div');
                         div.innerHTML = risposta;
                         postsContainer.append(div);
-                    },
-                    error: function (errore) {
-                        console.error('Errore nella richiesta AJAX:', errore);
-                    }
+                        },
+                        error: function (errore) {
+                            console.error('Errore nella richiesta AJAX:', errore);
+                        }
                     });
             });
             index+=5;

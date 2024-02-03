@@ -403,7 +403,7 @@ class Database {
         if ($result) {
             return $result;
         } else {
-            die("Errore nella query: ");
+            die(json_encode("Errore nella query: "));
         }
     }
 
