@@ -1,7 +1,7 @@
 
 const postsContainer = document.querySelector(".posts-container");
 const sentinel = document.querySelector(".space");
-let index = 5;
+let index = 0;
 
 function getPostsFromServer(n) {
     return new Promise((resolve, reject) => {
@@ -30,7 +30,6 @@ function getPostsFromServer(n) {
 function loadMorePosts() {
     getPostsFromServer(index)
         .then(posts => {
-            console.log(posts);
             if(posts){
                 posts.forEach(element => {
                     let datiJSON = JSON.stringify(element);

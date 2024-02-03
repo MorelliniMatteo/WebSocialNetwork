@@ -72,7 +72,7 @@ function generatePostHTML($post, $database, $userData)
     // Share button
     $shareButton = $dom->createElement('img', '');
     $shareButton->setAttribute('class', 'icon shareButton');
-    $shareButton->setAttribute('src', '../icon/share.svg');
+    $shareButton->setAttribute('src', '../icon/saved.svg');
     $shareButton->setAttribute('alt', 'comment button');
     $shareButton->setAttribute('onclick', "sharePost($postID)");
     $section->appendChild($shareButton);
@@ -105,19 +105,34 @@ function generatePostHTML($post, $database, $userData)
 
     // Comment form
     $commentForm = $dom->createElement('form');
-    $commentForm->setAttribute('id', 'commentForm');
+    $commentForm->setAttribute('id', 'commentForm_' . $postID);
 
-    $commentForm->appendChild($dom->createElement('input'))->setAttribute('type', 'hidden');
-    $commentForm->appendChild($dom->createElement('input'))->setAttribute('type', 'hidden');
+    $postIDHidden = $dom->createElement('input');
+    $postIDHidden->setAttribute('type', 'hidden');
+    $postIDHidden->setAttribute('name', 'PostID');
+    $postIDHidden->setAttribute('value', $postID);
+    $commentForm->appendChild($postIDHidden);
+    $userIDHidden = $dom->createElement('input');
+    $userIDHidden->setAttribute('type', 'hidden');
+    $userIDHidden->setAttribute('name', 'UserID');
+    $userIDHidden->setAttribute('value', $userData['UserID']);
+    $commentForm->appendChild($postIDHidden);
+    $commentForm->appendChild($userIDHidden);
 
     $label = $dom->createElement('label', '');
     $label->setAttribute('for', 'CommentText');
     $commentForm->appendChild($label);
 
-    $commentForm->appendChild($dom->createElement('input'))->setAttribute('type', 'text');
+    $commentInput = $dom->createElement('input');
+    $commentInput->setAttribute('type', 'text');
+    $commentInput->setAttribute('id', 'CommentText');
+    $commentInput->setAttribute('name', 'CommentText');
+    $commentInput->setAttribute('placeholder', 'add a comment'); // Add this line
+    $commentForm->appendChild($commentInput);
+
     $commentForm->appendChild($dom->createElement('input'))->setAttribute('type', 'button');
     $commentForm->lastChild->setAttribute('value', 'send comment');
-    $commentForm->lastChild->setAttribute('onclick', 'submitComment()');
+    $commentForm->lastChild->setAttribute('onclick', 'submitComment(' . $postID . ')');
 
     $aside->appendChild($commentForm);
     $postContainer->appendChild($aside);

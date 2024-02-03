@@ -46,13 +46,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID, 0);
          <form>
              <input type="text" id="Search" placeholder="Search for your artists" title="search bar">
          </form>
-         <div class="posts-container">
-            <?php if (!empty($posts)) : ?>
-                <?php foreach ($posts as $post) : ?>
-                    <?php viewPostHTML($post, $userData, $database); ?>
-                <?php endforeach; ?>
-            <?php else : echo "No more posts available from following."; endif; ?>
-        </div>
+         <div class="posts-container"></div>
         <div class="space">
             <p>space</p>
         </div>
