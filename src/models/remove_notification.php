@@ -1,15 +1,15 @@
 <?php
-// Include your database connection or initialization code here
+
 include_once('../db/database.php');
 
-// Check if the notification ID is provided in the POST request
+
 if (isset($_POST['notificationID'])) {
     $notificationID = $_POST['notificationID'];
 
-    // Create an instance of the Database class
+
     $database = new Database();
 
-    // Attempt to remove the notification
+
     $success = $database->removeNotification($notificationID);
 
     // Return response based on the success status

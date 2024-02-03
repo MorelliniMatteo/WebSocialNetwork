@@ -1,3 +1,19 @@
+<?php
+
+include_once('../db/database.php');
+
+$currentUserID = 2; // Change this to the actual ID of the current user
+
+$database = new Database();
+
+$conversationUsers = $database->getConversationUsers($currentUserID);
+
+$currentUserName = $database->getUserByID($currentUserID)["Username"];
+
+$path = "../img/chat/";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,60 +24,58 @@
 </head>
 <body>
 
-<?php
-// Your PHP logic goes here, such as retrieving messages from the database
-
-// Example code to fetch messages from the database
-$messages = [
-    ["sender" => "Junkai store", "message" => "Hi! Thanks for reaching out. What can I get for you?", "time" => "02:58 PM"],
-    // Add more messages as needed
-];
-?>
-
 <main class="main">
 
     <header class="header">
-        <span class="username">Junkai</span>
+        <span class="username" id="username"><?= $currentUserName ?></span>
+        <span class="userID invisible" id="userID"><?= $currentUserID ?></span>
     </header>
 
     <section class="message-container">
-        <?php foreach ($messages as $message): ?>
-            <button class="message">
-                <div class="sender-info">
-                    <div class="sender-profile-image">
-                        <img class="sender-image" src="./profile.jpg" />
-                    </div>
-                    <span class="sender-name"><?= $message['sender'] ?></span>
+    <?php foreach ($conversationUsers as $user): ?>
+        <button class="message">
+            <div class="sender-info">
+                <div class="sender-profile-image">
+                    <img class="sender-image" src="<?= $path . $user['LogoURL'] ?>" />
                 </div>
-
-                <div class="message-info">
-                    <span class="update-time"><?= $message['time'] ?></span>
-                </div>
-            </button>
-        <?php endforeach; ?>
+                <span class="sender-name"><?= $user['Username'] ?></span>
+                <span class="sender-id invisible"><?= $user['UserID'] ?></span>
+            </div>
+        </button>
+    <?php endforeach; ?>
     </section>
 
     <main class="dialog-page">
-        <!-- Your existing HTML for the dialog page -->
+        <div class="header-container">
 
-        <div class="dialog-container">
-            <?php foreach ($messages as $message): ?>
-                <div class="dialog">
-                    <div class="dialog-text">
-                        <?= $message['message'] ?>
-                    </div>
-                    <div class="text-sendTime">
-                        <div class="send-time"><?= $message['time'] ?></div>
-                    </div>
+            <button class="back-button" id="backButton">
+                <div class="back-image-container">
+                    <img src="<?= $path . 'back.svg' ?>" alt="back" class="back-image">
                 </div>
-            <?php endforeach; ?>
+            </button>
+            
+            <div class="sender-info" id="currentChatUserInfo">
+            </div>
+        
         </div>
 
-        <!-- Remaining HTML for the dialog page -->
-    </main>
+        <div class="dialog-container" id="dialogContainer">
+        </div>
 
+
+        <div class="input-container">
+            <div class="input-wrapper">
+                    <label for="userInput"></label>
+                    <textarea id="userInput" placeholder="Type your message..."></textarea>
+                    <button id="sendButton" class="sendText-button"><img src="../img/chat/send.svg" alt="send" class="sendText-Image"></button>
+                </div>
+            </div>
+
+    </main>
 
 </main>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/chat.js"></script>
 </html>
