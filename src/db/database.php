@@ -582,6 +582,36 @@ class Database {
             return false;
         }
     }
+
+    public function getConversationUsers($currentUserID) {
+        $sql = "SELECT DISTINCT u.UserID, u.Username, ui.LogoURL
+                FROM Users u
+                JOIN ChatMessages cm ON u.UserID = cm.SenderID OR u.UserID = cm.ReceiverID
+                LEFT JOIN UserInfos ui ON u.UserID = ui.UserID
+                WHERE cm.SenderID = :currentUserID OR cm.ReceiverID = :currentUserID";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':currentUserID', $currentUserID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getMessages($senderID, $receiverID) {
+        $sql = "SELECT MessageText, SendDate, SenderID
+                FROM ChatMessages
+                WHERE (SenderID = :senderID AND ReceiverID = :receiverID)
+                OR (SenderID = :receiverID AND ReceiverID = :senderID)
+                ORDER BY SendDate";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':senderID', $senderID, PDO::PARAM_INT);
+        $stmt->bindParam(':receiverID', $receiverID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     
 }
 

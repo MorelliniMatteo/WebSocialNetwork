@@ -23,7 +23,7 @@ textarea {
 }
 
 .message-container {
-  display: none;
+  display: flex;
   flex-direction: column;
 }
 
@@ -63,7 +63,7 @@ textarea {
 /* Dialog Page */
 
 .dialog-page {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 

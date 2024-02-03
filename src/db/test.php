@@ -113,4 +113,12 @@ $database = new Database();
 //     echo $post['PostID'];
 // }
 
-?>
+// $currentUserID = 1; // Change this to the actual ID of the current user
+// $conversationUsers = $database->getConversationUsers($currentUserID);
+// var_dump($conversationUsers);
+
+// Fetch messages based on the sender and current user IDs
+$messages = $database->getMessages(2, 1);
+
+// Return messages as JSON
+echo json_encode($messages);
