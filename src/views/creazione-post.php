@@ -1,8 +1,21 @@
 <?php
+// Inizio o ripristino della sessione
+session_start();
+
 include_once('../db/database.php');
 
 $database = new Database();
 $errorMessage = "";
+
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$userID = $_SESSION['user_id'];
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 if (move_uploaded_file($_FILES["photoInput"]["tmp_name"], $targetFile)) {
                     // Ottieni il resto dei dati dal modulo
-                    $userID = 1;  // Sostituisci con l'ID utente reale
                     $mediaURL = $targetFile;
                     $caption = $_POST['descriptionInput'];
                     
@@ -83,6 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/creazione-post.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Social Network Post</title>
 </head>
 
