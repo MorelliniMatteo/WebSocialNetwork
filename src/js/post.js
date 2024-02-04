@@ -1,38 +1,35 @@
-let like = document.querySelectorAll(".likeButton");
+let likeButtons = document.querySelectorAll(".likeButton");
+let userID = 4;
 
-like.forEach( (element) => {
-    element.addEventListener( 'click', function() {
-        
-    })
-});
+$(document).on('click', '.likeButton', function() {
+    let likeButton = $(this);
+    let post = likeButton.closest(".post-container");
+    let postID = post.attr('id');
 
-function Like(postID, userID) {
-    let post = document.getElementById(postID);
-    let icon = post.querySelector(".likeButton");
-    
-    let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
-
-    // Cambia l'icona al click
-    if (icon.src.endsWith("like-empty.svg")) {
-        icon.src = "../icon/like.svg"; // Cambia con il percorso dell'icona "like-filled"
-        let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=1";
+    // Aggiungi o rimuovi il like a seconda dello stato corrente
+    if (likeButton.attr('src').endsWith("like-empty.svg")) {
+        likeButton.attr('src', "../icon/like.svg");
     } else {
-        icon.src = "../icon/like-empty.svg"; // Ripristina con il percorso dell'icona "like-empty"
-        let dati = "postID=" + encodeURIComponent(postID) + "&userID=" + encodeURIComponent(userID) + "&add=0";
+        likeButton.attr('src', "../icon/like-empty.svg");
     }
-
+    
+    // Esegui la richiesta AJAX
     $.ajax({
         type: 'POST',
         url: '../views/pushLike.php',
-        data: { dati: dati },
-        success: function (resposne) {
-                console.log(response);
-            },
-            error: function (errore) {
-                console.error('Errore nella richiesta AJAX:', errore);
-            }
-        })
-}
+        data: { 
+            postID: postID,
+            userID: userID,
+            add: (likeButton.attr('src').endsWith("like-empty.svg")) ? 0 : 1
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (errore) {
+            console.error('Errore nella richiesta AJAX:', errore);
+        }
+    });
+});
 
 function openComments(postID) {
     let post = document.getElementById(postID);

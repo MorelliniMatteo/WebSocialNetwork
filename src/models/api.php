@@ -58,7 +58,6 @@ function generatePostHTML($post, $database, $userData)
     $likeButton->setAttribute('class', 'icon likeButton');
     $likeButton->setAttribute('src', $likesSrc);
     $likeButton->setAttribute('alt', 'like button');
-    $likeButton->setAttribute('onclick', "Like($postID, {$userData['UserID']})");
     $section->appendChild($likeButton);
 
     // Comment button

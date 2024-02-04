@@ -8,6 +8,7 @@ if (isset($_POST['postID']) && isset($_POST['userID']) && isset($_POST['add'])) 
     $postID = $_POST['postID'];
     $userID = $_POST['userID'];
     $add = $_POST['add'];
+    echo $add;
     
     if($add){
         if(!$database->insertLike($postID, $userID)){
