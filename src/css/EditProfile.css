@@ -17,6 +17,10 @@ body {
     text-align: center;
 }
 
+#photoInput {
+    display: none;
+}
+
 .settings-form {
     background-color: var(--backgnd_contrast);
     border-radius: 20px;
@@ -45,6 +49,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
+    transition: 1s all ease;
+}
+
+.image-wrapper:hover {
+    background: #fff;
 }
 
 .default-image {
@@ -118,6 +128,7 @@ body {
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+    padding-top: 10px;
 }
   
 .cut {
@@ -141,7 +152,8 @@ body {
     pointer-events: none;
     position: absolute;
     top: -7px;
-    font-size: small;
+    font-size: 11px;
+    font-weight: 600;
 }
   
 .submit {
@@ -222,6 +234,10 @@ body {
 .back-button:hover {
     background-color: rgb(118, 186, 241);
     color: var(--text);
+}
+
+.navbar {
+    margin-left: 0;
 }
 
 @media screen and (min-width: 768px) {
