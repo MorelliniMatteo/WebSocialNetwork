@@ -27,14 +27,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } elseif ($existingUsername) {
                 $errorMessage = "Username already exists. Please put a different one or Login.";
             } else {
+                // Determina il percorso della foto di default
+                $defaultPhotoPath = '../img/defaultUserPng.jpg';
+
                 // Hash della password e inserimento del nuovo utente
                 $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
                 $database->insertUser($Username, $hashedPassword, $Email, '');
-                $_SESSION['user_id'] = $database->getUserByEmail($Email)['UserID']; // Setta l'ID utente nella sessione
+
+                // Ottieni l'ID dell'utente appena inserito
+                $userID = $database->getUserByEmail($Email)['UserID'];
+
+                // Inserisci la foto di default nella tabella UserInfos con il nome utente come FullName
+                $database->insertDefaultPhoto($userID, $defaultPhotoPath, $Username);
+
+                $_SESSION['user_id'] = $userID; // Setta l'ID utente nella sessione
                 header('Location: profile.php');
                 exit();
             }
-        }
+        }   
     } elseif (isset($_POST['login'])) {
         // Form di login inviato
         $Email = $_POST['email'];
@@ -59,9 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="it">

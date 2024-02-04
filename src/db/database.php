@@ -528,10 +528,6 @@ class Database {
         }
     }
     
-    
-    
-    
-    
     public function getCategoryID($categoryName) {
         $query = "SELECT CategoryID FROM Categories WHERE CategoryName = :categoryName";
         $params = array(':categoryName' => $categoryName);
@@ -655,7 +651,14 @@ class Database {
         }
     }
 
-    
+    public function insertDefaultPhoto($userID, $photoPath, $fullName) {
+        $query = "INSERT INTO UserInfos (UserID, LogoURL, FullName) VALUES (:userID, :photoPath, :fullName)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $stmt->bindParam(':photoPath', $photoPath, PDO::PARAM_STR);
+        $stmt->bindParam(':fullName', $fullName, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
 }
 
 ?>
