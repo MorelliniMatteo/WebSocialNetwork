@@ -87,14 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="photoInput">
                         <div class="image-wrapper">
                             <img src="../img/defaultUser.png" alt="postImage" id="postImage" class="default-image">
-
-                            <img src="../icon/aggiungi-foto.svg" alt="secondImage" class="hover-image">
                         </div>
                     </label>
                 </section>
-                <a href="javascript:history.back()" class="back-button">Back</a>
-                <!-- Oppure, se preferisci un pulsante -->
-                <!-- <button class="back-button" onclick="javascript:history.back()">Back</button> -->
+                <button type="button" class="back-button" id="backButton" onclick="goBack()">Back</button>
             </section>
             
             <section class="input-container ic1">
@@ -118,10 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </main>
 
+<?php include_once('Nav.php'); ?>
+
 <script src="../js/backbutton.js"></script>
 <script src="../js/editProfile.js"></script>
-
-<?php include_once('Nav.php'); ?>
 
 </body>
 </html>
