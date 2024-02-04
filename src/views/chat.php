@@ -1,9 +1,21 @@
 <?php
 
+session_start();
 include_once('../db/database.php');
 include_once('../models/ImageHelper.php');
 
-$currentUserID = 2; // Change this to the actual ID of the current user
+
+$database = new Database();
+
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$currentUserID = $_SESSION['user_id'];
 
 $database = new Database();
 

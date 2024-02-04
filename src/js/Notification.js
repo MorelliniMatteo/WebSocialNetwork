@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+    // Get the user ID from the HTML using jQuery
+    const userID = $('#userID').text();
+
+    // console.log('User ID is :', userID);
+
+    
     
     $('#notificationBtn').on('click', function() {
         // Toggle visibility of the notification dropdown
@@ -6,16 +13,17 @@ $(document).ready(function() {
 
         // Check if the dropdown is visible and load notifications if needed
         if ($('#notificationDropdown').is(':visible')) {
-            loadNotifications();
+            loadNotifications(userID);
         }
     });
 
-    // Function to load notifications using AJAX
-    function loadNotifications() {
-        // Make an AJAX request to fetch notifications from the server
+    // Function to load notifications for a specific user using AJAX
+    function loadNotifications(userID) {
+        // Make an AJAX request to fetch notifications for the specified user from the server
         $.ajax({
             url: '../models/getNotifications.php',
             type: 'GET',
+            data: { userID: userID }, // Pass the user ID as a parameter
             dataType: 'json',
             success: function(data) {
                 // Handle the received data and update the notification dropdown
@@ -26,6 +34,7 @@ $(document).ready(function() {
             }
         });
     }
+
 
 // Function to update the notification dropdown content
 function updateNotificationDropdown(notifications) {
