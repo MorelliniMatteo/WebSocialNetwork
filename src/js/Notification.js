@@ -1,10 +1,9 @@
 $(document).ready(function() {
 
     // Get the user ID from the HTML using jQuery
-    const userId = $('#userId').text();
+    const userID = $('#userID').text();
 
-    // Now you can use the userId variable in your JavaScript code
-    console.log('User ID:', userId);
+    // console.log('User ID is :', userID);
 
     
     
@@ -14,7 +13,7 @@ $(document).ready(function() {
 
         // Check if the dropdown is visible and load notifications if needed
         if ($('#notificationDropdown').is(':visible')) {
-            loadNotifications(userId);
+            loadNotifications(userID);
         }
     });
 

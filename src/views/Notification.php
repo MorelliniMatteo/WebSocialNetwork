@@ -1,10 +1,22 @@
 <?php
 
+session_start();
+
 include_once('../db/database.php');
 
 $database = new Database();
 
-$userID = 2;
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$userID = $_SESSION['user_id'];
+
+echo $userID;
 
 ?>
 
@@ -22,7 +34,7 @@ $userID = 2;
 <body>
 
     <header class="header">
-        <span class="user-id" id="userId">1</span>
+        <span class="user-ID" id="userID"><?php echo $userID; ?></span>
     </header>
 
     <div class="notification-container">

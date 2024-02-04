@@ -1,5 +1,18 @@
 <?php
+
+session_start();
+
 include_once('../db/database.php');
+
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$userID = $_SESSION['user_id'];
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 1; // Replace with the actual logged-in user ID
