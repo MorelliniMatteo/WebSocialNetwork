@@ -612,6 +612,49 @@ class Database {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function uploadImage($imageName, $imageData) {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO Images (ImageName, ImageData) VALUES (:imageName, :imageData)");
+            $stmt->bindParam(':imageName', $imageName);
+            $stmt->bindParam(':imageData', $imageData, PDO::PARAM_LOB);
+            
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function retrieveImage($imageName) {
+        try {
+            $stmt = $this->conn->prepare("SELECT ImageData FROM Images WHERE ImageName = :imageName");
+            $stmt->bindParam(':imageName', $imageName);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result['ImageData'];
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo "Error retrieving image: " . $e->getMessage();
+            return null;
+        }
+    }
+
+    public function getImageAsBase64($imageName) {
+        $imageData = $this->retrieveImage($imageName);
+
+        if ($imageData) {
+            return base64_encode($imageData);
+        } else {
+            return null;
+        }
+    }
+
     
 }
 

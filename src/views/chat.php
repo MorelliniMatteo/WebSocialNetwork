@@ -1,6 +1,7 @@
 <?php
 
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 $currentUserID = 2; // Change this to the actual ID of the current user
 
@@ -20,6 +21,9 @@ $path = "../img/chat/";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/chat.css">
 </head>
 <body>
@@ -36,7 +40,7 @@ $path = "../img/chat/";
         <button class="message">
             <div class="sender-info">
                 <div class="sender-profile-image">
-                    <img class="sender-image" src="<?= $path . $user['LogoURL'] ?>" />
+                    <img class="sender-image" src="<?php echo getImageSourceLink($database, $user['LogoURL']) ?>" />
                 </div>
                 <span class="sender-name"><?= $user['Username'] ?></span>
                 <span class="sender-id invisible"><?= $user['UserID'] ?></span>
@@ -72,8 +76,10 @@ $path = "../img/chat/";
             </div>
 
     </main>
-
 </main>
+
+<?php include_once('Nav.php'); ?>
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

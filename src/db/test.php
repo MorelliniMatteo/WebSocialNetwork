@@ -118,7 +118,16 @@ $database = new Database();
 // var_dump($conversationUsers);
 
 // Fetch messages based on the sender and current user IDs
-$messages = $database->getMessages(2, 1);
+// $messages = $database->getMessages(2, 1);
 
 // Return messages as JSON
-echo json_encode($messages);
+// echo json_encode($messages);
+
+
+// $path = '../img/chat/';
+// $imageName = "profile.jpg";
+// $imageData = file_get_contents($path . $imageName);
+// $database->uploadImage($imageName, $imageData);
+
+// Example of retrieving image
+$database->retrieveImage($imageName);
