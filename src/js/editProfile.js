@@ -11,3 +11,6 @@ function handlePhotoUpload(event) {
         reader.readAsDataURL(file);
     }
 }
+
+// Link the onchange function to the input element
+document.getElementById('photoInput').addEventListener('change', handlePhotoUpload);
