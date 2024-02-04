@@ -55,11 +55,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
             </div>
 
             <?php if (isset($_SESSION['user_id'])) : ?>
-                <!-- 如果用户已登录，显示注销按钮 -->
                 <a href="logout.php" class="logout-btn">Logout</a>
-            <?php else : ?>
-                <!-- 如果用户未登录，显示登录按钮 -->
-                <a href="login.php" class="login-btn">Login</a>
             <?php endif; ?>
         </header>
 
