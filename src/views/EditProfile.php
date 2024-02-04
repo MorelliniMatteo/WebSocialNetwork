@@ -1,10 +1,17 @@
 <?php
 include_once('../db/database.php');
 
-// Assume the user is logged in and you have the user ID
-$loggedInUserID = 2; // Replace with the actual logged-in user ID
-
 $database = new Database();
+
+// Controlla se l'utente è loggato
+if (!isset($_SESSION['user_id'])) {
+    // Reindirizza l'utente non autenticato alla pagina di accesso
+    header("Location: login.php");
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$loggedInUserID = $_SESSION['user_id'];
 
 // Fetch user data
 $userData = $database->getUserByID($loggedInUserID);
@@ -66,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <header class="header">
         <div class="public-container header-container">
-            <span class="username"><?php echo $userData['Username']; ?></span>
+            <!-- <span class="username"><?php echo $userData['Username']; ?></span> -->
         </div>
     </header>
     <section class="settings-form public-container">
