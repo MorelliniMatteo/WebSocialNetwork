@@ -42,8 +42,322 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;500&family=Newsreader:opsz,wght@6..72,200&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+    
+}
+
+#taggedSection {
+    display: none;
+}
+
+#savedSection {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.btn {
+    text-decoration: none;
+    border: none;
+    background: var(--backgnd);
+}
+
+.line {
+    max-width: 80%;
+    height: 2px;
+    background: var(--text);
+    transition: 1s ease;
+    margin-top: 20px;
+}
+
+.main {
+    height: 100vh;
+}
+
+.logout-button {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    padding-top: 4px;
+    text-align: center;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    transition: 0.4s all ease;
+}
+
+.logout-button:hover {
+    background: #fff;
+    color: #000;
+}
+
+.public-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header-container ul {
+    display: flex;
+}
+
+.header-container li img {
+    display: block;
+    position: relative;
+}
+
+.user-setting ul{
+    display: flex;
+    gap: 1rem;
+}
+
+.profile {
+    display: flex;
+    height: 90px;
+    margin-top: 10px;
+}
+
+.profile .profile-logo {
+    width: 100px;
+    border-radius: 70%;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+    object-fit: cover;
+    cursor: auto;
+}
+
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile .profile-posts {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile .profile-post {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.profile .profile-post span {
+    text-align: center;
+}
+
+.profile .profile-post span:first-child {
+    font-weight: 200;
+}
+
+
+.info-container {
+    margin-top: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+}
+
+.info-container .user-description {
+    font-weight: 300;
+}
+
+.profile-edit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-edit .profile-edit-box {
+    width: 90%;
+    border-radius: 0.8rem;
+    padding: 0 20px;
+    height: 30px;
+
+    margin-top: 20px;
+    transition: 0.5s ease;
+    background-color: gray;
+    text-align: center;
+}
+
+.profile-edit .profile-edit-box:hover {
+    background-color: white;
+}
+
+.profile-edit span {
+    transition: 0.5s ease;
+}
+
+.profile-edit:hover span {
+    color: black;
+}
+
+.profile-edit .btn span{
+    display: block;
+    padding-top: 5px;
+}
+
+
+
+.tab-container {
+    display: flex;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+.user-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    box-sizing: border-box;
+    border: 12px solid transparent;
+}
+
+
+
+.user-posts .post {
+    position: relative;
+}
+
+.user-posts img {
+    border-radius: 3%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-posts .post-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    flex-direction: column;
+    transition: 0.3s ease-out;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    border-radius: 3%;
+}
+
+.user-posts .post-box .post-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 60px;
+}
+
+.user-posts .post-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-posts .post-content .post-content-box {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    * {
+        font-size: 18px;
+    }
+
+    .info-container{
+        max-width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile .profile-posts {
+        gap: 3rem;
+    }
+
+    .info {
+        margin: 0 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-posts {
+        border: 20px solid transparent;
+    }
+
+    .user-posts .post-box:hover {
+        opacity: 1;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+
+    * {
+        font-size: 20px;
+    }
+
+    .profile .profile-posts {
+        gap: 5rem;
+    }
+
+    .user-posts {
+        border: 30px solid transparent;
+    }
+    
+}
+    </style>
 </head>
 <body>
 
@@ -55,7 +369,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
             </div>
 
             <?php if (isset($_SESSION['user_id'])) : ?>
-                <a href="logout.php" class="logout-btn">Logout</a>
+                <a href="logout.php" class="logout-button">logout</a>
             <?php endif; ?>
         </header>
 
