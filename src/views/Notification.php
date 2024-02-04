@@ -1,3 +1,14 @@
+<?php
+
+include_once('../db/database.php');
+
+$database = new Database();
+
+$userID = 2;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +20,11 @@
 
 </head>
 <body>
+
+    <header class="header">
+        <span class="user-id" id="userId">1</span>
+    </header>
+
     <div class="notification-container">
         <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
         <div class="notification-dropdown" id="notificationDropdown"></div>
