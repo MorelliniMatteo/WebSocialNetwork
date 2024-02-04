@@ -17,7 +17,7 @@ a{
     position: fixed;
     bottom: 1rem;
     height: 4rem;
-    margin-left: 5%;
+    /* margin-left: 5%; */
     list-style: none;
     background-color: var(--contrast);
     border-radius: 1.25rem;
