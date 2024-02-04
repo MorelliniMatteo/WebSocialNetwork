@@ -17,6 +17,10 @@ body {
     text-align: center;
 }
 
+#photoInput {
+    display: none;
+}
+
 .settings-form {
     background-color: var(--backgnd_contrast);
     border-radius: 20px;
@@ -118,6 +122,7 @@ body {
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+    padding-top: 10px;
 }
   
 .cut {

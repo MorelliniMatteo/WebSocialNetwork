@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form class="form" method="POST">
             <section class="back photo-section">
                 <section class="photo-container">
-                    <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                    <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
                     <label for="photoInput">
                         <div class="image-wrapper">
                             <img src="../img/defaultUser.png" alt="postImage" id="postImage" class="default-image">
