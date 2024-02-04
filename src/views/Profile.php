@@ -12,10 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Ottieni l'ID dell'utente dalla sessione
-$userID = $_SESSION['user_id'];
-
-// Assume the user is logged in and you have the user ID
-$loggedInUserID = 1; // Replace with the actual logged-in user ID
+$loggedInUserID = $_SESSION['user_id'];
 
 $database = new Database();
 
