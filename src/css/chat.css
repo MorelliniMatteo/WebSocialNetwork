@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 10px;
 }
 
 button {
@@ -183,4 +182,20 @@ textarea {
 .main.active {
   width: 100%;
   margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+
+  body {
+      font-size: 18px;
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+
+  body {
+      font-size: 20px;
+  }
+  
 }

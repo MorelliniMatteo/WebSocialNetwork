@@ -42,8 +42,8 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
 
@@ -53,6 +53,10 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
             <div class="public-container header-container">
                 <span class="username"><?php echo $userData['Username']; ?></span>
             </div>
+
+            <?php if (isset($_SESSION['user_id'])) : ?>
+                <a href="logout.php" class="logout-button">logout</a>
+            <?php endif; ?>
         </header>
 
         <section class="profile">

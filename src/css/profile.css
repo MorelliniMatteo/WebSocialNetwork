@@ -37,11 +37,30 @@ a {
     background: var(--text);
     transition: 1s ease;
     margin-top: 20px;
-    /* margin-left: 10%; */
 }
 
 .main {
     height: 100vh;
+}
+
+.logout-button {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    padding-top: 4px;
+    text-align: center;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    transition: 0.4s all ease;
+}
+
+.logout-button:hover {
+    background: #fff;
+    color: #000;
 }
 
 .public-container {
@@ -52,7 +71,7 @@ a {
 .header {
     height: 50px;
     width: 100%;
-
+    position: relative;
 }
 
 .header-container {
