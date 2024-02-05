@@ -64,6 +64,14 @@ main form{
     height: auto;
 }
 
+.post-img form{
+    width: 100%;
+}
+
+.post-img form button{
+    border: none;
+}
+
 header>aside{
     display: none;
 }
