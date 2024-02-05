@@ -28,6 +28,11 @@ $loggedInUserID = $_SESSION['user_id'];
 
     <div class="form-container">
         <form action="UploadImage.php" method="post" enctype="multipart/form-data">
+            <section>
+                <label for="ChangeIcon" class="specialLabel">Change Your Icon</label>
+                <button type="button" class="back-button" id="backButton" onclick="goBack()">Back</button>
+            </section>
+            
             <label for="image" id="imageLabel" class="custom-button">Select Image</label>
             <input type="file" name="image" id="image" required>
             <label for="imageName">Image Name:</label>
@@ -37,5 +42,7 @@ $loggedInUserID = $_SESSION['user_id'];
     </div>
 
     <script src="../js/updateProfileImage.js"></script>
+    <script src="../js/importTheme.js"></script>
+    <script src="../js/backbutton.js"></script>
 </body>
 </html>

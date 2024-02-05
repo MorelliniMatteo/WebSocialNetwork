@@ -19,13 +19,18 @@ $userData = $database->getUserByID($loggedInUserID);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/post.css">
+    <link rel="stylesheet" href="../css/Notification.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><a href="Notification.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
+             <li><div class="notification-container">
+                    <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
+                    <div class="notification-dropdown" id="notificationDropdown"></div>
+                </div>
+                <div id="toastBox"></div></li>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
@@ -55,5 +60,6 @@ $userData = $database->getUserByID($loggedInUserID);
     <script src="../js/post.js"></script>
     <script src="../js/menuTheme.js"></script>
     <script src="../js/infinityScroll.js"></script>
+    <script src="../js/Notification.js"></script>
  </body>
 </html>
