@@ -21,10 +21,6 @@ body {
     background: var(--backgnd)
 }
 
-input {
-    display: none;
-}
-
 main {
     width: 305px;
     height: 500px;
@@ -220,6 +216,10 @@ section > img {
 .container select option {
     font-size: small;
     margin-bottom: 2px;
+}
+
+#photoInput {
+    display: none;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1161px) {
