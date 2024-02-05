@@ -54,42 +54,6 @@ $userData = $database->getUserByID($loggedInUserID);
            <div class="post-img">
                <img src="../img/explore/pic_3.png" alt="Post Image">
            </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_4.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_5.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_6.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_7.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_8.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_9.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_10.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_11.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_12.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_13.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_14.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_15.jpg" alt="Post Image">
-           </div>
         </div>
    </main>
 

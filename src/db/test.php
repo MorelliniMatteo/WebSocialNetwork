@@ -130,4 +130,6 @@ $database = new Database();
 // $database->uploadImage($imageName, $imageData);
 
 // Example of retrieving image
-$database->retrieveImage($imageName);
+// $database->retrieveImage($imageName);
+
+print_r( $database->getPostsByCategory(1, 0));

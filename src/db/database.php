@@ -388,6 +388,7 @@ class Database {
         }
     }
 
+    /** returns posts to put on the home page */
     public function getPostFromFollowing($userID, $offset) {
         $query = "SELECT Posts.* FROM Posts
                   JOIN Followers ON Posts.UserID = Followers.FollowingUserID
@@ -395,6 +396,41 @@ class Database {
                   ORDER BY Posts.PostDate DESC 
                   LIMIT " . $offset . ", 5";
         $params = array(':userID' => $userID);
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result;
+        } else {
+            die(json_encode("Errore nella query: "));
+        }
+    }
+
+    /** returns posts to put on the explore page */
+    public function getRandomPosts($offset) {
+        $query = "SELECT Posts.* FROM Posts
+                  ORDER BY Posts.PostDate DESC
+                  LIMIT " . $offset . ", 5";
+        $stmt = $this->conn->prepare($query);
+        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result;
+        } else {
+            die(json_encode("Errore nella query: "));
+        }
+    }
+
+    /** returns posts to put on the explore page, filtered by category */
+    public function getPostsByCategory($categoryID, $offset){
+        $query = "SELECT Posts.* FROM Posts
+                  JOIN Categories ON Categories.CategoryID = :categoryID
+                  ORDER BY Posts.PostDate DESC
+                  LIMIT " . $offset . ", 5";
+        $params = array(':categoryID' => $categoryID);
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
         

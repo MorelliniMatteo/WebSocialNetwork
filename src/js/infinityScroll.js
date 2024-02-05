@@ -4,26 +4,24 @@ const sentinel = document.querySelector(".space");
 let index = 0;
 
 function getPostsFromServer(n) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        const url = 'loadPosts.php';
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    const data = JSON.parse(xhr.responseText);
-                    if (data.status === "error") {
-                        reject(new Error(data.message));
-                    } else {
-                        resolve(data.posts);
-                    }
-                } else {
-                    reject(new Error(`Errore nella richiesta AJAX: ${xhr.status} - ${xhr.statusText}`));
-                }
-            }
-        };
-        xhr.send(`index=${n}`);
+    return $.ajax({
+        type: 'POST',
+        url: '../views/loadPosts.php',
+        data: { 
+            index: n,
+            queryName: 'home'
+        },
+        dataType: 'json',
+    })
+    .then(function(data) {
+        if (data.status === "error") {
+            return Promise.reject(new Error(data.message));
+        } else {
+            return Promise.resolve(data.posts);
+        }
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        return Promise.reject(new Error(`Errore nella richiesta AJAX: ${textStatus} - ${errorThrown}`));
     });
 }
 
