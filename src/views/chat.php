@@ -297,5 +297,6 @@ textarea {
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../js/importTheme.js"></script>
 <script src="../js/chat.js"></script>
 </html>
