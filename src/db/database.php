@@ -732,6 +732,22 @@ class Database {
         }
     }
 
+    public function imageNameExists($imageName) {
+        try {
+            $query = "SELECT COUNT(*) FROM Images WHERE ImageName = :imageName";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':imageName', $imageName, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $count = $stmt->fetchColumn();
+
+            return ($count > 0);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false; // You might want to handle the error more gracefully in a production environment
+        }
+    }
+
 }
 
 ?>
