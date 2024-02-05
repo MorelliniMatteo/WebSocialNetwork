@@ -62,7 +62,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 
         <section class="profile">
             <div class="public-container profile-container">
-                <a href="../models/image.php" class="profile-logo">
+                <a href="../models/ChangeProfileImage.php" class="profile-logo">
                     <img src="<?php echo getImageSourceLink($database, $profileInfo['LogoURL']); ?>" alt="profile-image">
                 </a>
 
