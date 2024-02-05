@@ -25,25 +25,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
     $description = $_POST['descriptionInput'];
     $categoryID = $database->getCategoryID($category);
 
-
     if ($_FILES["photoInput"]["error"] === UPLOAD_ERR_OK) {
         $fileData = file_get_contents($_FILES["photoInput"]["tmp_name"]);
         $imageName = basename($_FILES["photoInput"]["name"]);
 
         if ($database->imageNameExists($imageName)) {
-            echo "Image name already exists in the database.";
+            $errorMessage = "Image name already exists in the database.";
         } else {
-            echo "Image name does not exist in the database.";
             if ($database->uploadImage($imageName, $fileData)) {
-                echo "Success";
                 $database->insertPost($loggedInUserID, $imageName, $description, $categoryID);
             } else {
-                echo "Failed";
+                $errorMessage = "Insert Post Failed";
             }
         }
-                
     } else {
-        echo "Image worong";
+        $errorMessage = "Upload Image Failed";
     }
 
 }
+?>
