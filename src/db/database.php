@@ -659,6 +659,33 @@ class Database {
         $stmt->bindParam(':fullName', $fullName, PDO::PARAM_STR);
         return $stmt->execute();
     }
+
+    public function checkDuplicateImageName($imageName) {
+        try {
+            $stmt = $this->conn->prepare("SELECT ImageID FROM Images WHERE ImageName = :imageName");
+            $stmt->bindParam(':imageName', $imageName);
+            $stmt->execute();
+            $rowCount = $stmt->rowCount();
+            return $rowCount > 0;
+        } catch (PDOException $e) {
+            echo "Error checking duplicate image name: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateUserLogoURL($userID, $logoURL) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE UserInfos SET LogoURL = :logoURL WHERE UserID = :userID");
+            $stmt->bindParam(':logoURL', $logoURL);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error updating LogoURL: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }
 
 ?>

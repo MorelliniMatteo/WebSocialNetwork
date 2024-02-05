@@ -3,6 +3,7 @@
 session_start();
 
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 // Verifica se l'utente è autenticato
 if (!isset($_SESSION['user_id'])) {
@@ -61,8 +62,8 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 
         <section class="profile">
             <div class="public-container profile-container">
-                <a href="#" class="profile-logo">
-                    <img src="<?php echo $profileInfo['LogoURL']; ?>" alt="profile-image">
+                <a href="../models/image.php" class="profile-logo">
+                    <img src="<?php echo getImageSourceLink($database, $profileInfo['LogoURL']); ?>" alt="profile-image">
                 </a>
 
                 <div class="profile-posts">
