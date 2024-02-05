@@ -15,9 +15,35 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Ottieni l'ID dell'utente dalla sessione
-$userID = $_SESSION['user_id'];
+$loggedInUserID = $_SESSION['user_id'];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
+
+    $category = $_POST['category'];
+    $description = $_POST['descriptionInput'];
+    $categoryID = $database->getCategoryID($category);
+
+    if ($_FILES["photoInput"]["error"] === UPLOAD_ERR_OK) {
+        $fileData = file_get_contents($_FILES["photoInput"]["tmp_name"]);
+        $imageName = basename($_FILES["photoInput"]["name"]);
+
+        if ($database->imageNameExists($imageName)) {
+            $errorMessage = "Image name already exists.";
+        } else {
+            if ($database->uploadImage($imageName, $fileData)) {
+                $database->insertPost($loggedInUserID, $imageName, $description, $categoryID);
+                header("Location: Profile.php");
+            } else {
+                $errorMessage = "Insert Post Failed";
+            }
+        }
+    } else {
+        $errorMessage = "Upload Image Failed";
+    }
+
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +67,10 @@ $userID = $_SESSION['user_id'];
                     <h1>Create Post</h1>
                 </header>
 
-                <form action="handleCreatePost.php" method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                     <section>
                         <input type="file" id="photoInput" name="photoInput" accept="image/*">
                         <label for="photoInput">
-                            <span class="image-name hidden">12345</span>
                             <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
                         </label>
                     </section>
@@ -76,7 +101,6 @@ $userID = $_SESSION['user_id'];
 
     <?php include_once('Nav.php'); ?>
 
-    <script src="../js/creazione-post.js"></script>
     <script src="../js/importTheme.js"></script>
 
 </body>
