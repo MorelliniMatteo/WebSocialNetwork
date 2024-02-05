@@ -1,6 +1,5 @@
 <?php
 include_once('../db/database.php');
-include_once('viewFullPost.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 1; //Replace with the actual logged-in user ID
@@ -8,8 +7,6 @@ $loggedInUserID = 1; //Replace with the actual logged-in user ID
 $database = new Database();
 
 $userData = $database->getUserByID($loggedInUserID);
-
-$posts = $database->getPostFromFollowing($loggedInUserID, 0);
 
 ?>
 

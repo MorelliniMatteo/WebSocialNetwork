@@ -9,9 +9,13 @@ $database = new Database();
 $userData = $database->getUserByID($loggedInUserID);
 
 function generatePostHTML($post) {
+    $postSerialized = urlencode(json_encode($post));
 
     $html = '<div class="post-img">';
-    $html .= '<a href="post.php?postID=' . $post['PostID'] . '" label="View Full Post"><img src="' . $post['MediaURL'] . '" alt="Post Image"></a>';
+    $html .= '<form action="post.php" method="post">';
+    $html .= '<input type="hidden" name="post" value="' . $postSerialized . '">';
+    $html .= '<button type="submit" name="viewPost" label="View Full Post"><img src="' . $post['MediaURL'] . '" alt="Post Image"></button>';
+    $html .= '</form>';
     $html .= '</div>';
 
     return $html;
