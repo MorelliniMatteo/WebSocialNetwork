@@ -2,7 +2,7 @@
 include_once('../db/database.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 1; //Replace with the actual logged-in user ID
+$loggedInUserID = 3; //Replace with the actual logged-in user ID
 
 $database = new Database();
 
@@ -26,11 +26,13 @@ $userData = $database->getUserByID($loggedInUserID);
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><div class="notification-container">
+             <li>
+                <div class="notification-container">
                     <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
                     <div class="notification-dropdown" id="notificationDropdown"></div>
                 </div>
-                <div id="toastBox"></div></li>
+                <div id="toastBox"></div>
+             </li>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
