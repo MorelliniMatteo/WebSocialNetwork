@@ -302,7 +302,7 @@ class Database {
     }
 
     public function getFollowersCount($userID) {
-        $query = "SELECT COUNT(FollowerID) AS FollowersCount FROM followers WHERE UserID = :userID";
+        $query = "SELECT COUNT(FollowerID) AS FollowersCount FROM followers WHERE FollowingUserID = :userID";
         $params = array(':userID' => $userID);
 
         try {

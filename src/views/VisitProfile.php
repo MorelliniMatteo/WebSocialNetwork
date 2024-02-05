@@ -5,35 +5,40 @@ session_start();
 include_once('../db/database.php');
 include_once('../models/ImageHelper.php');
 
+$userID = isset($_GET['id']) ? $_GET['id'] : null;
+
+
 // Verifica se l'utente è autenticato
-if (!isset($_SESSION['user_id'])) {
+if ( (!isset($_SESSION['user_id'])) || (!$userID) ) {
     // Utente non autenticato, potresti reindirizzarlo alla pagina di login
     header('Location: login.php');
     exit();
 }
 
-// Ottieni l'ID dell'utente dalla sessione
-$loggedInUserID = $_SESSION['user_id'];
+if ($userID == $_SESSION['user_id']) {
+    header('Location: Profile.php');
+}
+
 
 $database = new Database();
 
 $iconImagePath = "../icon/";
 
 // Fetch user data
-$userData = $database->getUserByID($loggedInUserID);
+$userData = $database->getUserByID($userID);
 
 // Fetch user counts
-$postCount = $database->getPostCount($loggedInUserID);
-$followersCount = $database->getFollowersCount($loggedInUserID);
-$followingCount = $database->getFollowingCount($loggedInUserID);
+$postCount = $database->getPostCount($userID);
+$followersCount = $database->getFollowersCount($userID);
+$followingCount = $database->getFollowingCount($userID);
 
 // Fetch user profile info
-$profileInfo = $database->getUserProfileInfo($loggedInUserID);
+$profileInfo = $database->getUserProfileInfo($userID);
 
 // Fetch user posts
-$userPosts = $database->getUserPosts($loggedInUserID);
-$userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
-$userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
+$userPosts = $database->getUserPosts($userID);
+$userLikedPosts = $database->getUserLikedPosts($userID);
+$userTaggedPosts = $database->getUserTaggedPosts($userID);
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +60,6 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
                 <span class="username"><?php echo $userData['Username']; ?></span>
             </div>
 
-            <?php if (isset($_SESSION['user_id'])) : ?>
-                <a href="logout.php" class="logout-button">logout</a>
-            <?php endif; ?>
         </header>
 
         <section class="profile">
@@ -90,14 +92,6 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
                 <p class="user-description"><?php echo $userData['Bio']; ?></p>
             </div>
         </section>
-
-        <div class="public-container profile-edit">
-            <div class="profile-edit-box">
-                <a href="EditProfile.php" class="btn">
-                    <span>Edit Profile</span>
-                </a>
-            </div>
-        </div>
 
         <div class="public-container line"></div>
 
