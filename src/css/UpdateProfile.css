@@ -1,101 +1,71 @@
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
-    height: 95vh;
-}
-
-
-.explanation-text-container {
-    width: 250px;
-    text-align: center;
-    background: #efefef;
-    border-radius: 20px;
-    margin: 50px 0;
-}
-
-.explanation-text {
-    line-height: 30px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 label {
     display: none;
-
 }
 
-#submitButton {
-    width: 125px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    transition: 0.5s all ease;
+.form-container {
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
 }
 
-#submitButton:hover {
-    background: #000;
+.custom-button {
+    display: block;
+    margin: 10px auto;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid var(--elem2);
+    color: var(--elem2);
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: var(--elem2);
     color: #fff;
-}
-
-#imageName {
-    padding-top: 200px;
-    width: 200px;
-    height: 30px;
-    font-size: 15px;
-    border: none;
-    background: #efefef;
-    border-radius: 5px;
-    padding: 10px;
 }
 
 #image {
     display: none;
 }
 
-#imageLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background: #efefef;
-    border-radius: 5px;
-    width: 180px;
-    height: 40px;
-    top: 50%;
+#imageName {
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#submitButton {
+    border: none;
+    color: white;
+    background: var(--elem2);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: .5s all ease;
+    transition: all 0.3s ease;
 }
 
-#imageLabel:hover {
-    background: #000;
-    color: #fff;
+#submitButton:hover {
+    background-color: #fff;
 }
-
-
-@media screen and (min-width: 768px) {
-
-    body {
-        flex-direction: row;
-    }
-
-    #imageLabel {
-        top: 18%;
-    }
-  
-  }
-  
-  @media screen and (min-width: 1280px) {
-    
-    #imageLabel {
-        top: 30%;
-    }
-    
-  }
