@@ -254,7 +254,7 @@ textarea {
         <button class="message">
             <div class="sender-info">
                 <div class="sender-profile-image">
-                    <img class="sender-image" src="<?php echo getImageSourceLink($database, $user['LogoURL']) ?>" />
+                    <img class="sender-image" src="<?php echo displayProfileImage($database, $user['LogoURL']) ?>" />
                 </div>
                 <span class="sender-name"><?= $user['Username'] ?></span>
                 <span class="sender-id invisible"><?= $user['UserID'] ?></span>

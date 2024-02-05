@@ -620,14 +620,16 @@ class Database {
                 FROM Users u
                 JOIN ChatMessages cm ON u.UserID = cm.SenderID OR u.UserID = cm.ReceiverID
                 LEFT JOIN UserInfos ui ON u.UserID = ui.UserID
-                WHERE cm.SenderID = :currentUserID OR cm.ReceiverID = :currentUserID";
-
+                WHERE cm.SenderID = :currentUserID OR cm.ReceiverID = :currentUserID
+                   OR u.UserID IN (SELECT FollowingUserID FROM Followers WHERE FollowerUserID = :currentUserID)";
+    
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':currentUserID', $currentUserID, PDO::PARAM_INT);
         $stmt->execute();
-
+    
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     public function getMessages($senderID, $receiverID) {
         $sql = "SELECT MessageText, SendDate, SenderID

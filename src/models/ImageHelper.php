@@ -18,8 +18,7 @@ function uploadImage($database, $path, $imageName) {
         echo "Image uploaded successfully!";
     } else {
         echo "Failed to upload Image!";
-    }
-    
+    }   
 }
 
 
@@ -27,3 +26,17 @@ function uploadImage($database, $path, $imageName) {
 // echo getImageSourceLink($database, "profile.jpg");
 
 // echo uploadImage($database, '../img/', 'backgndSculpture.jpg');
+
+
+function displayProfileImage($database, $logoURL) {
+    $imageLink = getImageSourceLink($database, $logoURL);
+
+    if ($imageLink === "Not found") {
+
+        return "../img/defaultUserPng.jpg"; 
+    } else {
+
+        return $imageLink;
+    }
+}
+
