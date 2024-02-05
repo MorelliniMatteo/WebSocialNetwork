@@ -1,26 +1,47 @@
 <?php
+include_once('../db/database.php');
+include_once('../models/api.php');
+
+$database = new Database();
+
+$loggedInUserID = 1;
+$userData = $database->getUserByID($loggedInUserID);
 
 if (isset($_POST['post'])) {
-    $post = json_decode($_POST['post'], true);
+    $postDecoded = urldecode($_POST['post']);
+    $post = json_decode($postDecoded, true);
 }
 
 ?>
 
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ArtHub - Post</title>
+    <meta charset="UTF-8">
+    <link href="../css/home.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/post.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+         <ul>
+             <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
+         </ul>
+    </header>
+    <main class="single-post">
+        <?php echo generatePostHTML($post, $database, $userData); ?>
+        <div class="space">
+            <p>space</p>
+        </div>
+    </main>
     
-    function viewFullPost(dati){
-        $.ajax({
-            type: 'POST',
-            url: '../models/api.php',
-            data: { dati: dati },
-            success: function (risposta) {
-                let div = document.createElement('div');
-                div.innerHTML = risposta;
-                postsContainer.append(div);
-                },
-            error: function (errore) {
-                console.error('Errore nella richiesta AJAX:', errore);
-            }
-    });
-}
-</script>
+    <?php include_once("Nav.php"); ?>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/post.js"></script>
+    <script src="../js/importTheme.js"></script>
+ </body>
+</html>
