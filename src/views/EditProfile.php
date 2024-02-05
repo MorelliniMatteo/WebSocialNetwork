@@ -91,15 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
     <section class="settings-form public-container">
         <form class="form" method="POST">
-            <section class="back photo-section">
-                <section class="photo-container">
-                    <input type="file" id="photoInput" accept="image/*">
-                    <label for="photoInput">
-                        <div class="image-wrapper">
-                            <img src="../img/defaultUser.png" alt="postImage" id="postImage" class="default-image">
-                        </div>
-                    </label>
-                </section>
+            <section class="back">
+                <label for="descrizione">Let's modify your Profile</label>
                 <button type="button" class="back-button" id="backButton" onclick="goBack()">Back</button>
             </section>
             
