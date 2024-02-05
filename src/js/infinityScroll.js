@@ -1,4 +1,4 @@
-
+const page = document.querySelector("main").classList.value;
 const postsContainer = document.querySelector(".posts-container");
 const sentinel = document.querySelector(".space");
 let index = 0;
@@ -9,7 +9,7 @@ function getPostsFromServer(n) {
         url: '../views/loadPosts.php',
         data: { 
             index: n,
-            queryName: 'home'
+            queryName: page
         },
         dataType: 'json',
     })
@@ -17,6 +17,7 @@ function getPostsFromServer(n) {
         if (data.status === "error") {
             return Promise.reject(new Error(data.message));
         } else {
+            //console.log(data);
             return Promise.resolve(data.posts);
         }
     })
@@ -31,28 +32,49 @@ function loadMorePosts() {
             if(posts){
                 posts.forEach(element => {
                     let datiJSON = JSON.stringify(element);
-                    $.ajax({
-                    type: 'POST',
-                    url: '../models/api.php',
-                    data: { dati: datiJSON },
-                    success: function (risposta) {
-                        let div = document.createElement('div');
-                        div.innerHTML = risposta;
-                        postsContainer.append(div);
-                        },
-                        error: function (errore) {
-                            console.error('Errore nella richiesta AJAX:', errore);
-                        }
-                    });
+                    page === 'home' ? viewFullPost(datiJSON) : viewImg(datiJSON);
             });
             index+=5;
             } else {
+                console.log(page);
                 console.log("nessun altro post disponibile.");
             }
         })
         .catch(error => {
             console.error(error);
         });
+}
+
+function viewFullPost(dati){
+    $.ajax({
+        type: 'POST',
+        url: '../models/api.php',
+        data: { dati: dati },
+        success: function (risposta) {
+            let div = document.createElement('div');
+            div.innerHTML = risposta;
+            postsContainer.append(div);
+            },
+        error: function (errore) {
+            console.error('Errore nella richiesta AJAX:', errore);
+        }
+    });
+}
+
+function viewImg(dati){
+    $.ajax({
+        type: 'POST',
+        url: '../models/viewInExplore.php',
+        data: { dati: dati },
+        success: function (risposta) {
+            let div = document.createElement('div');
+            div.innerHTML = risposta;
+            postsContainer.append(div);
+            },
+        error: function (errore) {
+            console.error('Errore nella richiesta AJAX:', errore);
+        }
+    });
 }
 
 

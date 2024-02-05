@@ -410,25 +410,33 @@ class Database {
 
     /** returns posts to put on the explore page */
     public function getRandomPosts($offset) {
-        $query = "SELECT Posts.* FROM Posts
+        $query = "SELECT * FROM Posts
                   ORDER BY Posts.PostDate DESC
-                  LIMIT " . $offset . ", 5";
+                  LIMIT :offset, 5";
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($stmt->execute()) {
 
-        if ($result) {
-            return $result;
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result;
+            } else {
+                die(json_encode("La query getRandomPost non ha restituito risultati."));
+            }
+
         } else {
-            die(json_encode("Errore nella query: "));
+            die(json_encode("Errore nella query getRandomPost: " . implode(" ", $stmt->errorInfo())));
         }
     }
+    
 
     /** returns posts to put on the explore page, filtered by category */
     public function getPostsByCategory($categoryID, $offset){
-        $query = "SELECT Posts.* FROM Posts
-                  JOIN Categories ON Categories.CategoryID = :categoryID
-                  ORDER BY Posts.PostDate DESC
+        $query = "SELECT * FROM Posts
+                  WHERE CategoryID = :categoryID
+                  ORDER BY PostDate DESC
                   LIMIT " . $offset . ", 5";
         $params = array(':categoryID' => $categoryID);
         $stmt = $this->conn->prepare($query);
@@ -439,7 +447,7 @@ class Database {
         if ($result) {
             return $result;
         } else {
-            die(json_encode("Errore nella query: "));
+            die(json_encode("Errore nella query getPostsFromCategory: "));
         }
     }
 

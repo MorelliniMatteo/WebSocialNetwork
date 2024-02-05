@@ -19,14 +19,13 @@ $userData = $database->getUserByID($loggedInUserID);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/post.css">
     <link rel="stylesheet" href="../css/explore.css">
 </head>
 <body>
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><a href="notifications.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
+             <li><a href="Notification.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
@@ -40,25 +39,18 @@ $userData = $database->getUserByID($loggedInUserID);
             <img src="../icon/moon.svg" alt="moon" class="icon theme">
          </aside>
     </header>
-    <main>
+    <main class="explore">
         <form>
             <input type="text" id="Search" placeholder="Search for your arts" title="search bar">
         </form>
-        <div class="posts-container">
-           <div class="post-img">
-               <img src="../img/explore/pic_1.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_2.jpg" alt="Post Image">
-           </div>
-           <div class="post-img">
-               <img src="../img/explore/pic_3.png" alt="Post Image">
-           </div>
-        </div>
+        <div class="posts-container"></div>
+        <div class="space"></div>
    </main>
 
    <?php include_once("Nav.php"); ?>
 
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    <script src="../js/menuTheme.js"></script>
+   <script src="../js/infinityScroll.js"></script>
 </body>
 </html>

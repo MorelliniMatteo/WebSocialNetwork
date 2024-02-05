@@ -3,7 +3,7 @@ include_once('../db/database.php');
 include_once('viewFullPost.php');
 
 // Assume the user is logged in and you have the user ID
-$loggedInUserID = 4; //Replace with the actual logged-in user ID
+$loggedInUserID = 1; //Replace with the actual logged-in user ID
 
 $database = new Database();
 
@@ -42,7 +42,7 @@ $posts = $database->getPostFromFollowing($loggedInUserID, 0);
             <img src="../icon/moon.svg" alt="moon" class="icon theme">
          </aside>
     </header>
-    <main>
+    <main class="home">
          <form>
              <input type="text" id="Search" placeholder="Search for your artists" title="search bar">
          </form>
