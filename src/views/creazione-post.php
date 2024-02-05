@@ -62,18 +62,11 @@ $userID = $_SESSION['user_id'];
                             <option value="sculpture">Sculpture</option>
                             <option value="digital-art">Digital Art</option>
                         </select>
-
                     </div>
-                    
+
                     <label for="error-message" class="error-message"><?php echo "$errorMessage" ?></label>
 
-
                     <button type="submit" name="confirmButton" id="confirmButton">Confirm</button>
-
-                    <!-- Messaggio di conferma -->
-                    <section id="confirmationMessage" style="display: none;">
-                        <p>Il post è stato inviato con successo!</p>
-                    </section>
                 </form>
 
             </article>
