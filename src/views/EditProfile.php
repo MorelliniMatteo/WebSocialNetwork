@@ -89,31 +89,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- <span class="username"><?php echo $userData['Username']; ?></span> -->
         </div>
     </header>
-    <section class="settings-form public-container">
-        <form class="form" method="POST">
-            <section class="back">
-                <label for="descrizione">Let's modify your Profile</label>
-                <button type="button" class="back-button" id="backButton" onclick="goBack()">Back</button>
-            </section>
-            
-            <section class="input-container ic1">
-                <input id="new_username" name="new_username" class="input" type="text" placeholder=" " />
-                <div class="cut"></div>
-                <label for="new_username" class="placeholder">Username</label>
-            </section>
-            <section class="input-container ic2">
-                <input id="new_email" name="new_email" class="input" type="email" placeholder=" " />
-                <div class="cut"></div>
-                <label for="new_email" class="placeholder">New Email</label>
-            </section>
-            <section class="input-container ic2 ic3">
-                <textarea id="new_bio" name="new_bio" class="input" type="text" placeholder=" "></textarea>
-                <div class="cut cut-short"></div>
-                <label for="new_bio" class="placeholder">Bio</>
-            </section>
-            <button type="submit" class="submit">Update Profile</button>
-        </form>
-    </section>
+    <form class="form" method="POST">
+        <section class="back">
+            <label for="descrizione">Let's modify your Profile</label>
+            <button type="button" class="back-button" id="backButton" onclick="goBack()">Back</button>
+        </section>
+        
+        <section class="input-container ic1">
+            <input id="new_username" name="new_username" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label for="new_username" class="placeholder">Username</label>
+        </section>
+        <section class="input-container ic2">
+            <input id="new_email" name="new_email" class="input" type="email" placeholder=" " />
+            <div class="cut"></div>
+            <label for="new_email" class="placeholder">New Email</label>
+        </section>
+        <section class="input-container ic2 ic3">
+            <textarea id="new_bio" name="new_bio" class="input" type="text" placeholder=" "></textarea>
+            <div class="cut cut-short"></div>
+            <label for="new_bio" class="placeholder">Bio</>
+        </section>
+        <button type="submit" class="submit">Update Profile</button>
+    </form>
 
 </main>
 

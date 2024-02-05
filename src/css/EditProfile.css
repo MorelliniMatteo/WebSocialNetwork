@@ -25,22 +25,15 @@ body {
     text-align: center;
 }
 
-.settings-form {
-    background-color: var(--backgnd_contrast);
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 510px;
-    padding: 20px;
-    width: 320px;
-    margin: auto;
-    margin-bottom: 25px;
-}
-
 .form {
     background-color: var(--backgnd_contrast);
     border-radius: 20px;
     box-sizing: border-box;
     padding: 20px;
+    height: 460px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 25px;
 }
   
 .input-container {
@@ -133,6 +126,7 @@ body {
 
 .back label {
     font-size: medium;
+    color: var(--text);
     margin-right: 5%;
 }
 
