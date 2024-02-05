@@ -19,7 +19,6 @@ $loggedInUserID = $_SESSION['user_id'];
 // Fetch user data
 $userData = $database->getUserByID($loggedInUserID);
 
-// Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the submitted form data
     $newUsername = $_POST['new_username'];
@@ -27,37 +26,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newBio = $_POST['new_bio'];
 
     // Validate input (you should perform more comprehensive validation)
-    if (empty($newUsername) || empty($newEmail)) {
-        $errorMessage = "Please fill in all required fields.";
+    if (empty($newUsername) && empty($newEmail) && empty($newBio)) {
+        // If no fields are modified, do nothing and redirect back to profile.php
+        header('Location: profile.php');
+        exit();
+    }
+
+    // Check if the new username or email already exists
+    $existingUser = $database->getUserByUsername($newUsername);
+    $existingEmail = $database->getUserByEmail($newEmail);
+
+    if ($existingUser && $newUsername !== $userData['Username']) {
+        $errorMessage = "Username already exists. Please choose a different one.";
+    } elseif ($existingEmail && $newEmail !== $userData['Email']) {
+        $errorMessage = "Email already exists. Please choose a different one.";
     } else {
-        // Check if the new username or email already exists
-        $existingUser = $database->getUserByUsername($newUsername);
-        $existingEmail = $database->getUserByEmail($newEmail);
+        // Get the existing user data
+        $existingUserData = $database->getUserByID($loggedInUserID);
 
-        if ($existingUser && $newUsername !== $userData['Username']) {
-            $errorMessage = "Username already exists. Please choose a different one.";
-        } elseif ($existingEmail && $newEmail !== $userData['Email']) {
-            $errorMessage = "Email already exists. Please choose a different one.";
+        // Update user data in the database
+        $result = $database->updateUser(
+            $loggedInUserID,
+            !empty($newUsername) ? $newUsername : $existingUserData['Username'],
+            !empty($newEmail) ? $newEmail : $existingUserData['Email'],
+            !empty($newBio) ? $newBio : $existingUserData['Bio']
+        );
+
+        if ($result) {
+            echo '<script>alert("Profile updated successfully!");</script>';
+            // Refresh user data after update
+            $userData = $database->getUserByID($loggedInUserID);
         } else {
-            // Update user data in the database
-            $result = $database->updateUser($loggedInUserID, $newUsername, $newEmail, $newBio);
-
-            if ($result) {
-                echo '<script>alert("Profile updated successfully!");</script>';
-                // Refresh user data after update
-                $userData = $database->getUserByID($loggedInUserID);
-                
-            } else {
-                echo '<script>alert("Profile update failed. Please try again later.!");</script>';
-            }
-
-            // Redirect back to the profile page after submission
-
-            header('Location: profile.php');
-            exit();
+            echo '<script>alert("Profile update failed. Please try again later.!");</script>';
         }
+
+        // Redirect back to the profile page after submission
+        header('Location: profile.php');
+        exit();
     }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
