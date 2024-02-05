@@ -3,7 +3,8 @@ INSERT INTO Users (Username, Password, Email, Bio) VALUES
     ('user1', 'password1', 'user1@example.com', 'Hello, I am user 1.'),
     ('user2', 'password2', 'user2@example.com', 'Nice to meet you! I am user 2.'),
     ('user3', 'password3', 'user3@example.com', 'Hello from user 3.'),
-    ('user4', 'password4', 'user4@example.com', 'Greetings! User 4 here.');
+    ('user4', 'password4', 'user4@example.com', 'Greetings! User 4 here.'),
+    ('user5', 'password5', 'user5@example.com', 'Hello from user 5.');
 
 
 INSERT INTO Categories (CategoryName) VALUES
