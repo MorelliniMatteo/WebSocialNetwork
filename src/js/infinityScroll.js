@@ -1,5 +1,6 @@
 const page = document.querySelector("main").classList.value;
 let categoryID = 0;
+//if we are in explore, we update the categoryID by taking its value with an ajax request
 if (page === 'explore') {
     $.ajax({
         url: '../models/setCategoryID.php',
@@ -22,7 +23,7 @@ let index = 0;
 function getPostsFromServer(n) {
     return $.ajax({
         type: 'POST',
-        url: '../views/loadPosts.php',
+        url: '../models/loadPosts.php',
         data: { 
             index: n,
             queryName: page,
