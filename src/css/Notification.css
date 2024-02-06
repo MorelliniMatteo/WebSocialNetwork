@@ -25,7 +25,7 @@
     position: absolute;
     top: 100%;
     right: 0;
-    width: 300px;
+    width: 250px;
     background-color: var(--backgnd);
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
