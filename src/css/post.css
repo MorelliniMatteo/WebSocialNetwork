@@ -54,6 +54,10 @@ main{
     margin-bottom: 1rem;
 }
 
+.post section img{
+    padding: 0 0.25rem;
+}
+
 .post>section>h1{
     display: none;
 }
