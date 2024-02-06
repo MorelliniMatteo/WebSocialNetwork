@@ -234,8 +234,26 @@ class Database {
         return $stmt->execute();
     }
 
+    // Insert like
+    public function insertSave($postID, $userID){
+        $query = "INSERT INTO saved (PostID, UserID) VALUES (:postID, :userID);";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
     // Remove like
     public function removeLike($postID, $userID){
+        $query = "DELETE FROM saved WHERE PostID =:postID AND UserID = :userID ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    // Remove like
+    public function removeSave($postID, $userID){
         $query = "DELETE FROM likes WHERE PostID =:postID AND UserID = :userID ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
@@ -464,6 +482,17 @@ class Database {
 
     public function getLikesFromPost($postID, $userID){
         $query = "SELECT LikeID FROM likes WHERE PostID = :postID AND UserID = :userID";
+        $params = array(':postID' => $postID, ':userID' => $userID);
+    
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getSaveFromPost($postID, $userID){
+        $query = "SELECT SavedID FROM saved WHERE PostID = :postID AND UserID = :userID";
         $params = array(':postID' => $postID, ':userID' => $userID);
     
         $stmt = $this->conn->prepare($query);

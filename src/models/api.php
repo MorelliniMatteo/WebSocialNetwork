@@ -20,6 +20,7 @@ function generatePostHTML($post, $database, $userData)
     $caption = $post['Caption'];
 
     $likesSrc = $database->getLikesFromPost($postID, $userData['UserID']) ? "../icon/like.svg" : "../icon/like-empty.svg";
+    $saveSrc = $database->getSaveFromPost($postID, $userData['UserID']) ? "../icon/save.svg" : "../icon/saved.svg";
 
     $comments = $database->getCommentsFromPostID($postID);
 
@@ -68,13 +69,12 @@ function generatePostHTML($post, $database, $userData)
     $commentButton->setAttribute('onclick', "openComments($postID)");
     $section->appendChild($commentButton);
 
-    // Share button
-    $shareButton = $dom->createElement('img', '');
-    $shareButton->setAttribute('class', 'icon shareButton');
-    $shareButton->setAttribute('src', '../icon/saved.svg');
-    $shareButton->setAttribute('alt', 'comment button');
-    $shareButton->setAttribute('onclick', "sharePost($postID)");
-    $section->appendChild($shareButton);
+    // save button
+    $saveButton = $dom->createElement('img', '');
+    $saveButton->setAttribute('class', 'icon saveButton');
+    $saveButton->setAttribute('src', $saveSrc);
+    $saveButton->setAttribute('alt', 'save button');
+    $section->appendChild($saveButton);
 
     $postDiv->appendChild($section);
     $postContainer->appendChild($postDiv);

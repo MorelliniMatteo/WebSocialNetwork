@@ -1,5 +1,6 @@
 let likeButtons = document.querySelectorAll(".likeButton");
-let userID = 4;
+let saveButton = document.querySelectorAll(".saveButton");
+let userID = 4; // replace with loggedIn userID
 
 $(document).on('click', '.likeButton', function() {
     let likeButton = $(this);
@@ -21,6 +22,36 @@ $(document).on('click', '.likeButton', function() {
             postID: postID,
             userID: userID,
             add: (likeButton.attr('src').endsWith("like-empty.svg")) ? 0 : 1
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (errore) {
+            console.error('Errore nella richiesta AJAX:', errore);
+        }
+    });
+});
+
+$(document).on('click', '.saveButton', function() {
+    let saveButton = $(this);
+    let post = saveButton.closest(".post-container");
+    let postID = post.attr('id');
+
+    // Aggiungi o rimuovi il like a seconda dello stato corrente
+    if (saveButton.attr('src').endsWith("saved.svg")) {
+        saveButton.attr('src', "../icon/save.svg");
+    } else {
+        saveButton.attr('src', "../icon/saved.svg");
+    }
+    
+    // Esegui la richiesta AJAX
+    $.ajax({
+        type: 'POST',
+        url: '../models/pushSave.php', // TO DO
+        data: { 
+            postID: postID,
+            userID: userID,
+            add: (saveButton.attr('src').endsWith("save.svg")) ? 0 : 1
         },
         success: function (response) {
             console.log(response);
