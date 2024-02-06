@@ -795,6 +795,36 @@ class Database {
         }
     }
 
+    public function removeFollower($followerID, $followingID) {
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM Followers WHERE FollowerUserID = :followerID AND FollowingUserID = :followingID");
+            $stmt->bindParam(':followerID', $followerID, PDO::PARAM_INT);
+            $stmt->bindParam(':followingID', $followingID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Check if any rows were affected
+            $rowCount = $stmt->rowCount();
+            return $rowCount > 0;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function isFollower($loggedInUserID, $userIDToFollow) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Followers WHERE FollowerUserID = :loggedInUserID AND FollowingUserID = :userIDToFollow");
+            $stmt->bindParam(':loggedInUserID', $loggedInUserID, PDO::PARAM_INT);
+            $stmt->bindParam(':userIDToFollow', $userIDToFollow, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }
 
 ?>

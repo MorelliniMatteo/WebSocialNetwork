@@ -157,14 +157,16 @@ a {
     font-weight: 300;
 }
 
-.profile-edit{
+.profile-edit,
+.profile-follow{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.profile-edit .profile-edit-box {
+.profile-edit-box,
+.profile-follow-box {
     width: 90%;
     border-radius: 0.8rem;
     padding: 0 20px;
@@ -176,19 +178,23 @@ a {
     text-align: center;
 }
 
-.profile-edit .profile-edit-box:hover {
+.profile-edit-box:hover,
+.profile-follow-box:hover {
     background-color: white;
 }
 
-.profile-edit span {
+.profile-edit span,
+.profile-follow span {
     transition: 0.5s ease;
 }
 
-.profile-edit:hover span {
+.profile-edit:hover span,
+.profile-follow:hover span {
     color: black;
 }
 
-.profile-edit .btn span{
+.profile-edit .btn span,
+.profile-follow .btn span{
     display: block;
     padding-top: 5px;
 }
