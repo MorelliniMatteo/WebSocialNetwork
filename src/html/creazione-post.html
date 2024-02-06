@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/creazione-post.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Social Network Post</title>
 </head>
 
@@ -22,26 +22,29 @@
 
                 <form method="post" enctype="multipart/form-data">
                     <section>
-                        <input type="file" id="photoInput" name="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+                        <input type="file" id="photoInput" name="photoInput" accept="image/*">
                         <label for="photoInput">
                             <img src="../icon/aggiungi-foto.svg" alt="postImage" id="postImage">
                         </label>
                     </section>
 
-                    <!-- Elemento con ID 'postDescription' -->
-                    <label for="descriptionInput">Descrizione del Post:</label>
-                    <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
-                   
-                    
+                    <div class="container">
+                        <label for="descriptionInput">Descrizione del Post:</label>
+                        <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
+                        <select name="category" id="category">
+                            <option value="" disabled selected>Category</option>
+                            <option value="travel">Travel</option>
+                            <option value="nature">Nature</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="art">Art</option>
+                            <option value="sculpture">Sculpture</option>
+                            <option value="digital-art">Digital Art</option>
+                        </select>
+                    </div>
+
                     <label for="error-message" class="error-message"><?php echo "$errorMessage" ?></label>
 
-
                     <button type="submit" name="confirmButton" id="confirmButton">Confirm</button>
-
-                    <!-- Messaggio di conferma -->
-                    <section id="confirmationMessage" style="display: none;">
-                        <p>Il post è stato inviato con successo!</p>
-                    </section>
                 </form>
 
             </article>
@@ -49,30 +52,11 @@
         <img src="../img/CreateYourPost2.png" alt="" id="pic2">
     </main>
 
-    <nav class="navbar">
-        <a href="home.html" class="navbar-item">
-            <img class="icon" src="../icon/home.svg" alt="home">
-            <span class="icon-name">Home</span>
-        </a>
-        <a href="explore.html" class="navbar-item">
-            <img class="icon" src="../icon/explore.svg" alt="explore">
-            <span class="icon-name">Explore</span>
-        </a>
-        <a href="chat.html" class="navbar-item">
-            <img class="icon" src="../icon/chat.svg" alt="chat">
-            <span class="icon-name">Chat</span>
-        </a>
-        <a href="creazione-post.html" class="navbar-item">
-            <img class="icon" src="../icon/newPost.svg" alt="new post">
-            <span class="icon-name">New Post</span>
-        </a>
-        <a href="profile.html" class="navbar-item">
-            <img class="icon" src="../icon/profile.svg" alt="personal profile">
-            <span class="icon-name">Profile</span>
-        </a>
-    </nav>
+    <?php include_once('Nav.php'); ?>
 
     <script src="../js/creazione-post.js"></script>
+
+    <script src="../js/importTheme.js"></script>
 
 </body>
 

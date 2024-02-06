@@ -34,7 +34,7 @@ main > section {
     position: relative;
     width: 305px;
     min-width: 305px;
-    height: 465px;
+    height: 495px;
     overflow: hidden;
     background: var(--contrast);
     padding-top: 10px; /* Spazio sopra il contenuto */
@@ -50,6 +50,7 @@ article > header {
     display: flex;
     align-items: center;
     padding: 0 15px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -201,6 +202,7 @@ section > img {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column-reverse;
 }
 
 .container label {
@@ -208,14 +210,18 @@ section > img {
 }
 
 .container select {
-    width: 7rem;
-    margin-right: 15px;
+    margin-top: 5px;
     font-size: small;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    width: 40%; /* Imposta la larghezza al 100% del contenitore */
+    max-height: 20px; /* Imposta l'altezza massima iniziale a 0 */
 }
 
 .container select option {
     font-size: small;
     margin-bottom: 2px;
+    max-height: 5px;
 }
 
 #photoInput {
@@ -238,7 +244,7 @@ section > img {
         display: block
     }
     main > section {
-        height: 470px;
+        height: 500px;
     }
     main > section > article > textarea {
         font-size: small;
