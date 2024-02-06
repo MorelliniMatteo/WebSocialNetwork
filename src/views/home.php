@@ -41,6 +41,7 @@ $userData = $database->getUserByID($loggedInUserID);
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
              <li>
                 <div class="notification-container">
+                    <span class="user-ID" id="userID"><?php echo $loggedInUserID; ?></span>
                     <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
                     <div class="notification-dropdown" id="notificationDropdown"></div>
                 </div>
