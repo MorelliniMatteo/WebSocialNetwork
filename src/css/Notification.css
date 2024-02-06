@@ -16,6 +16,10 @@
     background: transparent;
 }
 
+#userID {
+    display: none;
+}
+
 #notificationDropdown {
     display: none;
     position: absolute;
