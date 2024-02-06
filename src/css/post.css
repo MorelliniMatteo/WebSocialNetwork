@@ -4,10 +4,6 @@ main{
     align-items: center;
 }
 
-#userID {
-    display: none;
-}
-
 .post{
     margin: 1rem 3rem;
     text-align: center;
