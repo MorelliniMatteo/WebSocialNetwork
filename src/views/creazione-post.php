@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,6 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
     </main>
 
     <?php include_once('Nav.php'); ?>
+
+    <script src="../js/creazione-post.js"></script>
 
     <script src="../js/importTheme.js"></script>
 
