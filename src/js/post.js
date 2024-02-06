@@ -97,16 +97,3 @@ function submitComment(postID) {
     }
     
 }
-
-
-/*function changeFollow() {
-    let followButton = document.getElementById("followButton");
-    let icon = followButton.querySelector(".icon");
-
-    // Cambia l'icona al click
-    if (icon.src.endsWith("unfollow.svg")) {
-        icon.src = "../icon/follow.svg"; // Cambia con il percorso dell'icona "like-filled"
-    } else {
-        icon.src = "../icon/unfollow.svg"; // Ripristina con il percorso dell'icona "like-empty"
-    }
-}*/

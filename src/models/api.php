@@ -41,7 +41,7 @@ function generatePostHTML($post, $database, $userData)
     $header = $dom->createElement('header');
     $header->appendChild($dom->createElement('img', ''))->setAttribute('src', $userLogoURL);
     $userLink = $dom->createElement('a', $username);
-    $userLink->setAttribute('href', '#');
+    $userLink->setAttribute('href', '../views/VisitProfile.php?id=' . $post['UserID']);
     $userLink->setAttribute('label', 'View user profile');
     $header->appendChild($userLink);
     $postDiv->appendChild($header);
