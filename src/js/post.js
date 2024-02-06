@@ -16,7 +16,7 @@ $(document).on('click', '.likeButton', function() {
     // Esegui la richiesta AJAX
     $.ajax({
         type: 'POST',
-        url: '../views/pushLike.php',
+        url: '../models/pushLike.php',
         data: { 
             postID: postID,
             userID: userID,
@@ -51,7 +51,7 @@ function submitComment(postID) {
         let formData = new FormData(form);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'pushComment.php', true);
+        xhr.open('POST', '../models/pushComment.php', true); //../models/pushComment.php
         xhr.onload = function () {
             if (xhr.status === 200) {
                 console.log(xhr.responseText);
