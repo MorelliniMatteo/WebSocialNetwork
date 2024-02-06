@@ -1,10 +1,25 @@
 <?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$loggedInUserID = $_SESSION['user_id'];
+
 include_once('../db/database.php');
 include_once('../models/api.php');
 
 $database = new Database();
 
-$loggedInUserID = 1;
+// Fetch user data
 $userData = $database->getUserByID($loggedInUserID);
 
 if (isset($_POST['post'])) {

@@ -1,13 +1,24 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se l'utente è autenticato
+if (!isset($_SESSION['user_id'])) {
+    // Utente non autenticato, potresti reindirizzarlo alla pagina di login
+    header('Location: login.php');
+    exit();
+}
+
+// Ottieni l'ID dell'utente dalla sessione
+$loggedInUserID = $_SESSION['user_id'];
 
 include_once("../db/database.php");
 
-// Assume the user is logged in and you have the user ID
-$loggedInUserID = 1; //Replace with the actual logged-in user ID
-
 $database = new Database();
+
+//default categoryID to display all post
 $categoryID = 0;
 
 // Gestione dell'invio del form search
