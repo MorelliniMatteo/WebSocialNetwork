@@ -110,7 +110,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 
         <section id="postSection" class="public-container user-posts">
             <?php foreach ($userPosts as $post) : ?>
-                    <a href="#" class="post">
+                    <a href="post.php?PostID=<?php echo $post['PostID']; ?>" class="post">
                         <img src="<?php echo displayProfileImage($database, $post['MediaURL']); ?>" alt="post-image">
                         <div class="post-box">
                             <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
@@ -131,7 +131,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 
         <section id="taggedSection" class="public-container user-posts">
             <?php foreach ($userTaggedPosts as $post) : ?>
-                <a href="#" class="post">
+                <a href="post.php?PostID=<?php echo $post['PostID']; ?>" class="post">
                     <img src="<?php echo displayProfileImage($database, $post['MediaURL']); ?>" alt="post-image">
                     <div class="post-box">
                         <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
@@ -152,7 +152,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 
         <section id="savedSection" class="public-container user-posts">
             <?php foreach ($userLikedPosts as $post) : ?>
-                <a href="#" class="post">
+                <a href="post.php?PostID=<?php echo $post['PostID']; ?>" class="post">
                     <img src="<?php echo displayProfileImage($database, $post['MediaURL']); ?>" alt="post-image">
                     <div class="post-box">
                         <h3 class="post-title"><?php echo $post['Caption']; ?></h3>
