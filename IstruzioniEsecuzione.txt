@@ -1,7 +1,9 @@
 Per eseguire ArtHub seguire questi passaggi:
 1. Avviare XAMPP e premere i bottoni start per Apache e MySQL
 2. Aprire il proprio motore di ricerca e cercare http://localhost/phpmyadmin/
-3. Creare il database copiando e incollando creazioneDatabase.txt
-4. Popolare il database copiando e incollando datiDatabase.txt
-5. In C:\xampp\htdocs creare la cartella ProgettoWeb e copiarci il contenuto della cartella ProgettoWeb
-6. Navigando all'indirizzo: localhost/ProgettoWeb/src/home.php potrai visitare il social network ArtHub!
+3. Creare il database di nome "arthub"
+4. Creare le tabelle del database copiando e incollando creazioneDatabase.txt
+5. Popolare il database copiando e incollando datiDatabase.txt
+6. In C:\xampp\htdocs creare la cartella WebSocialNetwork e copiarci il contenuto della cartella ProgettoWeb
+7. Navigando all'indirizzo: http://localhost/WebSocialNetwork/src/views/login.php potrai visitare il social
+network ArtHub!

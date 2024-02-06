@@ -1,6 +1,6 @@
 function goBack() {
     // Salva l'URL corrente
-    var currentURL = window.location.href;
+    let currentURL = window.location.href;
 
     // Reindirizza alla pagina precedente
     window.history.back();
