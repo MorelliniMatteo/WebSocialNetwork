@@ -1,5 +1,6 @@
 <?php
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 4; //Replace with the actual logged-in user ID
@@ -8,13 +9,13 @@ $database = new Database();
 
 $userData = $database->getUserByID($loggedInUserID);
 
-function generatePostHTML($post) {
+function generatePostHTML($post, $database, $userData) {
     $postSerialized = urlencode(json_encode($post));
 
     $html = '<div class="post-img">';
     $html .= '<form action="post.php" method="post">';
     $html .= '<input type="hidden" name="post" value="' . $postSerialized . '">';
-    $html .= '<button type="submit" name="viewPost" label="View Full Post"><img src="' . $post['MediaURL'] . '" alt="Post Image"></button>';
+    $html .= '<button type="submit" name="viewPost" label="View Full Post"><img src="' . displayProfileImage($database, $post['MediaURL']) . '" alt="Post Image"></button>';
     $html .= '</form>';
     $html .= '</div>';
 

@@ -1,5 +1,6 @@
 <?php
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 // Assume the user is logged in and you have the user ID
 $loggedInUserID = 4; //Replace with the actual logged-in user ID
@@ -13,10 +14,10 @@ function generatePostHTML($post, $database, $userData)
     $postID = $post['PostID'];
 
     $userProfileInfo = $database->getUserProfileInfo($post['UserID']);
-    $userLogoURL = $userProfileInfo['LogoURL'];
+    $userLogoURL = displayProfileImage($database, $userProfileInfo['LogoURL']);
 
     $username = $database->getUserByID($post['UserID'])['Username'];
-    $mediaURL = $post['MediaURL'];
+    $mediaURL = displayProfileImage($database, $post['MediaURL']);
     $caption = $post['Caption'];
 
     $likesSrc = $database->getLikesFromPost($postID, $userData['UserID']) ? "../icon/like.svg" : "../icon/like-empty.svg";
