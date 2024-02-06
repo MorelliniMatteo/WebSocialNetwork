@@ -406,6 +406,22 @@ class Database {
         }
     }
 
+    public function getUsersByString($input){
+        $query = "SELECT * FROM Users
+                  WHERE LOWER(Username) LIKE LOWER(':input%') OR LOWER(Username) = LOWER(':input')";
+        $params = array(':input' =>$input);
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result;
+        } else {
+            die(json_encode("Errore nella query: "));
+        }
+    }
+
     /** returns posts to put on the home page */
     public function getPostFromFollowing($userID, $offset) {
         $query = "SELECT Posts.* FROM Posts

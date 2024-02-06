@@ -13,7 +13,8 @@ INSERT INTO Categories (CategoryName) VALUES
     ('Lifestyle'),
     ('Art'),
     ('Sculpture'),
-    ('DigitalArt');
+    ('DigitalArt'),
+    ('Tattoo');
 
 
 INSERT INTO Posts (UserID, MediaURL, Caption, CategoryID) VALUES
