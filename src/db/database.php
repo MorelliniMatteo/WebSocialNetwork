@@ -469,6 +469,8 @@ class Database {
         }
     }
 
+
+
     public function getCommentsFromPostID($postID) {
         $query = "SELECT UserID, CommentText FROM Comments WHERE PostID = :postID";
         $params = array(':postID' => $postID);
@@ -774,6 +776,22 @@ class Database {
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false; // You might want to handle the error more gracefully in a production environment
+        }
+    }
+
+    public function getPostByID($postID) {
+        try {
+            $sql = "SELECT * FROM Posts WHERE PostID = :postID";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $post;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
         }
     }
 

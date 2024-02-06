@@ -12,6 +12,12 @@ if (isset($_POST['post'])) {
     $post = json_decode($postDecoded, true);
 }
 
+
+if (isset($_GET['PostID'])) {
+    $PostID = $_GET['PostID'];
+    $post = $database->getPostByID($PostID);
+}
+
 ?>
 
 <!DOCTYPE html>
