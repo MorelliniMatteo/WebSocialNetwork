@@ -1,4 +1,7 @@
 <?php  
+
+session_start();
+
 include_once("../db/database.php");
 
 // Assume the user is logged in and you have the user ID
@@ -40,8 +43,12 @@ $userData = $database->getUserByID($loggedInUserID);
          </aside>
     </header>
     <main class="explore">
-        <form>
-            <input type="text" id="Search" placeholder="Search for your arts" title="search bar">
+        <form action="../models/sendCategory.php" method="post">
+            <label hidden="true" for="Search">Search</label>
+            <input type="text" id="Search" name="Search" placeholder="Search for your arts" title="search bar">
+            <button type="submit" name="submit">
+                <img src="../icon/share.svg" alt="submit icon" class="icon">
+            </button>
         </form>
         <div class="posts-container"></div>
         <div class="space"></div>

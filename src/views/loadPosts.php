@@ -6,12 +6,13 @@ $database = new Database();
 $loggedInUserID = 4; //Replace with the actual logged-in user ID
 
 // Verifica se sono stati ricevuti i dati corretti tramite POST
-if (isset($_POST['index']) && isset($_POST['queryName'])){
+if (isset($_POST['index']) && isset($_POST['queryName']) && isset($_POST['categoryID'])){
     $index = $_POST['index'];
     $queryName = $_POST['queryName'];
+    $categoryID = $_POST['categoryID'];
 
     if ($queryName == 'explore') {
-        if (isset($_POST['categoryID'])) {
+        if ($categoryID) {
             $categoryID = $_POST['categoryID'];
             $posts = $database->getPostsByCategory($categoryID, $index);
         } else {

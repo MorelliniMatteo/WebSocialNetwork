@@ -44,8 +44,16 @@ main input {
 }
 
 main form{
+    display: flex;
     width: 90%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+main form button{
+    background-color: transparent;
+    border: none;
 }
 
 .posts-container{

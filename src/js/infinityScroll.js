@@ -1,4 +1,20 @@
 const page = document.querySelector("main").classList.value;
+let categoryID = 0;
+if (page === 'explore') {
+    $.ajax({
+        url: '../models/setCategoryID.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            categoryID = data.categoryID;
+            console.log('categoryID from PHP:', categoryID);
+        },
+        error: function(error) {
+            console.error('Errore durante la richiesta AJAX:', error);
+        }
+    });
+    console.log(categoryID);
+}
 const postsContainer = document.querySelector(".posts-container");
 const sentinel = document.querySelector(".space");
 let index = 0;
@@ -9,7 +25,8 @@ function getPostsFromServer(n) {
         url: '../views/loadPosts.php',
         data: { 
             index: n,
-            queryName: page
+            queryName: page,
+            categoryID: categoryID
         },
         dataType: 'json',
     })
