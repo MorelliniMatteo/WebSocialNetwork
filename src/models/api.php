@@ -133,7 +133,7 @@ function generatePostHTML($post, $database, $userData)
     $commentForm->appendChild($userIDHidden);
 
     $label = $dom->createElement('label', '');
-    $label->setAttribute('for', 'CommentText');
+    $label->setAttribute('for', 'CommentText_' . $postID);
     $commentForm->appendChild($label);
 
     $commentInput = $dom->createElement('input');
