@@ -29,7 +29,7 @@ if (isset($_POST['postID']) && isset($_POST['userID']) && isset($_POST['add'])) 
         if(!$database->insertLike($postID, $userID)){
             echo "Si è verificato un errore durante l'inserimetno nel database.";
         } else {
-            $toUserID = $database->getUserIDfromPostID($postID);
+            $toUserID = $database->getUserIDByPostID($postID);
             $database->insertNotification($userID, $toUserID, "like", $postID);
             echo "Insert success";
         }
