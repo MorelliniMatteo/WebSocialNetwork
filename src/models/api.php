@@ -138,7 +138,7 @@ function generatePostHTML($post, $database, $userData)
 
     $commentInput = $dom->createElement('input');
     $commentInput->setAttribute('type', 'text');
-    $commentInput->setAttribute('id', 'CommentText');
+    $commentInput->setAttribute('id', 'CommentText_' . $postID);
     $commentInput->setAttribute('name', 'CommentText');
     $commentInput->setAttribute('placeholder', 'add a comment'); // Add this line
     $commentForm->appendChild($commentInput);
