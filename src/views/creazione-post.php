@@ -3,9 +3,11 @@
 session_start();
 
 include_once('../db/database.php');
+include_once('../models/ImageHelper.php');
 
 $database = new Database();
 $errorMessage = "";
+
 
 // Verifica se l'utente è autenticato
 if (!isset($_SESSION['user_id'])) {
@@ -17,6 +19,7 @@ if (!isset($_SESSION['user_id'])) {
 // Ottieni l'ID dell'utente dalla sessione
 $loggedInUserID = $_SESSION['user_id'];
 
+$profileInfo = $database->getUserProfileInfo($loggedInUserID);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
     $category = isset($_POST['category']) ? $_POST['category'] : "";
@@ -86,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
         <section>
             <article>
                 <header>
-                    <img src="../img/Profile.png" alt="User Avatar">
+                <img src="<?php echo displayProfileImage($database, $profileInfo['LogoURL']); ?>" alt="User Avatar">
                     <h1>Create Post</h1>
                 </header>
 
