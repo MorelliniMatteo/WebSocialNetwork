@@ -10,6 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $UserID = $_POST["UserID"];
         $CommentText = $_POST["CommentText"];
 
+        //control over the text inserted in comments
+        if ( $CommentText == '') {
+            exit();
+        }
+
         if (!$database->insertComment($PostID, $UserID, $CommentText)) {
             echo "Si è verificato un errore durante l'inserimento del commento.";
         }
