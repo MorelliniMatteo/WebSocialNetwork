@@ -32,12 +32,20 @@ $userData = $database->getUserByID($loggedInUserID);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/explore.css">
+    <link rel="stylesheet" href="../css/Notification.css">
 </head>
 <body>
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
+             <li>
+                <div class="notification-container">
+                    <span class="user-ID" id="userID"><?php echo $loggedInUserID; ?></span>
+                    <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
+                    <div class="notification-dropdown" id="notificationDropdown"></div>
+                </div>
+                <div id="toastBox"></div>
+             </li>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
@@ -66,6 +74,7 @@ $userData = $database->getUserByID($loggedInUserID);
    <?php include_once("Nav.php"); ?>
 
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="../js/Notification.js"></script>
    <script src="../js/menuTheme.js"></script>
    <script src="../js/infinityScroll.js"></script>
 </body>
