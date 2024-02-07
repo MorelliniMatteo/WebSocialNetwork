@@ -6,10 +6,12 @@
 
 :root{
     --backgnd: #E6E6E6;
-    --text: #000;
-    --backgnd_contrast: #A1A7B8;
+    --text: #282c30; /* dark-grey */
+    --contrast: #A1A7B8;
     --label: #c50000;
     --button: #006bcf;
+    --elem1: #9a85FC; /* purple */
+    --elem2: #86B7B8; /* green */
 }
 
 body {
@@ -28,7 +30,7 @@ form > label {
 
 .form-container {
     text-align: center;
-    background-color: var(--backgnd_contrast);
+    background-color: var(--contrast);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     width: 80%;
@@ -57,7 +59,7 @@ section {
 }
 
 section > label {
-    color: black;
+    color: var(--text);
 }
 
 .back-button {
