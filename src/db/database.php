@@ -245,7 +245,7 @@ class Database {
 
     // Remove like
     public function removeLike($postID, $userID){
-        $query = "DELETE FROM saved WHERE PostID =:postID AND UserID = :userID ";
+        $query = "DELETE FROM likes WHERE PostID =:postID AND UserID = :userID ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
         $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
@@ -254,7 +254,7 @@ class Database {
 
     // Remove like
     public function removeSave($postID, $userID){
-        $query = "DELETE FROM likes WHERE PostID =:postID AND UserID = :userID ";
+        $query = "DELETE FROM saved WHERE PostID =:postID AND UserID = :userID ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
         $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);

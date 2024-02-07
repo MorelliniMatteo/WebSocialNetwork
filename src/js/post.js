@@ -1,6 +1,8 @@
 let likeButtons = document.querySelectorAll(".likeButton");
 let saveButton = document.querySelectorAll(".saveButton");
-let userID = 4; // replace with loggedIn userID
+let userID = $('#userID').text();
+
+console.log(userID);
 
 $(document).on('click', '.likeButton', function() {
     let likeButton = $(this);

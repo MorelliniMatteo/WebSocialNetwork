@@ -14,13 +14,13 @@ if (isset($_POST['postID']) && isset($_POST['userID']) && isset($_POST['add'])) 
         if(!$database->insertSave($postID, $userID)){
             echo "Si è verificato un errore durante l'inserimento del save nel database.";
         } else {
-            echo "success";
+            echo "Insert success";
         }
     } else {
         if(!$database->removeSave($postID, $userID)){
             echo "Si è verificato un errore durante la rimozione del save dal database.";
         } else {
-            echo "success";
+            echo "Remove success";
         }
     }
 } else {
