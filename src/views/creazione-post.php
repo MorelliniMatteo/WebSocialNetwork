@@ -34,7 +34,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
             $errorMessage = "Image name already exists";
         } else {
             if ($database->uploadImage($imageName, $fileData)) {
-                $database->insertPost($loggedInUserID, $imageName, $description, $categoryID);
+                // Create a new post
+                $newPostID = $database->insertPost($loggedInUserID, $imageName, $description, $categoryID);
+
+                // Check for "@" symbol in the description
+                if (preg_match_all('/@(\w+)/', $description, $matches)) {
+                    $taggedUsernames = $matches[1];
+
+                    // Insert records into Tagged table
+                    foreach ($taggedUsernames as $username) {
+                        // Get the UserID based on the username
+                        $taggedUserID = $database->getUserIDByUsername($username);
+
+                        // Insert into Tagged only if UserID is found
+                        if ($taggedUserID !== false) {
+                            $database->insertTagged($newPostID, $taggedUserID);
+                            $database->insertNotification($loggedInUserID, $taggedUserID, 'tag', $newPostID);
+                        } else {
+                            // Handle the case when the user with the given username is not found
+                            echo "User with username '$username' not found.";
+                        }
+                    }
+                }
                 header("Location: Profile.php");
             } else {
                 $errorMessage = "Failed to upload";
