@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.sender-name {
+  color: var(--text);
+}
+
 button {
   border: none;
   transition: .4s ease-in-out;
