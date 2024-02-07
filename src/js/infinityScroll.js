@@ -101,6 +101,9 @@ const observer = new IntersectionObserver((entries) => {
         if(entry.isIntersecting) {
             loadMorePosts();
         }
+        if(entry.isIntersecting) {
+            loadMorePosts();
+        }
     });
 });
 
