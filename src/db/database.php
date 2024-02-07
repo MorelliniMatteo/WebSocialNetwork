@@ -109,6 +109,22 @@ class Database {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getUserIDByUsername($username) {
+        $query = "SELECT UserID FROM Users WHERE Username = :username";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($result) {
+            return $result['UserID'];
+        } else {
+            return false; // User not found
+        }
+    }
+    
+
     // Get user by email
     public function getUserByEmail($email) {
         $query = "SELECT * FROM Users WHERE Email = :email";
@@ -138,7 +154,29 @@ class Database {
         $stmt->bindParam(':mediaURL', $mediaURL, PDO::PARAM_STR);
         $stmt->bindParam(':caption', $caption, PDO::PARAM_STR);
         $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
-        return $stmt->execute();
+        
+        if ($stmt->execute()) {
+            // Return the last inserted PostID
+            return $this->conn->lastInsertId();
+        } else {
+            return false; // Failed to insert post
+        }
+    }
+    
+
+    public function insertTagged($postID, $userID) {
+        try {
+            $query = "INSERT INTO Tagged (PostID, UserID) VALUES (:postID, :userID)";
+            $statement = $this->conn->prepare($query);
+            $statement->bindParam(':postID', $postID, PDO::PARAM_INT);
+            $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+            $statement->execute();
+
+            return true; // Insert successful
+        } catch (PDOException $e) {
+            echo "Error inserting tag: " . $e->getMessage();
+            return false; // Insert failed
+        }
     }
 
     // Insert comment
