@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($action === 'follow') {
             $database->insertFollower($loggedInUserID, $userIDToFollow);
+            $database->insertNotification($loggedInUserID, $userIDToFollow, 'follow');
         } else if ($action === 'unfollow') {
             $database->removeFollower($loggedInUserID, $userIDToFollow);
         }
