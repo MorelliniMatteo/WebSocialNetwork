@@ -415,11 +415,7 @@ class Database {
     
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        if ($result) {
-            return $result;
-        } else {
-            die(json_encode("Errore nella query: "));
-        }
+        
     }    
     
 
