@@ -6,10 +6,12 @@
 
 :root{
     --backgnd: #E6E6E6;
-    --text: #000;
-    --backgnd_contrast: #A1A7B8;
+    --text: #282c30; /* dark-grey */
+    --contrast: #A1A7B8;
     --label: #c50000;
     --button: #006bcf;
+    --elem1: #9a85FC; /* purple */
+    --elem2: #86B7B8; /* green */
 }
 
 body {
@@ -26,7 +28,7 @@ body {
 }
 
 .form {
-    background-color: var(--backgnd_contrast);
+    background-color: var(--contrast);
     border-radius: 20px;
     box-sizing: border-box;
     padding: 20px;
@@ -73,7 +75,7 @@ body {
 }
   
 .cut {
-    background-color: var(--backgnd_contrast);
+    background-color: var(--contrast);
     border-radius: 10px;
     height: 20px;
     left: 20px;
@@ -126,7 +128,7 @@ body {
 
 .back label {
     font-size: medium;
-    color: var(--text);
+    color: var(--black);
     margin-right: 5%;
 }
 
