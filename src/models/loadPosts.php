@@ -28,6 +28,7 @@ if (isset($_POST['index']) && isset($_POST['queryName']) && isset($_POST['catego
         if ($categoryID) {
             $categoryID = $_POST['categoryID'];
             $posts = $database->getPostsByCategory($categoryID, $index);
+            $_SESSION['categoryID'] = null ;
         } else {
             $posts = $database->getRandomPosts($index);
         }
