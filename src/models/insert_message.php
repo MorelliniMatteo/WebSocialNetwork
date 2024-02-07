@@ -5,7 +5,8 @@ include_once('../db/database.php');
 // Get data from the AJAX request
 $senderID = $_POST['senderID'];
 $receiverID = $_POST['receiverID'];
-$messageText = $_POST['messageText'];
+
+$messageText = isset($_POST['messageText']) ? trim($_POST['messageText']) : '';
 
 
 $database = new Database();
