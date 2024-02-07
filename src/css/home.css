@@ -47,8 +47,16 @@ main input {
 }
 
 main form{
+    display: flex;
     width: 90%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+main form button{
+    background-color: transparent;
+    border: none;
 }
 
 header>aside{
@@ -58,6 +66,13 @@ header>aside{
 .space{
     padding: 2rem 0;
     color: var(--backgnd);
+}
+
+.searchReturn{
+    margin-top: 1rem;
+    background-color: var(--contrast);
+    padding: 0.5rem 8rem;
+    border-radius: 1.5rem;
 }
 
 .show{

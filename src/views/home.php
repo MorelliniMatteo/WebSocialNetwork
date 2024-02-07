@@ -61,9 +61,26 @@ $userData = $database->getUserByID($loggedInUserID);
          </aside>
     </header>
     <main class="home">
-         <form>
-             <input type="text" id="Search" placeholder="Search for your artists" title="search bar">
+         <form action="../models/searchUsers.php" method="post">
+             <label hidden="true" for="Search">Search</label>
+             <input type="text" id="Search" name="Search" placeholder="Search for your artists" title="search bar">
+             <button type="submit" name="submit">
+                 <img src="../icon/share.svg" alt="submit icon" class="icon">
+             </button>
          </form>
+         
+        <?php if( isset($_SESSION['usersFound']) ) : ?>
+            <section class="searchReturn">
+            <?php $usersFound = $_SESSION['usersFound']; ?>
+            <?php foreach($usersFound as $userFound) : ?>
+                <a href="VisitProfile.php?id=<?php echo $userFound['UserID']; ?>">
+                    <p class="userFound"><?php echo $userFound['Username'] ?></p>
+                </a>
+            <?php endforeach; ?>
+        </section>
+        <?php endif; ?>
+        <?php $_SESSION['usersFound'] = null; ?>
+         
          <div class="posts-container"></div>
         <div class="space">
             <p>space</p>
