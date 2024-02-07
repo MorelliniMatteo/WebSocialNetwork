@@ -20,10 +20,10 @@ $loggedInUserID = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
     $category = isset($_POST['category']) ? $_POST['category'] : "";
-    $description = empty($_POST['descriptionInput']) ? "..." : $_POST['$descriptionInput'];
+    $description = empty($_POST['descriptionInput']) ? "..." : $_POST['descriptionInput'];
     $categoryID = $database->getCategoryID($category);
 
-    // 验证类别是否已选择
+    // Verificare se la categoria è stata selezionata
     if (empty($category)) {
         $errorMessage = "Must choose a category";
     } elseif ($_FILES["photoInput"]["error"] === UPLOAD_ERR_OK) {
