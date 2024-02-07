@@ -133,12 +133,12 @@ function generatePostHTML($post, $database, $userData)
     $commentForm->appendChild($userIDHidden);
 
     $label = $dom->createElement('label', '');
-    $label->setAttribute('for', 'CommentText');
+    $label->setAttribute('for', 'CommentText_' . $postID);
     $commentForm->appendChild($label);
 
     $commentInput = $dom->createElement('input');
     $commentInput->setAttribute('type', 'text');
-    $commentInput->setAttribute('id', 'CommentText');
+    $commentInput->setAttribute('id', 'CommentText_' . $postID);
     $commentInput->setAttribute('name', 'CommentText');
     $commentInput->setAttribute('placeholder', 'add a comment'); // Add this line
     $commentForm->appendChild($commentInput);
