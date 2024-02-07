@@ -414,8 +414,13 @@ class Database {
         $stmt->execute($params);
     
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-        
+
+        if ($result == '') {
+            // "nobody found with this name";
+        } else {
+            return $result;
+        }
+
     }    
     
 

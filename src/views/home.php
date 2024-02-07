@@ -69,14 +69,18 @@ $userData = $database->getUserByID($loggedInUserID);
              </button>
          </form>
          
-        <?php if( isset($_SESSION['usersFound']) ) : ?>
+        <?php if( isset($_SESSION['usersFound'])) : ?>
             <section class="searchReturn">
-            <?php $usersFound = $_SESSION['usersFound']; ?>
-            <?php foreach($usersFound as $userFound) : ?>
+            <?php if($_SESSION['usersFound'] == '') : ?>
+                <p class="userFound"><?php echo "No users found." ?></p>
+            <?php else : ?>
+                <?php $usersFound = $_SESSION['usersFound']; ?>
+                <?php foreach($usersFound as $userFound) : ?>
                 <a href="VisitProfile.php?id=<?php echo $userFound['UserID']; ?>">
                     <p class="userFound"><?php echo $userFound['Username'] ?></p>
                 </a>
             <?php endforeach; ?>
+            <?php endif; ?>
         </section>
         <?php endif; ?>
         <?php $_SESSION['usersFound'] = null; ?>
