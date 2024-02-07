@@ -34,7 +34,7 @@ function generatePostHTML($post, $database, $userData)
     $caption = $post['Caption'];
 
     $likesSrc = $database->getLikesFromPost($postID, $userData['UserID']) ? "../icon/like.svg" : "../icon/like-empty.svg";
-    $saveSrc = $database->getSaveFromPost($postID, $userData['UserID']) ? "../icon/save.svg" : "../icon/saved.svg";
+    $saveSrc = $database->getSaveFromPost($postID, $userData['UserID']) ? "../icon/saved.svg" : "../icon/save.svg";
 
     $comments = $database->getCommentsFromPostID($postID);
 
