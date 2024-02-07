@@ -266,7 +266,7 @@ img {
         <button class="message">
             <div class="sender-info">
                 <div class="sender-profile-image">
-                    <img class="sender-image" src="<?php echo displayProfileImage($database, $user['LogoURL']) ?>" />
+                  <img class="sender-image" src="<?php echo displayProfileImage($database, $user['LogoURL']) ?>" alt="Profile Image" />
                 </div>
                 <span class="sender-name"><?= $user['Username'] ?></span>
                 <span class="sender-id invisible"><?= $user['UserID'] ?></span>
@@ -295,7 +295,7 @@ img {
 
         <div class="input-container">
             <div class="input-wrapper">
-                    <label for="userInput"></label>
+                    <label for="userInput">Type your message</label>
                     <textarea id="userInput" placeholder="Type your message..."></textarea>
                     <button id="sendButton" class="sendText-button"><img src="../img/chat/send.svg" alt="send" class="sendText-Image"></button>
                 </div>

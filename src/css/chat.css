@@ -163,6 +163,10 @@ img {
   width: 100%;
 }
 
+.input-wrapper label {
+  display: none;
+}
+
 #userInput {
   width: 100%;
   padding: 8px;
