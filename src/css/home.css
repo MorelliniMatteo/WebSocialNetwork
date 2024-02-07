@@ -94,6 +94,7 @@ header>aside{
 
 .label{
     background: var(--contrast);
+    color: var(--contrast);
     display: flex;
     align-items: center;
     justify-content: space-between;
