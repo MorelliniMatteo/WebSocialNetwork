@@ -33,6 +33,11 @@ main{
     align-items: center;
 }
 
+.space{
+    padding: 2rem 0;
+    color: var(--backgnd);
+}
+
 main input {
     width: 90%;
     padding: 0.75rem;
