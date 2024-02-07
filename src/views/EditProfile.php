@@ -117,7 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script src="../js/backbutton.js"></script>
 <script src="../js/importTheme.js"></script>
-<script src="../js/editProfile.js"></script>
 
 </body>
 </html>
