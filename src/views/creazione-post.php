@@ -17,31 +17,34 @@ if (!isset($_SESSION['user_id'])) {
 // Ottieni l'ID dell'utente dalla sessione
 $loggedInUserID = $_SESSION['user_id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
 
-    $category = $_POST['category'];
-    $description = $_POST['descriptionInput'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
+    $category = isset($_POST['category']) ? $_POST['category'] : "";
+    $description = empty($_POST['descriptionInput']) ? "..." : $_POST['$descriptionInput'];
     $categoryID = $database->getCategoryID($category);
 
-    if ($_FILES["photoInput"]["error"] === UPLOAD_ERR_OK) {
+    // 验证类别是否已选择
+    if (empty($category)) {
+        $errorMessage = "Must choose a category";
+    } elseif ($_FILES["photoInput"]["error"] === UPLOAD_ERR_OK) {
         $fileData = file_get_contents($_FILES["photoInput"]["tmp_name"]);
         $imageName = basename($_FILES["photoInput"]["name"]);
 
         if ($database->imageNameExists($imageName)) {
-            $errorMessage = "Image name already exists.";
+            $errorMessage = "Image name already exists";
         } else {
             if ($database->uploadImage($imageName, $fileData)) {
                 $database->insertPost($loggedInUserID, $imageName, $description, $categoryID);
                 header("Location: Profile.php");
             } else {
-                $errorMessage = "Insert Post Failed";
+                $errorMessage = "Failed to upload";
             }
         }
     } else {
-        $errorMessage = "Upload Image Failed";
+        $errorMessage = "Failed";
     }
-
 }
+
 ?>
 
 <!DOCTYPE html>
