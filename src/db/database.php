@@ -526,6 +526,26 @@ class Database {
     }
 
 
+    public function getUserIDByPostID($postID) {
+        try {
+            $query = "SELECT UserID FROM Posts WHERE PostID = :postID";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':postID', $postID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result['UserID'];
+            } else {
+                return false; // Post not found or no associated user
+            }
+        } catch (PDOException $e) {
+            // Handle the exception if needed
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 
     public function getCommentsFromPostID($postID) {
         $query = "SELECT UserID, CommentText FROM Comments WHERE PostID = :postID";

@@ -62,7 +62,7 @@ $userData = $database->getUserByID($loggedInUserID);
     <main class="explore">
         <form action="../models/sendCategory.php" method="post">
             <label hidden="true" for="Search">Search</label>
-            <input type="text" id="Search" name="Search" placeholder="Search for your arts" title="search bar">
+            <input type="text" id="Search" name="Search" placeholder="Search for your art" title="search bar">
             <button type="submit" name="submit">
                 <img src="../icon/share.svg" alt="submit icon" class="icon">
             </button>
