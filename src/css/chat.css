@@ -8,6 +8,7 @@
   color: var(--text);
 }
 
+
 button {
   border: none;
   transition: .4s ease-in-out;
@@ -16,7 +17,6 @@ button {
 
 textarea {
   border: none;
-  background: #eceaea;
   resize: none;
 }
 
@@ -69,7 +69,8 @@ img {
 }
 
 .message:hover {
-  background: #efefef;
+  background: var(--contrast);
+  color: var(--text);
 }
 
 
@@ -129,7 +130,8 @@ img {
   display: flex;
   flex-direction: row;
   width: 250px;
-  background: #fff;
+  background: var(--text);
+  color: var(--contrast);
 }
 
 .text-sendTime {
@@ -174,17 +176,20 @@ img {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-right: 10px;
+  background: var(--text);
+  color: var(--contrast);
 }
 
 .sendText-button {
-  background-color: #4CAF50;
+  background: var(--elem2);
   padding: 18px 22px;
   cursor: pointer;
   border-radius: 4px;
 }
 
+
 .sendText-button:hover {
-  background: #efefef;
+  background: var(--elem1);
 }
 
 .invisible {

@@ -12,21 +12,6 @@ function getImageSourceLink($database, $imageName) {
     }
 }
 
-function uploadImage($database, $path, $imageName) {
-    $imageData = file_get_contents($path . $imageName);
-    if($database->uploadImage($imageName, $imageData)) {
-        echo "Image uploaded successfully!";
-    } else {
-        echo "Failed to upload Image!";
-    }   
-}
-
-
-// Example
-// echo getImageSourceLink($database, "profile.jpg");
-
-// echo uploadImage($database, '../img/', 'backgndSculpture.jpg');
-
 
 function displayProfileImage($database, $logoURL) {
     $imageLink = getImageSourceLink($database, $logoURL);
