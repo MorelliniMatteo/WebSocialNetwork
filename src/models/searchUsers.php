@@ -22,12 +22,11 @@ $database = new Database();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $searchQuery = $_POST["Search"];
-    if (empty($searchQuery)) { 
+    if (!empty($searchQuery)) { 
         $usersFound = $database->getUsersByString($searchQuery);
         print_r($usersFound);
         $_SESSION["usersFound"] = $usersFound;
     } else {
-        $_SESSION["usersFound"] = '';
         echo 'No users found.';
     }
 
