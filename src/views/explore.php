@@ -52,7 +52,7 @@ $userData = $database->getUserByID($loggedInUserID);
             <img src="../icon/sun.svg" alt="sun" class="icon theme">
             <div>
                 <input type="checkbox" class="checkbox" id="checkbox" title="change theme">
-                <label for="checkbox" class="label">theme
+                <label for="checkbox" class="label">
                     <span class="ball"></span>
                 </label>
             </div>
