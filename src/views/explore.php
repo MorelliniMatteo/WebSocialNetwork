@@ -37,7 +37,7 @@ $userData = $database->getUserByID($loggedInUserID);
     <header>
          <ul>
              <li><img class="logo" src="../img/logo-senza-sfondo.png" alt="logo"></li>
-             <li><a href="Notification.php"><img class="icon" src="../icon/notifications.svg" alt="notifications"></a></li>
+             <button id="notificationBtn"><img class="icon" src="../icon/notifications.svg" alt="notifications"></button>
              <li><img class="icon menu" src="../icon/menu.svg" alt="menu"></li>
          </ul>
          <aside class="menu-content">
