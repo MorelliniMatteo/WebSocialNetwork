@@ -586,6 +586,36 @@ class Database {
         }
     }
 
+    public function getUserSavedPosts($userID) {
+        $query = "
+            SELECT 
+                p.*, 
+                COUNT(s.SavedID) AS SavedCount 
+            FROM 
+                posts p
+                INNER JOIN saved s ON p.PostID = s.PostID
+            WHERE 
+                s.UserID = :userID
+            GROUP BY 
+                p.PostID
+        ";
+    
+        $params = array(':userID' => $userID);
+    
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+    
+            // Fetch all posts liked by the user with the count of likes
+            $userSavedPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $userSavedPosts;
+        } catch (PDOException $e) {
+            // Handle the exception (log, display an error message, etc.)
+            return false;
+        }
+    }
+
     public function getUserTaggedPosts($userID) {
         $query = "
             SELECT 

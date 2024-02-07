@@ -33,6 +33,7 @@ $profileInfo = $database->getUserProfileInfo($loggedInUserID);
 // Fetch user posts
 $userPosts = $database->getUserPosts($loggedInUserID);
 $userLikedPosts = $database->getUserLikedPosts($loggedInUserID);
+$userSavedPosts = $database->getUserSavedPosts($loggedInUserID);
 $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
 ?>
 
@@ -151,7 +152,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($loggedInUserID);
         </section>
 
         <section id="savedSection" class="public-container user-posts">
-            <?php foreach ($userLikedPosts as $post) : ?>
+            <?php foreach ($userSavedPosts as $post) : ?>
                 <a href="post.php?PostID=<?php echo $post['PostID']; ?>" class="post">
                     <img src="<?php echo displayProfileImage($database, $post['MediaURL']); ?>" alt="post-image">
                     <div class="post-box">

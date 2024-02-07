@@ -34,7 +34,7 @@ $loggedInUserID = $_SESSION['user_id'];
             </section>
             
             <label for="image" id="imageLabel" class="custom-button">Select Image</label>
-            <input type="file" name="image" id="image" required>
+            <input type="file" name="image" id="image" accept="image/*" required>
             <label for="imageName">Image Name:</label>
             <input type="text" name="imageName" id="imageName" placeholder="Type your image name..." required>
             <input type="submit" value="Upload Image" name="submit" id="submitButton">

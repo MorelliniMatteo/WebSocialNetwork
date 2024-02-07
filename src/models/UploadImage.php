@@ -24,6 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $imageName = $_POST["imageName"];
     $imageData = file_get_contents($_FILES["image"]["tmp_name"]);
 
+    echo $imageName;
+
     // Check if the image name already exists in the database
     if ($database->checkDuplicateImageName($imageName)) {
         echo "Error: Image name already exists in the database. Please choose a different one.";
