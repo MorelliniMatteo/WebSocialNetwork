@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
         <section>
             <article>
                 <header>
-                <img src="<?php echo displayProfileImage($database, $profileInfo['LogoURL']); ?>" alt="User Avatar">
+                    <img src="<?php echo displayProfileImage($database, $profileInfo['LogoURL']); ?>" alt="User Avatar">
                     <h1>Create Post</h1>
                 </header>
 
@@ -104,7 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
                     <div class="container">
                         <label for="descriptionInput">Descrizione del Post:</label>
                         <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
-                        <select name="category" id="category">
+                        <label for="category">Category:</label>
+                        <select name="category" id="category">  
                             <option value="" disabled selected>Category</option>
                             <option value="travel">Travel</option>
                             <option value="nature">Nature</option>
