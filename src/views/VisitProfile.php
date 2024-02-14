@@ -69,9 +69,9 @@ $userTaggedPosts = $database->getUserTaggedPosts($userID);
 
         <section class="profile">
             <div class="public-container profile-container">
-                <a href="../models/ChangeProfileImage.php" class="profile-logo">
+                <div class="profile-logo">
                     <img src="<?php echo displayProfileImage($database, $profileInfo['LogoURL']); ?>" alt="profile-image">
-                </a>
+            </div>
 
                 <div class="profile-posts">
                     <div class="profile-post">
@@ -111,7 +111,7 @@ $userTaggedPosts = $database->getUserTaggedPosts($userID);
         <section class="public-container tab-container">
             <button id="postSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'post.svg' ?>" alt="post"></button>
             <button id="taggedSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'tag.svg' ?>" alt="tagged"></button>
-            <button id="savedSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'saved.svg' ?>" alt="saved"></button>
+            <button id="savedSectionBtn" class="post-logo btn"><img class="icon" src="<?php echo $iconImagePath . 'like-empty.svg' ?>" alt="like"></button>
         </section>
 
 

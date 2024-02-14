@@ -96,6 +96,7 @@ $userData = $database->getUserByID($loggedInUserID);
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../js/post.js"></script>
     <script src="../js/menuTheme.js"></script>
+    <script src="../js/importTheme.js"></script>
     <script src="../js/infinityScroll.js"></script>
     <script src="../js/Notification.js"></script>
  </body>

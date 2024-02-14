@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <link rel="icon" href="../img/logo.PNG" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/style.css">
         <title>Login - Sign Up</title>
     </head>
     <!-- Controllato con Achecker, tutto ok -->
@@ -124,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <footer>
-            <a href="homePreview.html">Home</a>
+            <h3>Home</h3>
             <!-- Aggiungi altri link secondo necessità -->
             <p>Copyright © 2023 All Rights Reserved by ArtHub.</p>
         </footer>

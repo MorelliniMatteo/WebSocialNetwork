@@ -21,6 +21,8 @@ $loggedInUserID = $_SESSION['user_id'];
 
 $profileInfo = $database->getUserProfileInfo($loggedInUserID);
 
+$categories = $database->getCategories();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
     $category = isset($_POST['category']) ? $_POST['category'] : "";
     $description = empty($_POST['descriptionInput']) ? "..." : $_POST['descriptionInput'];
@@ -105,18 +107,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmButton'])) {
                         <label for="descriptionInput">Descrizione del Post:</label>
                         <textarea id="descriptionInput" name="descriptionInput" placeholder="Inserisci una descrizione..." rows="2"></textarea>
                         <label for="category">Category:</label>
-                        <select name="category" id="category">  
-                            <option value="" disabled selected>Category</option>
-                            <option value="travel">Travel</option>
-                            <option value="nature">Nature</option>
-                            <option value="lifestyle">Lifestyle</option>
-                            <option value="art">Art</option>
-                            <option value="sculpture">Sculpture</option>
-                            <option value="digital-art">Digital Art</option>
+                        <select name="category" id="category"> 
+                            <option value="" selected disabled>category</option>
+                            <?php foreach($categories as $category) : ?> 
+                                <option value="<?php echo $category['CategoryName'] ?>"><?php echo $category['CategoryName'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
-                    <label for="error-message" class="error-message"><?php echo "$errorMessage" ?></label>
+                    <span for="error-message" class="error-message"><?php echo "$errorMessage" ?></span>
 
                     <button type="submit" name="confirmButton" id="confirmButton">Confirm</button>
                 </form>

@@ -763,7 +763,7 @@ class Database {
     public function getConversationUsers($currentUserID) {
         $sql = "SELECT DISTINCT u.UserID, u.Username, ui.LogoURL
                 FROM Users u
-                JOIN ChatMessages cm ON u.UserID = cm.SenderID OR u.UserID = cm.ReceiverID
+                LEFT JOIN ChatMessages cm ON u.UserID = cm.SenderID OR u.UserID = cm.ReceiverID
                 LEFT JOIN UserInfos ui ON u.UserID = ui.UserID
                 WHERE cm.SenderID = :currentUserID OR cm.ReceiverID = :currentUserID
                    OR u.UserID IN (SELECT FollowingUserID FROM Followers WHERE FollowerUserID = :currentUserID)";

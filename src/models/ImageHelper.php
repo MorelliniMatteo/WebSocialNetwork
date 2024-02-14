@@ -18,7 +18,7 @@ function displayProfileImage($database, $logoURL) {
 
     if ($imageLink === "Not found") {
 
-        return "../img/defaultUserPng.jpg"; 
+        return "../img/defaultUserPng.png"; 
     } else {
 
         return $imageLink;

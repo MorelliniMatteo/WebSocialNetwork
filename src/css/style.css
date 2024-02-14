@@ -37,7 +37,7 @@ body{
     /* filter: invert(82%) sepia(96%) saturate(6%) hue-rotate(131deg) brightness(111%) contrast(80%);    white */
 }
 
-.dark .icon{
+.dark .icon, .dark .logo{
     filter: invert(82%) sepia(96%) saturate(6%) hue-rotate(131deg) brightness(111%) contrast(80%);
 }
 

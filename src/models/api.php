@@ -105,6 +105,7 @@ function generatePostHTML($post, $database, $userData)
 
     // Description
     $description = $dom->createElement('p', $caption);
+    $description->setAttribute('class', 'description');
     $commentsContainer->appendChild($description);
 
     // Comments
